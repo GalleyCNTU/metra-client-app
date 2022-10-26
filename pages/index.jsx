@@ -7,10 +7,10 @@ export async function getStaticProps() {
     const response = await fetch(`${process.env.API}/makes`);
     const makesData = await response.json();
 
-    const makes = makesData.map((makeObj) => makeObj.brand);
+            const makes = makesData.map((makeObj) => makeObj.brand);
 
     const models = makesData.reduce((acc, make) => {
-      return {
+              return {
         ...acc,
         [make.brand]: make.models,
       };
@@ -18,7 +18,7 @@ export async function getStaticProps() {
 
     return { props: { makes, models } };
   } catch (e) {
-    return { notFound: true };
+          return { notFound: true };
   }
 }
 
