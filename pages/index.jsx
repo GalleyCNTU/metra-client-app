@@ -1,24 +1,23 @@
 import Header from "../components/Header/Header";
-// import CarBuying from "../src/components/CarBuying/CarBuying";
-// import AboutUs from "../src/components/AboutUs/AboutUs";
-// import Conditions from "../src/components/Conditions/Conditions";
+import CarBuying from "../components/CarBuying/CarBuying";
+import AboutUs from "../components/AboutUs/AboutUs";
+import Conditions from "../components/Conditions/Conditions";
 // import WhyWe from "../src/components/WhyWe/WhyWe";
 // import PurchasedCars from "../src/components/PurchasedCars/PurchasedCars";
 // import Contacts from "../src/components/Contacts/Contacts";
 // import Footer from "../src/components/Footer/Footer";
-// import BuyingInfo from "../src/components/BuyingInfo/BuyingInfo";
+import BuyingInfo from "../components/BuyingInfo/BuyingInfo";
 // import CheckPrice from "../src/components/CheckPrice/CheckPrice"
 
 
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CarFormPage = () => {
 
     return (
         <div>
-            
-            {/* <ToastContainer
+            <ToastContainer
                 position="top-right"
                 autoClose={5000}
                 hideProgressBar
@@ -28,13 +27,13 @@ const CarFormPage = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-            /> */}
+            />
             <Header />
-            {/* <CarBuying />
+            <CarBuying />
             <AboutUs />
             <Conditions />
             <BuyingInfo />
-            <WhyWe />
+            {/* <WhyWe />
             <PurchasedCars />
             <CheckPrice />
             <Contacts />

@@ -1,19 +1,21 @@
-import './CarBuying.scss';
+import classes from './CarBuying.module.scss';
 import CarForm from "../CarForm/CarForm"
+
+import IMG from '../../public/img/rotated_background.jpg';
 
 const CarBuying = () => {
     return (
-        <div className='car_buying'>
-            <div className='car_buying_upper'>
-                <div className='car_buying_upper_title'>
-                    <span className='car_buying_upper_title_text'>ТЕРМІНОВИЙ ВИКУП АВТО</span>
+        <div className={classes.car_buying} style={{background:`url(${IMG.src}) no-repeat`, backgroundSize: '100%'}}>
+            <div className={classes.car_buying_upper}>
+                <div className={classes.car_buying_upper_title}>
+                    <span className={classes.car_buying_upper_title_text}>ТЕРМІНОВИЙ ВИКУП АВТО</span>
                 </div>
-                <div className='car_buying_upper_form'>
+                <div className={classes.car_buying_upper_form}>
                     <CarForm />
                 </div>
             </div>
-            <div className='car_buying_lower'>
-                <div className='car_buying_lower_info'>
+            <div className={classes.car_buying_lower}>
+                <div className={classes.car_buying_lower_info}>
                     <span style={{marginTop: 20}}>БУДЬ-ЯКИЙ<br />СТАН ТА ПРОБІГ</span>
                     <span>РІЗНИХ РОКІВ<br />ТА БУДЬ-ЯКИХ МАРОК</span>
                     <span>ЕКОНОМІЯ<br />ЧАСУ ПІД ЧАС ПРОДАЖУ</span>

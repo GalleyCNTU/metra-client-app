@@ -38,7 +38,7 @@
         justify-content: center;
         align-items: center;
 
-        &-input {
+        &_input {
             padding: 0;
             width: 285px;
             height: 50px;
@@ -68,7 +68,7 @@
         }
     }
 
-    &-title {
+    &_title {
         width: 338px;
         color: white;
         font-weight: 800;
@@ -91,7 +91,7 @@
         justify-content: space-between;
         align-items: center;
 
-        &-button {
+        &_button {
             width: 285px;
             height: 50px;
             font-family: 'Gilroy';
@@ -106,7 +106,7 @@
             color: white;
         }
 
-        &-select {
+        &_select {
             margin-bottom: 10px;
             width: 285px;
             height: 50px;
@@ -133,7 +133,7 @@
         height: 370px;
         background-color: #1E1E1E;
 
-        &-title {
+        &_title {
             padding: 0 10px;
             width: 338px;
             color: white;

@@ -17,7 +17,7 @@
         -webkit-user-select: none;
         user-select: none;
 
-        img {
+        &_arrow {
             position: absolute;
             height: 725px;
             width: 100%;
@@ -81,7 +81,7 @@
 }
 
 
-.item-buying_info {
+.item_buying_info {
     &_arrow {
         width: 10px;
         svg {
@@ -208,7 +208,7 @@
     }
 
 
-    .item-buying_info {
+    .item_buying_info {
         &_arrow {
             transform: rotate(90deg);
             margin-bottom: 20px;

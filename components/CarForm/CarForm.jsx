@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import Select from "react-select";
 
 // Style file
-import "./CarForm.scss";
+import classes from "./CarForm.module.scss";
 
 // Utils
 import dataMapping from "../utils/dataMapping";
@@ -26,7 +26,7 @@ const CarForm = () => {
     const selectRef = useRef();
 
     const notify = (text) => toast.error(text, {
-        position: "top-right",
+        position: "top_right",
         autoClose: 5000,
         hideProgressBar: true,
         closeOnClick: true,
@@ -57,7 +57,7 @@ const CarForm = () => {
 
 
     const getMakeList = () => {
-        fetch("https://metra-avto.herokuapp.com/makeList")
+        fetch("https://metra_avto.herokuapp.com/makeList")
             .then(response => response.json())
             .then(data => {
                 setMakeList(dataMapping(data));
@@ -65,7 +65,7 @@ const CarForm = () => {
     }
 
     const getModelList = () => {
-        fetch(`https://metra-avto.herokuapp.com/models/${brand}`)
+        fetch(`https://metra_avto.herokuapp.com/models/${brand}`)
             .then(response => response.json())
             .then(data => setModelList(dataMapping(data)))
     }
@@ -74,10 +74,10 @@ const CarForm = () => {
         if (brand && selectedBrand && selectedModel && selectedYear) {
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content_Type': 'application/json' },
                 body: JSON.stringify(userInfo)
             };
-            fetch('https://metra-avto.herokuapp.com/send-message', requestOptions)
+            fetch('https://metra_avto.herokuapp.com/send_message', requestOptions)
                 .then(response => response.json())
                 .then(data => console.log(data.message));
         }
@@ -137,12 +137,12 @@ const CarForm = () => {
     return (
         <div >
             {formSwitcher === 0 && (
-                <div className="car_form">
-                    <span className="car_form-title">Онлайн розрахунок попередньої вартості вашого авто</span>
-                    <div className="car_form_action">
+                <div className={classes.car_form}>
+                    <span className={classes.car_form_title}>Онлайн розрахунок попередньої вартості вашого авто</span>
+                    <div className={classes.car_form_action}>
                         <Select
-                            placeholder={<div className="car_form_placeholder">Марка авто</div>}
-                            className="car_form_action-select"
+                            placeholder={<div className={classes.car_form_placeholder}>Марка авто</div>}
+                            className={classes.car_form_action_select}
                             theme={(theme) => ({
                                 ...theme,
                                 borderRadius: 0,
@@ -158,8 +158,8 @@ const CarForm = () => {
 
                         <Select
                             ref={selectRef}
-                            placeholder={<div className="car_form_placeholder">Модель авто</div>}
-                            className="car_form_action-select"
+                            placeholder={<div className={classes.car_form_placeholder}>Модель авто</div>}
+                            className={classes.car_form_action_select}
                             theme={(theme) => ({
                                 ...theme,
                                 borderRadius: 0,
@@ -174,31 +174,30 @@ const CarForm = () => {
 
 
                         <Select
-                            placeholder={<div className="car_form_placeholder">Модельний рік</div>}
+                            placeholder={<div className={classes.car_form_placeholder}>Модельний рік</div>}
                             isSearchable={false}
                             theme={(theme) => ({
                                 ...theme,
                                 borderRadius: 0,
                             })}
                             styles={colorStyles}
-                            className="car_form_action-select"
+                            className={classes.car_form_action_select}
                             options={carYears}
                             onChange={(e) => { setSelectedYear(e.label); }}
                             components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }} />
-                        <button className="car_form_action-button" onClick={showCarPrice} >ДАЛІ</button>
+                        <button className={classes.car_form_action_button} onClick={showCarPrice} >ДАЛІ</button>
                     </div>
                 </div>
             )}
             {formSwitcher === 1 && (
-                <div className="car_form">
-                    <span className="car_form-title">Онлайн розрахунок попередньої вартості вашого авто</span>
-                    <form className="car_form_action" onSubmit={handleSubmit(sellCar)}>
-                        <div className="car_form_send">
+                <div className={classes.car_form}>
+                    <span className={classes.car_form_title}>Онлайн розрахунок попередньої вартості вашого авто</span>
+                    <form className={classes.car_form_action} onSubmit={handleSubmit(sellCar)}>
+                        <div className={classes.car_form_send}>
                             <input {...register('userName', {
                                 required: "Введіть своє ім'я",
-
                             })}
-                                className="car_form_send-input"
+                                className={classes.car_form_send_input}
                                 placeholder="Ім'я"
                                 style={{ backgroundColor: errors.userName && "#ffc38c" }}
                                 type="text" />
@@ -210,31 +209,31 @@ const CarForm = () => {
                                 },
                             })}
                                 onKeyPress={(event) => {
-                                    if (!/[0-9+]/.test(event.key)) {
+                                    if (!/[0_9+]/.test(event.key)) {
                                         event.preventDefault();
                                     }
                                 }}
-                                className="car_form_send-input"
+                                className={classes.car_form_send_input}
                                 placeholder="Номер телефону"
                                 style={{ backgroundColor: errors.userTelephone && "#ffc38c" }}
                                 type="text" />
                         </div>
-                        {errors.userName && <p className="car_form_errors">{errors.userName.message}</p>
-                            || errors.userTelephone && <p className="car_form_errors">{errors.userTelephone.message}</p>}
+                        {errors.userName && <p className={classes.car_form_errors}>{errors.userName.message}</p>
+                            || errors.userTelephone && <p className={classes.car_form_errors}>{errors.userTelephone.message}</p>}
 
                         <button
-                            className="car_form_action-button"
+                            className={classes.car_form_action_button}
                             type="submit"
                         >ПРОДАТИ АВТО</button>
                     </form>
                 </div>
             )}
             {formSwitcher === 2 && (
-                <div className="car_form">
-                    <div className="car_form_action car_form_modal">
-                        <span className="car_form-title">Ваша заявка прийнята до розгляду, після її опрацювання наші фахівці зв'яжуться з вами. Як правило, це відбувається дуже швидко</span>
+                <div className={classes.car_form}>
+                    <div className={`${classes.car_form_action} ${classes.car_form_modal}`}>
+                        <span className={classes.car_form_title}>Ваша заявка прийнята до розгляду, після її опрацювання наші фахівці зв'яжуться з вами. Як правило, це відбувається дуже швидко</span>
                         <button
-                            className="car_form_action-button"
+                            className={classes.car_form_action_button}
                             onClick={() => resetInfo()}>ДОБРЕ</button>
                     </div>
                 </div>
