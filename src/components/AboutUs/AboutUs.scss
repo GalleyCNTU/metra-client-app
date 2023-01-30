@@ -1,0 +1,201 @@
+
+.about_us {
+    width: 100%;
+    height: 400px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 165px;
+
+    .about_us_image {
+        margin-bottom: 15px;
+    }
+
+    .about_us_title {
+        text-align: center;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 30px;
+        text-align: center;
+        color: #1E1E1E;
+        margin-bottom: 10px;
+        padding: 0 8px;
+    }
+
+    .about_us_subtitle {
+        text-align: center;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-size: 17px;
+        line-height: 25px;
+        text-align: center;
+        color: #1E1E1E;
+    }
+
+    &_block {
+        width: 300px;
+        height: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 15px;
+    }
+
+
+    &_bar_chart {
+
+        border-right: 0.5px solid #9c9c9c;
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &_payments {
+
+        border-right: 0.5px solid #9c9c9c;
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &_approval_delegation {
+
+        border-right: 0.5px solid #9c9c9c;
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &_schedule {
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+}
+
+
+
+
+@media (max-width : 1310px) {
+
+    .about_us {
+        margin: 0;
+
+        .about_us_image {
+            z-index: 3;
+        }
+
+        .about_us_title {
+            z-index: 2;
+        }
+    
+        .about_us_subtitle {
+            z-index: 1;
+        }
+    
+    }
+}
+
+@media (max-width : 1150px) {
+    .about_us {
+        width: 100%;
+        height: 1200px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 35px 0;
+    
+        .about_us_image {
+            margin-bottom: 15px;
+        }
+    
+        .about_us_title {
+            text-align: center;
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #1E1E1E;
+            margin-bottom: 10px;
+            padding: 0 8px;
+        }
+    
+        .about_us_subtitle {
+            text-align: center;
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-size: 17px;
+            line-height: 25px;
+            text-align: center;
+            color: #1E1E1E;
+        }
+    
+        &_block {
+            width: 270px;
+            height: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 15px;
+        }
+    
+    
+        &_bar_chart {
+    
+            border-right: 0;
+            border-bottom: 0.5px solid #1E1E1E;
+    
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    
+        &_payments {
+    
+            border-right: 0;
+            border-bottom: 0.5px solid #1E1E1E;
+    
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    
+        &_approval_delegation {
+    
+            border-right: 0;
+            border-bottom: 0.5px solid #1E1E1E;
+    
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    
+        &_schedule {
+    
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    
+    }
+}

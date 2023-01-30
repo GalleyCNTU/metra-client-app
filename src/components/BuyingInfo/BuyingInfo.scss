@@ -1,0 +1,248 @@
+.buying_info {
+    width: 100%;
+    display: flex;
+    background-color: #ffffff;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 80px;
+    height: 645px;
+
+    &_background {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+
+        img {
+            position: absolute;
+            height: 725px;
+            width: 100%;
+            color: #1E1E1E1A;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            z-index: 0;
+            opacity: 100%;
+
+        }
+    }
+
+    &_header {
+        display: flex;
+        align-items:center;
+        width: 55%;
+        z-index: 1;
+        span {
+            width: 100%;
+            margin-left: 210px;
+            height: 350px;
+        }
+    }
+
+    &_numbers {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+        z-index: 1;
+    }
+
+    &_row {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        z-index: 1;
+    }
+
+    &_column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 18%;
+    }
+}
+
+.title {
+    margin: 0;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 100px;
+    text-align: left;
+    text-transform: uppercase;
+    color: #1E1E1E;
+}
+
+
+.item-buying_info {
+    &_arrow {
+        width: 10px;
+        svg {
+            width: 10rem;
+            margin-left: -60px;
+        }
+    }
+
+    &_title {
+        display: flex;
+        align-items: center;
+
+        span {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #1E1E1E;
+        }
+    }
+
+    &_text {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 20px;
+            text-align: center;
+            color: #1E1E1E;
+        }
+    }
+}
+
+@media (max-width : 1310px) {}
+
+@media (max-width : 1150px) {
+    .buying_info {
+        width: 100%;
+        display: flex;
+        background-color: #ffffff;
+        position: relative;
+        z-index: 1;
+        height: 100%;
+
+        &_background {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: none;
+
+            img {
+                position: absolute;
+                height: 860px;
+                width: 100%;
+                color: #1E1E1E1A;
+                -moz-user-select: none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+                z-index: 0;
+                margin-left: -150px;
+                top: -150px;
+                opacity: 10%;
+
+            }
+        }
+
+        &_header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            span {
+                margin: 0;
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        &_numbers {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 20%;
+            z-index: 1;
+        }
+
+        &_row {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        &_column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70%;
+        }
+    }
+
+    .title {
+        margin: 0;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 40px;
+        line-height: 60px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #1E1E1E;
+    }
+
+
+    .item-buying_info {
+        &_arrow {
+            transform: rotate(90deg);
+            margin-bottom: 20px;
+        }
+
+        &_title {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            span {
+                font-family: 'Gilroy';
+                font-style: normal;
+                font-weight: 800;
+                font-size: 24px;
+                line-height: 30px;
+                text-align: center;
+                color: #1E1E1E;
+            }
+        }
+
+        &_text {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom:30px; 
+            span {
+                font-family: 'Gilroy';
+                font-style: normal;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 20px;
+                text-align: center;
+                color: #1E1E1E;
+            }
+        }
+    }
+}

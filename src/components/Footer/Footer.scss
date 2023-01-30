@@ -1,0 +1,29 @@
+
+
+.footer {
+    width: 100%;
+    height: 109px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1E1E1E;
+    padding: 0 205px 0 185px;
+
+
+
+    &_logo {
+        width: 80px;
+    }
+
+    &_up {
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width : 1150px) {
+    .footer {
+        padding: 0 65px 0 45px;
+    }
+}

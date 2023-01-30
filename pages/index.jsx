@@ -1,25 +1,46 @@
-function About({ makes, models }) {
-  return <h1>Home page</h1>;
+import Header from "../src/components/Header/Header";
+// import CarBuying from "../src/components/CarBuying/CarBuying";
+// import AboutUs from "../src/components/AboutUs/AboutUs";
+// import Conditions from "../src/components/Conditions/Conditions";
+// import WhyWe from "../src/components/WhyWe/WhyWe";
+// import PurchasedCars from "../src/components/PurchasedCars/PurchasedCars";
+// import Contacts from "../src/components/Contacts/Contacts";
+// import Footer from "../src/components/Footer/Footer";
+// import BuyingInfo from "../src/components/BuyingInfo/BuyingInfo";
+// import CheckPrice from "../src/components/CheckPrice/CheckPrice"
+
+
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+const CarFormPage = () => {
+
+    return (
+        <div>
+            
+            {/* <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            /> */}
+            <Header />
+            {/* <CarBuying />
+            <AboutUs />
+            <Conditions />
+            <BuyingInfo />
+            <WhyWe />
+            <PurchasedCars />
+            <CheckPrice />
+            <Contacts />
+            <Footer /> */}
+        </div>
+    );
 }
 
-export async function getStaticProps() {
-  try {
-    const response = await fetch(`${process.env.API}/makes`);
-    const makesData = await response.json();
-
-    const makes = makesData.map((makeObj) => makeObj.brand);
-
-    const models = makesData.reduce((acc, make) => {
-      return {
-        ...acc,
-        [make.brand]: make.models,
-      };
-    }, {});
-
-    return { props: { makes, models } };
-  } catch (e) {
-    return { notFound: true };
-  }
-}
-
-export default About;
+export default CarFormPage;
