@@ -1,0 +1,25 @@
+.footer {
+  width: 100%;
+  height: 109px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e1e1e;
+  padding: 0 205px 0 185px;
+
+  &_logo {
+    width: 60px;
+  }
+
+  &_up {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1150px) {
+  .footer {
+    padding: 0 65px 0 45px;
+  }
+}

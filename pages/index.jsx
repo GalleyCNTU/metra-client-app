@@ -1,4 +1,4 @@
-import Header from "../src/components/Header/Header";
+import Header from "../components/Header/Header";
 // import CarBuying from "../src/components/CarBuying/CarBuying";
 // import AboutUs from "../src/components/AboutUs/AboutUs";
 // import Conditions from "../src/components/Conditions/Conditions";

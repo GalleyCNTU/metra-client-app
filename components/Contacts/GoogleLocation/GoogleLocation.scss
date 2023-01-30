@@ -47,6 +47,12 @@
         font-size: 10vw;
     }
 }
+@media (max-height : 2000px) {
+    .google-map {
+        width: 100%;
+        height: 25vh;
+    }
+}
 
 @media (max-height : 1368px) {
     .google-map {
@@ -93,7 +99,7 @@
 @media (max-height : 760px) {
     .google-map {
         width: 100%;
-        height: 80vh;
+        height: 60vh;
     }
 }
 

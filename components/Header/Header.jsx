@@ -2,16 +2,16 @@
 import { useState } from 'react'
 
 // Style file
-import style from "./Header.module.scss";
+import "./Header.scss";
 
 // Drawer lib 
-// import Drawer from 'react-modern-drawer'
-// import 'react-modern-drawer/dist/index.css'
+import Drawer from 'react-modern-drawer'
+import 'react-modern-drawer/dist/index.css'
 
 // Images
-import menuButton from '../../../public/img/menu.png'
-// import closeMenu from '../../img/closeMenu.png'
-import logo from '../../../public/img/LOGO.PNG';
+import menuButton from '../../img/menu.png'
+import closeMenu from '../../img/closeMenu.png'
+import logo from '../../img/LOGO.PNG';
 
 const Header = () => {
 
@@ -22,13 +22,12 @@ const Header = () => {
     }
 
     return (
-        <header className={style.header} id="header">
-            <div className={style.header_mobile_menu}>
-            <div className={style.header_logo}>
-                <img src={logo} alt="logo" />
-            </div>
-                
-                {/* <Drawer
+        <header className='header' id="header">
+            <div className='header_logo'>
+                    <img src={logo} alt="logo" />
+                </div>
+            <div className='header_mobile_menu'>
+                <Drawer
                     open={isOpen}
                     onClose={toggleDrawer}
                     direction='left'
@@ -44,20 +43,19 @@ const Header = () => {
                             <a href='#contacts' className='drawer_body_nav_link'>КОНТАКТИ</a>
                         </div>
                     </div>
-                </Drawer> */}
-            </div>
-            <div className={style.header_mobile_menu_button} >
+                </Drawer>
+                <div className='header_mobile_menu_button' >
                     <img src={menuButton} onClick={toggleDrawer} alt="menuButton" width='39px' height='29px' style={{ cursor: "pointer" }} />
                 </div>
-            
-            <div className={style.header_nav}>
-                <a href='#header' className={style.header_nav_link} style={{ color: '#FF8A00' }}>АВТОВИКУП</a>
-                <a href='#purchased' className={`${style.header_nav_link_margined} ${style.header_nav_link}`}>АВТО В НАЯВНОСТІ</a>
+            </div>
+            <div className='header_nav'>
+                <a href='#header' className='header_nav_link' style={{ color: '#FF8A00' }}>АВТОВИКУП</a>
+                <a href='#purchased' className='header_nav_link header_nav_link_margined'>АВТО В НАЯВНОСТІ</a>
                 <a href='#contacts' className='header_nav_link'>КОНТАКТИ</a>
             </div>
             <div className='header_info'>
-                <a href="tel:+380631244667"><span className={style.header_info_number}>063 124 4667</span></a>
-                <a href="tel:+380680930002"><span className={`${style.header_info_number} ${style.header_info_number_margined}`}>068 093 0002</span></a>
+                <a href="tel:+380631244667"><span className='header_info_number'>063 124 4667</span></a>
+                <a href="tel:+380680930002"><span className='header_info_number header_info_number_margined'>068 093 0002</span></a>
             </div>
         </header>
     )
