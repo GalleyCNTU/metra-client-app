@@ -1,4 +1,5 @@
-import './CheckPrice.scss';
+
+import classes from './CheckPrice.module.scss';
 import { useState, useEffect, useMemo, useRef } from "react";
 
 import dataMapping from "../utils/dataMapping";
@@ -72,7 +73,6 @@ const CheckPrice = () => {
                 "afterAccident": afterAccident,
             }
         })
-        console.log(notCleared)
     }
 
     const getMakeList = () => {
@@ -161,21 +161,21 @@ const CheckPrice = () => {
 
 
     return (
-        <div className="check_price" id="price">
-            <div className="check_price_header">
-                <span className="check_price_header_title">
+        <div className={classes.check_price} id="price">
+            <div className={classes.check_price_header}>
+                <span className={classes.check_price_header_title}>
                     Дізнайся попередню
                     <br />
                     вартість свого авто
                 </span>
             </div>
             {formSwitcher === 0 && (
-                <div className="check_price_form">
-                    <div className="check_price_form_box">
-                        <div className="check_price_form_inputs">
+                <div className={classes.check_price_form}>
+                    <div className={classes.check_price_form_box}>
+                        <div className={classes.check_price_form_inputs}>
                             <Select
-                                placeholder={<div className="check_price_form-placeholder">Марка авто</div>}
-                                className="check_price_form-select"
+                                placeholder={<div className={classes.check_price_form_placeholder}>Марка авто</div>}
+                                className={classes.check_price_form_select}
                                 theme={(theme) => ({
                                     ...theme,
                                     borderRadius: 0,
@@ -190,8 +190,8 @@ const CheckPrice = () => {
                                 components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }} />
                             <Select
                                 ref={selectRef}
-                                placeholder={<div className="check_price_form-placeholder">Модель авто</div>}
-                                className="check_price_form-select"
+                                placeholder={<div className={classes.check_price_form_placeholder}>Модель авто</div>}
+                                className={classes.check_price_form_select}
                                 theme={(theme) => ({
                                     ...theme,
                                     borderRadius: 0,
@@ -204,14 +204,14 @@ const CheckPrice = () => {
                                 components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
                             />
                             <Select
-                                placeholder={<div className="check_price_form-placeholder">Модельний рік</div>}
+                                placeholder={<div className={classes.check_price_form_placeholder}>Модельний рік</div>}
                                 isSearchable={false}
                                 theme={(theme) => ({
                                     ...theme,
                                     borderRadius: 0,
                                 })}
                                 styles={colorStyles}
-                                className="check_price_form-select"
+                                className={classes.check_price_form_select}
                                 options={carYears}
                                 onChange={(e) => { setSelectedYear(e.label); }}
                                 components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }} />
@@ -232,24 +232,24 @@ const CheckPrice = () => {
                                     }
                                 }} />
                         </div>
-                        <div className="check_price_form_checkboxes">
-                            <div className="item-form_checkbox">
+                        <div className={classes.check_price_form_checkboxes}>
+                            <div className={classes.item_form_checkbox}>
                                 <input type="checkbox" id="onCredit" onChange={() => { setOnCredit(!onCredit)}} />
                                 <label htmlFor="onCredit">Автомобіль у кредиті чи заставі?</label>
                             </div>
-                            <div className="item-form_checkbox">
+                            <div className={classes.item_form_checkbox}>
                                 <input type="checkbox" id="notCleared" onChange={() => { setNotCleared(!notCleared)}} />
                                 <label htmlFor="notCleared">Автомобіль не розмитнений?</label>
                             </div>
-                            <div className="item-form_checkbox">
+                            <div className={classes.item_form_checkbox}>
                                 <input type="checkbox" id="wasPainted" onChange={() => { setWasPainted(!wasPainted) }} />
                                 <label htmlFor="wasPainted">Автомобіль фарбувався?</label>
                             </div>
-                            <div className="item-form_checkbox">
+                            <div className={classes.item_form_checkbox}>
                                 <input type="checkbox" id="notRunning" onChange={() => { setNotRunning(!notRunning) }} />
                                 <label htmlFor="notRunning">Автомобіль не на ходу?</label>
                             </div>
-                            <div className="item-form_checkbox">
+                            <div className={classes.item_form_checkbox}>
                                 <input type="checkbox" id="afterAccident" onChange={() => { setAfterAccident(!afterAccident) }} />
                                 <label htmlFor="afterAccident">Авто після ДТП?</label>
                             </div>
@@ -259,9 +259,9 @@ const CheckPrice = () => {
                 </div>
             )}
             {formSwitcher === 1 && (
-                <div className="check_price_form">
-                    <div className="check_price_form_box">
-                        <div className="check_price_form_modal">
+                <div className={classes.check_price_form}>
+                    <div className={classes.check_price_form_box}>
+                        <div className={classes.check_price_form_modal}>
                             <span>
                                 Ваша заявка прийнята до розгляду,<br></br>
                                 після її опрацювання наші фахівці зв'яжуться з вами.

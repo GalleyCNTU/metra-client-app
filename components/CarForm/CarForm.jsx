@@ -55,9 +55,8 @@ const CarForm = () => {
         } else setFormSwitcher(1);
     }
 
-
     const getMakeList = () => {
-        fetch("https://metra_avto.herokuapp.com/makeList")
+        fetch("https://metra-avto.herokuapp.com/makeList")
             .then(response => response.json())
             .then(data => {
                 setMakeList(dataMapping(data));
@@ -65,7 +64,7 @@ const CarForm = () => {
     }
 
     const getModelList = () => {
-        fetch(`https://metra_avto.herokuapp.com/models/${brand}`)
+        fetch(`https://metra-avto.herokuapp.com/models/${brand}`)
             .then(response => response.json())
             .then(data => setModelList(dataMapping(data)))
     }
@@ -74,10 +73,10 @@ const CarForm = () => {
         if (brand && selectedBrand && selectedModel && selectedYear) {
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content_Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userInfo)
             };
-            fetch('https://metra_avto.herokuapp.com/send_message', requestOptions)
+            fetch('https://metra-avto.herokuapp.com/send-message', requestOptions)
                 .then(response => response.json())
                 .then(data => console.log(data.message));
         }
@@ -208,11 +207,11 @@ const CarForm = () => {
                                     message: 'Не вірний формат телефону'
                                 },
                             })}
-                                onKeyPress={(event) => {
-                                    if (!/[0_9+]/.test(event.key)) {
-                                        event.preventDefault();
-                                    }
-                                }}
+                            onKeyPress={(event) => {
+                                if (!/[0-9+]/.test(event.key)) {
+                                    event.preventDefault();
+                                }
+                            }}
                                 className={classes.car_form_send_input}
                                 placeholder="Номер телефону"
                                 style={{ backgroundColor: errors.userTelephone && "#ffc38c" }}

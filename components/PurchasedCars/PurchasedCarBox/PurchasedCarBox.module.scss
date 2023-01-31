@@ -1,0 +1,75 @@
+.purchased_car {
+    width: 350px;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &_background_img {
+        display: flex;
+        margin-bottom: 30px;   
+    }
+    &_images {
+        display: flex;
+        width: 100%;
+        height: 70%;
+    }
+    &_title {
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 30px;
+        color: #1E1E1E;
+    }
+
+    &_subtitle {
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-size: 16px;
+        line-height: 20px;
+        color: #1E1E1E;
+    }
+
+    &_price {
+
+        &_usd {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 30px;
+            color: orange;
+        }
+
+        &_between {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 30px;
+            margin: 0 10px;
+        }
+
+        &_uah {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 30px;
+            color: black;
+        }
+    }
+}
+.carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    backface-visibility: hidden;
+    transition: transform .6s ease-in-out;
+    &.active {
+        display: flex;
+    }
+}

@@ -1,15 +1,20 @@
-import './Footer.scss';
+import Image from 'next/image';
+import classes from './Footer.module.scss';
 
-import logo from '../../img/LOGO.PNG';
-import up from '../../img/UP.png';
+import logo from '../../public/img/LOGO.png';
+import up from '../../public/img/UP.png';
 
 const Footer = () => {
-    return (
-        <footer className="footer">
-            <img className='footer_logo' src={logo} alt="logo" />
-            <a href='#header'><img className='footer_up' src={up} alt="up_button" /></a>
-        </footer>
-    )
-}
+  return (
+    <footer className={classes.footer}>
+      <div className={classes.footer_logo}>
+        <Image src={logo} alt="logo" />
+      </div>
+      <a href="#header" className={classes.footer_up}>
+        <Image src={up} alt="up_button" />
+      </a>
+    </footer>
+  );
+};
 
 export default Footer;
