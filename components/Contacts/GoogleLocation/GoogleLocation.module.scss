@@ -1,0 +1,131 @@
+.map-h2 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 20px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.google_map {
+    width: 100%;
+    height: 60vh;
+}
+
+.pin {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    color: var(--main-blue);
+}
+
+.pin_icon {
+    width: 50px;
+    height: 60px;
+}
+
+.pin_text {
+    font-size: 1.3em;
+    font-family: "Gilroy";
+    font-weight: 800;
+}
+
+@media screen and (min-width: 799px) {
+    .google_map {
+        height: 80vh;
+    }
+
+    .map-h2 {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+
+    .pin {
+        width: 15vw;
+    }
+
+    .pin_icon {
+        font-size: 10vw;
+    }
+}
+@media (max-height : 2000px) {
+    .google_map {
+        width: 100%;
+        height: 25vh;
+    }
+}
+
+@media (max-height : 1368px) {
+    .google_map {
+        width: 100%;
+        height: 25vh;
+    }
+}
+
+@media (max-height : 1180px) {
+    .google_map {
+        width: 100%;
+        height: 35vh;
+    }
+}
+
+@media (all : 915px) {
+    .google_map {
+        width: 100%;
+        height: 45vh;
+    }
+}
+
+@media (all : 900px) {
+    .google_map {
+        width: 100%;
+        height: 70vh;
+    }
+}
+
+@media (max-height : 896px) {
+    .google_map {
+        width: 100%;
+        height: 50vh;
+    }
+}
+
+@media (max-height : 800px) {
+    .google_map {
+        width: 100%;
+        height: 50vh;
+    }
+}
+
+@media (max-height : 760px) {
+    .google_map {
+        width: 100%;
+        height: 60vh;
+    }
+}
+
+@media (max-height : 740px) {
+    .google_map {
+        width: 100%;
+        height: 60vh;
+    }
+}
+
+@media (max-height : 600px) {
+    .google_map {
+        width: 100%;
+        height: 80vh;
+    }
+}
+
+@media (max-height : 400px) {
+    .google_map {
+        width: 100%;
+        height: 100vh;
+    }
+}
+
+
+
+
+
+

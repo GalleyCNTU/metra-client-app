@@ -1,0 +1,113 @@
+.purchased_cars {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+
+    &_top {
+        height: 15%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 50px 0;
+
+        &_title {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 60px;
+            line-height: 70px;
+            text-align: center;
+            color: #1E1E1E;
+
+        }
+    }
+
+    &_bottom {
+
+        margin-bottom: 60px;
+
+        &_list {
+            margin: auto;
+            height: 85%;
+            width: 1110px;
+            display: flex;
+            justify-content: left;
+            flex-wrap: wrap;
+            column-gap: 30px;
+            row-gap: 50px;
+        }
+
+        &_button {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+
+            button {
+                border: 0;
+                width: 350px;
+                height: 50px;
+                background: #FF8A00;
+                font-family: 'Gilroy';
+                font-style: normal;
+                font-weight: 800;
+                font-size: 18px;
+                line-height: 22px;
+                text-align: center;
+                color: #FFFFFF;
+                cursor: pointer;
+                transition: 0.1s all;
+
+                &:active {
+                    background: #cf6f00;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width : 1150px) {
+    .purchased_cars {
+        &_top_title {
+            font-size: 37px;
+            line-height: 35px;
+        }
+
+        &_bottom {
+            
+            &_list {
+                width: 100%;
+                padding: 0;
+                justify-content: center;
+                column-gap: 30px;
+                row-gap: 50px;
+            }
+
+            &_button {
+                display: flex;
+                justify-content: center;
+                margin-top: 40px;
+
+                button {
+                    border: 0;
+                    width: 350px;
+                    height: 50px;
+                    background: #FF8A00;
+                    font-family: 'Gilroy';
+                    font-style: normal;
+                    font-weight: 800;
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    transition: 0.1s all;
+
+                    &:active {
+                        background: #cf6f00;
+                    }
+                }
+            }
+        }
+    }
+}
