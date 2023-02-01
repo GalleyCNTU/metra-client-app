@@ -1,7 +1,7 @@
 
 import classes from "./WhyWe.module.scss";
 
-const WhyWe = () => {
+export const WhyWe = () => {
     return (
         <div className={classes.why_we}>
             <div className={classes.why_we_left}>
@@ -64,5 +64,3 @@ const WhyWe = () => {
         </div >
     )
 }
-
-export default WhyWe;

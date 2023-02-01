@@ -1,4 +1,4 @@
-const dataMapping = (data) => {
+export const carDataMapping = (data) => {
     return data.map(item => {
         const carItem = {};
         carItem.value = item.toLowerCase();
@@ -6,5 +6,3 @@ const dataMapping = (data) => {
         return carItem;
     })
 }
-
-export default dataMapping;

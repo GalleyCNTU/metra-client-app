@@ -2,9 +2,9 @@
 import Image from 'next/image';
 
 import classes from './BuyingInfo.module.scss';
-import arrow from "../../public/img/arrow.png"
+import arrow from "../../../../public/img/arrow.png"
 
-const BuyingInfo = () => {
+export const BuyingInfo = () => {
     return (
         <div className={classes.buying_info}>
             <div className={classes.buying_info_background}>
@@ -139,5 +139,3 @@ const BuyingInfo = () => {
         </div>
     )
 }
-
-export default BuyingInfo;

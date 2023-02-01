@@ -1,6 +1,6 @@
-import classes from '../AboutUs/AboutUs.module.scss';
+import classes from './AboutUs.module.scss';
 
-const AboutUs = () => {
+export const AboutUs = () => {
     return (
         <div className={classes.about_us}>
             <div className={`${classes.about_us_bar_chart} ${classes.about_us_block}`}>
@@ -45,5 +45,3 @@ const AboutUs = () => {
         </div>
     )
 }
-
-export default AboutUs;

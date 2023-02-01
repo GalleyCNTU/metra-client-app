@@ -2,12 +2,12 @@
 import classes from './CheckPrice.module.scss';
 import { useState, useEffect, useMemo, useRef } from "react";
 
-import dataMapping from "../utils/dataMapping";
+import { carDataMapping } from 'utils';
 
 import Select from "react-select";
 import { toast } from 'react-toastify';
 
-const CheckPrice = () => {
+export const CheckPrice = () => {
 
     const [brand, setBrand] = useState();
     const [modelList, setModelList] = useState();
@@ -79,14 +79,14 @@ const CheckPrice = () => {
         fetch("https://metra-avto.herokuapp.com/makeList")
             .then(response => response.json())
             .then(data => {
-                setMakeList(dataMapping(data));
+                setMakeList(carDataMapping(data));
             })
     }
 
     const getModelList = () => {
         fetch(`https://metra-avto.herokuapp.com/models/${brand}`)
             .then(response => response.json())
-            .then(data => setModelList(dataMapping(data)))
+            .then(data => setModelList(carDataMapping(data)))
     }
 
     const sendUserInfo = () => {
@@ -116,7 +116,7 @@ const CheckPrice = () => {
         for (let i = currentYear; i >= 1900; i--) {
             years.push(i.toString());
         }
-        return dataMapping(years);
+        return carDataMapping(years);
     }, [])
 
     const resetInfo = () => {
@@ -276,6 +276,4 @@ const CheckPrice = () => {
         </div>
     )
 }
-
-export default CheckPrice;
 

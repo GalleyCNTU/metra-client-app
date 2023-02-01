@@ -10,9 +10,9 @@ import Select from "react-select";
 import classes from "./CarForm.module.scss";
 
 // Utils
-import dataMapping from "../utils/dataMapping";
+import { carDataMapping } from 'utils';
 
-const CarForm = () => {
+export const CarForm = () => {
 
     const [brand, setBrand] = useState();
     const [modelList, setModelList] = useState();
@@ -59,14 +59,14 @@ const CarForm = () => {
         fetch("https://metra-avto.herokuapp.com/makeList")
             .then(response => response.json())
             .then(data => {
-                setMakeList(dataMapping(data));
+                setMakeList(carDataMapping(data));
             })
     }
 
     const getModelList = () => {
         fetch(`https://metra-avto.herokuapp.com/models/${brand}`)
             .then(response => response.json())
-            .then(data => setModelList(dataMapping(data)))
+            .then(data => setModelList(carDataMapping(data)))
     }
 
     const sendUserInfo = () => {
@@ -118,7 +118,7 @@ const CarForm = () => {
         for (let i = currentYear; i >= 1900; i--) {
             years.push(i.toString());
         }
-        return dataMapping(years);
+        return carDataMapping(years);
     }, [])
 
     const colorStyles = {
@@ -240,7 +240,3 @@ const CarForm = () => {
         </div>
     )
 }
-
-
-
-export default CarForm;

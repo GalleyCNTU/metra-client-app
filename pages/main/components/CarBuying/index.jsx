@@ -1,9 +1,9 @@
 import classes from './CarBuying.module.scss';
-import CarForm from "../CarForm/CarForm"
+import { CarForm } from "../CarForm";
 
-import IMG from '../../public/img/rotated_background.jpg';
+import IMG from '../../../../public/img/rotated_background.jpg';
 
-const CarBuying = () => {
+export const CarBuying = () => {
     return (
         <div className={classes.car_buying} style={{background:`url(${IMG.src}) no-repeat`, backgroundSize: '100%'}}>
             <div className={classes.car_buying_upper}>
@@ -25,5 +25,3 @@ const CarBuying = () => {
         </div>
     )
 }
-
-export default CarBuying;

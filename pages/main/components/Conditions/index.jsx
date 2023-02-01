@@ -4,12 +4,12 @@ import Image from 'next/image';
 //Images
 import classes from './Conditions.module.scss';
 
-import firstCar from '../../public/img/3-1.png';
-import secondCar from '../../public/img/3-2.png';
-import thirdCar from '../../public/img/3-3.png';
-import fourthCar from '../../public/img/3-4.png';
+import firstCar from '../../../../public/img/3-1.png';
+import secondCar from '../../../../public/img/3-2.png';
+import thirdCar from '../../../../public/img/3-3.png';
+import fourthCar from '../../../../public/img/3-4.png';
 
-const Conditions = () => {
+export const Conditions = () => {
     return (
         <div className={classes.what_cars}>
             <div className={classes.what_cars_background}>
@@ -62,5 +62,3 @@ const Conditions = () => {
         </div>
     )
 }
-
-export default Conditions;
