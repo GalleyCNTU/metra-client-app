@@ -1,7 +1,7 @@
 import classes from './CarBuying.module.scss';
 import { CarForm } from "../CarForm";
 
-import IMG from '../../../../public/img/rotated_background.jpg';
+import IMG from 'public/img/rotated_background.jpg';
 
 export const CarBuying = () => {
     return (

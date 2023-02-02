@@ -30,9 +30,9 @@ export const Conditions = () => {
             img: secondCar,
             title: "Авто яким потрібне фарбування",
             subtitle: "Наші фахівці проведуть оцінку та викуп транспорту, незалежно від косметичного стану"
-        },
-
+        }
     ]
+
     return (
         <div className={classes.what_cars}>
             <div className={classes.what_cars_background}>

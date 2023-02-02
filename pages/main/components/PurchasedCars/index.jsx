@@ -1,29 +1,33 @@
 import PurchasedCarBox from './components/PurchasedCarBox';
 import classes from "./PurchasedCars.module.scss";
 
-
 import { getRandomKey } from 'utils';
 
 import img1 from "public/img/purchased_cars/1-1.jpg";
 import img2 from "public/img/purchased_cars/1-2.jpg";
 import img3 from "public/img/purchased_cars/1-3.jpg";
 import img4 from "public/img/purchased_cars/1-4.jpg";
+
 import img5 from "public/img/purchased_cars/2-1.jpg";
 import img6 from "public/img/purchased_cars/2-2.jpg";
 import img7 from "public/img/purchased_cars/2-3.jpg";
 import img8 from "public/img/purchased_cars/2-4.jpg";
+
 import img9 from "public/img/purchased_cars/3-1.jpg";
 import img10 from "public/img/purchased_cars/3-2.jpg";
 import img11 from "public/img/purchased_cars/3-3.jpg";
 import img12 from "public/img/purchased_cars/3-4.jpg";
+
 import img13 from "public/img/purchased_cars/4-1.jpg";
 import img14 from "public/img/purchased_cars/4-2.jpg";
 import img15 from "public/img/purchased_cars/4-3.jpg";
 import img16 from "public/img/purchased_cars/4-4.jpg";
+
 import img17 from "public/img/purchased_cars/5-1.jpg";
 import img18 from "public/img/purchased_cars/5-2.jpg";
 import img19 from "public/img/purchased_cars/5-3.jpg";
 import img20 from "public/img/purchased_cars/5-4.jpg";
+
 import img21 from "public/img/purchased_cars/6-1.jpg";
 import img22 from "public/img/purchased_cars/6-2.jpg";
 import img23 from "public/img/purchased_cars/6-3.jpg";

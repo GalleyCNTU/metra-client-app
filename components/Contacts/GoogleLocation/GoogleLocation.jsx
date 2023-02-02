@@ -1,4 +1,3 @@
-import React from "react";
 import GoogleMapReact from 'google-map-react';
 
 import classes from './GoogleLocation.module.scss';
@@ -13,7 +12,7 @@ const LocationPin = ({ text }) => (
 )
 
 const Map = ({ location, zoomLevel }) => (
-  <div className={classes.map}>
+  <div className="map">
     <div className={classes.google_map}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_MAP  }}

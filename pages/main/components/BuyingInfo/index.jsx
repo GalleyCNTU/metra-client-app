@@ -2,7 +2,7 @@
 import Image from 'next/image';
 
 import classes from './BuyingInfo.module.scss';
-import arrow from "../../../../public/img/arrow.png"
+import arrow from "public/img/arrow.png"
 
 export const BuyingInfo = () => {
     return (
