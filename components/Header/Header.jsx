@@ -12,9 +12,9 @@ import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 
 // Images
-import menuButton from '../../public/img/menu.png';
-import closeMenu from '../../public/img/closeMenu.png';
-import logo from '../../public/img/LOGO.PNG';
+import menuButton from 'public/img/menu.png';
+import closeMenu from 'public/img/closeMenu.png';
+import logo from 'public/img/LOGO.PNG';
 
 const Header = () => {
 
