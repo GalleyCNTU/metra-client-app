@@ -26,7 +26,7 @@ export const CarForm = () => {
     const selectRef = useRef();
 
     const notify = (text) => toast.error(text, {
-        position: "top_right",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: true,
         closeOnClick: true,
@@ -35,6 +35,7 @@ export const CarForm = () => {
         progress: undefined,
         theme: "dark",
     });
+    
 
     const {
         register,
