@@ -28,7 +28,6 @@
             user-select: none;
             z-index: 0;
             opacity: 100%;
-
         }
     }
 
@@ -95,6 +94,7 @@
         align-items: center;
 
         span {
+            white-space: pre-line;
             font-family: 'Gilroy';
             font-style: normal;
             font-weight: 800;
@@ -112,6 +112,7 @@
         align-items: center;
 
         span {
+            white-space: pre-line;
             font-family: 'Gilroy';
             font-style: normal;
             font-weight: 300;
