@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import classes from './Footer.module.scss';
 
-import logo from '../../public/img/LOGO.png';
-import up from '../../public/img/UP.png';
+import logo from 'public/img/LOGO.png';
+import up from 'public/img/UP.png';
 
 const Footer = () => (
   <footer className={classes.footer}>

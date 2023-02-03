@@ -14,7 +14,7 @@ import 'react-modern-drawer/dist/index.css';
 // Images
 import menuButton from 'public/img/menu.png';
 import closeMenu from 'public/img/closeMenu.png';
-import logo from 'public/img/LOGO.PNG';
+import logo from 'public/img/LOGO.png';
 
 const Header = () => {
 
@@ -33,6 +33,8 @@ const Header = () => {
             </div>
             <div className={classes.header_mobile_menu}>
                 <Drawer
+                    id="long-value-select"
+                    instanceId="long-value-select"
                     open={isOpen}
                     onClose={toggleDrawer}
                     direction='left'
