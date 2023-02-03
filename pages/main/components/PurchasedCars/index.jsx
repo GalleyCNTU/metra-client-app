@@ -276,7 +276,7 @@ export const PurchasedCars = () => {
     ];
 
     return (
-        <div className={classes.purchased_cars}>
+        <div className={classes.purchased_cars} id="purchased">
             <div className={classes.purchased_cars_top}>
                 <span className={classes.purchased_cars_top_title}>
                     Останні викуплені автомобілі
