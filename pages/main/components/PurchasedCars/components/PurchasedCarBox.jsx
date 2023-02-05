@@ -1,12 +1,14 @@
 import classes from "./PurchasedCarBox.module.scss";
 import Slider from './SliderComponent.jsx';
 
-const PurchasedCarBox = ({ purchasedCarTitle, purchasedCarSubtitle, purchasedCarPriceUSD, purchasedCarPriceUAH, items }) => {
+const PurchasedCarBox = ({ purchasedCarTitle, purchasedCarSubtitle, purchasedCarPriceUSD, purchasedCarPriceUAH, images }) => {
+
+    
 
     return (
         <div className={classes.purchased_car} id={classes.purchased}>
             <div className={classes.purchased_car_background_img}>
-                <Slider items={items}/>
+                <Slider items={images}/>
             </div>
 
             <div className={classes.purchased_car_title}>

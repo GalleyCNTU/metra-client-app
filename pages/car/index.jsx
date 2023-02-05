@@ -3,7 +3,7 @@ import React from 'react'
 import { Layout } from '../../components'
 
 function Car() {
-    return ( <Layout><h1>Car</h1></Layout> );
+    return ( <h1>Car</h1> );
 }
 
 export default Car;

@@ -1,9 +1,17 @@
-import React from 'react'
-
-import { Layout } from '../../components'
+import { Layout } from 'components'
+import { useState, useEffect } from 'react';
+import { getAdvertisementList } from './components/firebase';
 
 function Cars() {
-    return ( <Layout><h1>Cars</h1></Layout> );
+
+
+    return (
+        <>
+            <Layout>
+                Cars
+            </Layout>);
+        </>
+    )
 }
 
 export default Cars;

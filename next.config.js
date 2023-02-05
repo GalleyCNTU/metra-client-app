@@ -9,6 +9,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: ['firebasestorage.googleapis.com'],
+  },
   reactStrictMode: false,
   swcMinify: true,
   env: {

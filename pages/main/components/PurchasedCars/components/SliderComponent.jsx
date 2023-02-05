@@ -21,9 +21,10 @@ const Slider = ({ items }) => {
         {[...items].map((item, index) => (
           <Carousel.Item key={index}>
             <Image
-              className={classes.purchased_car_images}
-              src={item.img}
-              alt={item.placeholder}
+              src={item.url}
+              alt={item.id}
+              width={350}
+              height={250}
             />
           </Carousel.Item>
         ))}
