@@ -9,7 +9,7 @@ function Cars() {
         <>
             <Layout>
                 Cars
-            </Layout>);
+            </Layout>
         </>
     )
 }

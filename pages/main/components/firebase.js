@@ -29,6 +29,17 @@ const firebaseConfig = {
       "https://metra-client-app-3c20a-default-rtdb.europe-west1.firebasedatabase.app",
   };
 
+  const firebaseConfigTest = {
+    apiKey: "AIzaSyDX_E8ZY2B0oBTuZGglNpI8ZqYBx127YcM",
+    // authDomain: "metra-client-app-database-default-rtdb.firebaseio.com",
+    projectId: "metra-client-app-database",
+    messagingSenderId: "536063250734",
+    appId: "1:419497190406:web:08a53d3ed7f7dbba480f87",
+    measurementId: "G-FM233BGRKM",
+    databaseURL:
+      "https://metra-client-app-database-default-rtdb.firebaseio.com",
+  };
+
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
@@ -36,6 +47,22 @@ const db = getDatabase(app);
 export function getAdvertisementList(cb) {
     return onValue(
         ref(db, "/advertisements"),
+        (snapshot) => {
+            const list = formatData(snapshot.val());
+            cb(list);
+        },
+        {
+            onlyOnce: true,
+        }
+    );
+}
+
+export const appTest = initializeApp(firebaseConfig);
+const dbTest = getDatabase(app);
+
+export function getTestList(cb) {
+    return onValue(
+        ref(db, "/makes"),
         (snapshot) => {
             const list = formatData(snapshot.val());
             cb(list);

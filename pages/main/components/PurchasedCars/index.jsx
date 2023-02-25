@@ -34,7 +34,7 @@ export const PurchasedCars = () => {
                                     purchasedCarSubtitle={
                                         `${item.year} р., ${item.odometer !== "0" ? item.odometer + " тис." : item.odometer + " км."}, ${item.fuel}, ${item.engine}, ${item.drive}, ${item.transmission}`
                                     }
-                                    purchasedCarPrice={item.usd}
+                                    purchasedCarPrice={item.price}
                                     key={getRandomKey(item[i])}
                                 />
                             )

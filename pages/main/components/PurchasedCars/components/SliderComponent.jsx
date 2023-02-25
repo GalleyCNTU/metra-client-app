@@ -24,7 +24,7 @@ const Slider = ({ items }) => {
               src={item.url}
               alt={item.id}
               width={350}
-              height={250}
+              height={262}
             />
           </Carousel.Item>
         ))}
