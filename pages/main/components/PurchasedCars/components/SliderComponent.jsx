@@ -21,6 +21,8 @@ const Slider = ({ items }) => {
         {[...items].map((item, index) => (
           <Carousel.Item key={index}>
             <Image
+              rel="preload"
+              as="image"
               src={item.url}
               alt={item.id}
               width={350}

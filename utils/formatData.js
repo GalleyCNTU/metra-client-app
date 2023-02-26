@@ -15,3 +15,12 @@ export function formatMakes(data) {
   }
   return formattedArr.reverse();
 }
+
+export function getModels(makes, model) {
+  let modelList = [];
+
+  for (let key in makes) {
+    if (key === model) modelList = makes[key];
+  }
+  return modelList.reverse();
+}

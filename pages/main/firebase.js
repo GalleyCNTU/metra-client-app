@@ -1,6 +1,6 @@
-import { formatData, formatMakes } from 'utils/formatData';
+import { formatData } from 'utils/formatData';
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase, ref, get } from 'firebase/database';
 
 // const firebaseConfig = {
 //     apiKey: 'AIzaSyCvEcsp1DIMjSTeJdydjhTyZvZwtQFH6X8',
@@ -28,38 +28,27 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-export function getAdvertisementList(cb) {
-  return onValue(
-    ref(db, '/advertisements'),
-    (snapshot) => {
-      const list = formatData(snapshot.val());
-      cb(list);
-    },
-    {
-      onlyOnce: true,
-    }
-  );
+export async function getAdvertisementList() {
+  let list;
+  const snapshot = await get(ref(db, '/advertisements'));
+  list = formatData(snapshot.val());
+  return list;
 }
-export function getMakesList(cb) {
-  return onValue(
-    ref(db, '/makes'),
-    (snapshot) => {
-      const list = formatMakes(snapshot.val());
-      cb(list);
-    },
-    {
-      onlyOnce: true,
-    }
-  );
+export async function getMakesList() {
+  let list;
+  const snapshot = await get(ref(db, '/makes'));
+  list = snapshot.val();
+  return list;
 }
-export function getModelsList(cb, make) {
-  return onValue(
-    ref(db, `/makes/${make}`),
-    (snapshot) => {
-      cb(snapshot.val());
-    },
-    {
-      onlyOnce: true,
-    }
-  );
-}
+
+// export function getModelsList(cb, make) {
+//   return onValue(
+//     ref(db, `/makes/${make}`),
+//     (snapshot) => {
+//       cb(snapshot.val());
+//     },
+//     {
+//       onlyOnce: true,
+//     }
+//   );
+// }

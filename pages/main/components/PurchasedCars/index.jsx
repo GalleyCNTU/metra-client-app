@@ -1,18 +1,10 @@
-import { useState, useEffect } from 'react';
-import { getAdvertisementList } from '../firebase';
-
 import PurchasedCarBox from './components/PurchasedCarBox';
 import classes from './PurchasedCars.module.scss';
 
 import { getRandomKey } from 'utils';
 
-export const PurchasedCars = () => {
-  const [advertisementList, setAdvertisementList] = useState([]);
-  useEffect(() => {
-    getAdvertisementList(setAdvertisementList);
-  }, []);
-
-  console.log(advertisementList);
+export const PurchasedCars = ({ advertisementList }) => {
+  // console.log(advertisementList);
 
   return (
     <div className={classes.purchased_cars} id="purchased">

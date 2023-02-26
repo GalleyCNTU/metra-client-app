@@ -11,12 +11,12 @@ import classes from './CarForm.module.scss';
 
 // Utils
 import { carDataMapping } from 'utils';
-import { getMakesList, getModelsList } from '../firebase';
+import { formatMakes, getModels } from '@/utils/formatData';
 
-export const CarForm = () => {
+export const CarForm = ({ makes }) => {
   const [brand, setBrand] = useState();
   const [modelList, setModelList] = useState();
-  const [makeList, setMakeList] = useState();
+  const [makeList, setMakeList] = useState(carDataMapping(formatMakes(makes)));
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
@@ -54,11 +54,8 @@ export const CarForm = () => {
     } else setFormSwitcher(1);
   };
 
-  const getMakeList = () => {
-    getMakesList((data) => setMakeList(carDataMapping(data)));
-  };
   const getModelList = () => {
-    getModelsList((data) => setModelList(carDataMapping(data)), brand);
+    setModelList(carDataMapping(getModels(makes, brand)));
   };
 
   const sendUserInfo = () => {
@@ -97,8 +94,6 @@ export const CarForm = () => {
   };
 
   useEffect(() => sendUserInfo(), [userInfo]);
-
-  useEffect(() => getMakeList(), []);
 
   useEffect(() => {
     if (brand) getModelList();
