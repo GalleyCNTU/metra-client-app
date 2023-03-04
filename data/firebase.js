@@ -1,49 +1,68 @@
-import { advToList } from '@/utils/getCarData';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get } from 'firebase/database';
+import dotenv from 'dotenv';
 
-// const firebaseConfig = {
-//     apiKey: 'AIzaSyCvEcsp1DIMjSTeJdydjhTyZvZwtQFH6X8',
-//     authDomain: 'metra-client-app-3c20a.firebaseapp.com',
-//     projectId: 'metra-client-app-3c20a',
-//     storageBucket: 'metra-client-app-3c20a.appspot.com',
-//     messagingSenderId: '419497190406',
-//     appId: '1:419497190406:web:08a53d3ed7f7dbba480f87',
-//     measurementId: 'G-FM233BGRKM',
-//     databaseURL:
-//       'https://metra-client-app-3c20a-default-rtdb.europe-west1.firebasedatabase.app',
-// };
+import { advToList } from '@/utils/getCarData';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyDX_E8ZY2B0oBTuZGglNpI8ZqYBx127YcM',
-  authDomain: 'metra-client-app-database.firebaseapp.com',
-  databaseURL: 'https://metra-client-app-database-default-rtdb.firebaseio.com',
-  projectId: 'metra-client-app-database',
-  storageBucket: 'metra-client-app-database.appspot.com',
-  messagingSenderId: '536063250734',
-  appId: '1:536063250734:web:1d2f3d41683ea16d162abf',
-};
+dotenv.config();
+const db = initFirebase();
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+function initFirebase() {
+  try {
+    const firebaseConfig = {
+      apiKey: process.env.API_KEY,
+      authDomain: process.env.AUTH_DOMAIN,
+      databaseURL: process.env.DATABASE_URL,
+      projectId: process.env.PROJECT_ID,
+      storageBucket: process.env.STORAGE_BUCKET,
+      messagingSenderId: process.env.MESSAGING_SENDER_ID,
+      appId: process.env.APP_ID,
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    return getDatabase(app);
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+}
 
 export async function getAllAdvertisements() {
-  const snapshot = await get(ref(db, '/advertisements'));
-  return advToList(snapshot.val());
+  try {
+    const snapshot = await get(ref(db, '/advertisements'));
+    return advToList(snapshot.val());
+  } catch (error) {
+    console.log(error.message);
+    return [];
+  }
 }
 export async function getFilteredAdvertisements(filters) {
-  const advs = await getAllAdvertisements();
-  return advs.filter((adv) =>
-    filters.every(({ attribute, value }) => adv[attribute] === value)
-  );
+  try {
+    const advs = await getAllAdvertisements();
+    return advs.filter((adv) =>
+      filters.every(({ attribute, value }) => adv[attribute] === value)
+    );
+  } catch (error) {
+    console.log(error.message);
+    return [];
+  }
 }
 export async function getAdvertisement(id) {
-  const snapshot = await get(ref(db, `/advertisements/${id}`));
-  return snapshot.val();
+  try {
+    const snapshot = await get(ref(db, `/advertisements/${id}`));
+    return snapshot.val();
+  } catch (error) {
+    console.log(error.message);
+    return {};
+  }
 }
 
 export async function getAllMakes() {
-  const snapshot = await get(ref(db, '/makes'));
-  return snapshot.val();
+  try {
+    const snapshot = await get(ref(db, '/makes'));
+    return snapshot.val();
+  } catch (error) {
+    console.log(error.message);
+    return [];
+  }
 }
