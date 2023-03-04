@@ -44,8 +44,8 @@ export function isValidAdv(adv, filters) {
       // const end = current.indexOf('/');
       current = current.slice(start).replace(/\s+/g, '');
     }
-    const to = filter.to ? current <= filter.to : true;
-    const from = filter.from ? current >= filter.from : true;
+    const to = filter.to ? +current <= +filter.to : true;
+    const from = filter.from ? +current >= +filter.from : true;
 
     if (filter.value) return current.search(filter.value) != -1;
     else return from && to;
