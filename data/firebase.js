@@ -32,23 +32,18 @@ export async function getAllAdvertisements() {
   const snapshot = await get(ref(db, '/advertisements'));
   return advToList(snapshot.val());
 }
+export async function getFilteredAdvertisements(filters) {
+  const advs = await getAllAdvertisements();
+  return advs.filter((adv) =>
+    filters.every(({ attribute, value }) => adv[attribute] === value)
+  );
+}
 export async function getAdvertisement(id) {
   const snapshot = await get(ref(db, `/advertisements/${id}`));
-  return advToList(snapshot.val());
+  return snapshot.val();
 }
+
 export async function getAllMakes() {
   const snapshot = await get(ref(db, '/makes'));
   return snapshot.val();
 }
-
-// export function getModelsList(cb, make) {
-//   return onValue(
-//     ref(db, `/makes/${make}`),
-//     (snapshot) => {
-//       cb(snapshot.val());
-//     },
-//     {
-//       onlyOnce: true,
-//     }
-//   );
-// }
