@@ -95,7 +95,7 @@ export const CheckPrice = ({ makes }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
       };
-      fetch('https://metra-avto.herokuapp.com/send-message', requestOptions)
+      fetch('api/sendMail', requestOptions)
         .then((response) => response.json())
         .then((data) => console.log(data.message));
     }
