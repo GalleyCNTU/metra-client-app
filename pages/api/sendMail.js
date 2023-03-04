@@ -1,8 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import dotenv from 'dotenv';
 import sgMail from '@sendgrid/mail';
 
-dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async function handler(req, res) {

@@ -1,10 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, get } from 'firebase/database';
-import dotenv from 'dotenv';
+import { getDatabase, ref, get, onValue } from 'firebase/database';
 
 import { advToList } from '@/utils/getCarData';
 
-dotenv.config();
 const db = initFirebase();
 
 function initFirebase() {
@@ -22,7 +20,7 @@ function initFirebase() {
     const app = initializeApp(firebaseConfig);
     return getDatabase(app);
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     return null;
   }
 }
@@ -47,13 +45,20 @@ export async function getFilteredAdvertisements(filters) {
     return [];
   }
 }
-export async function getAdvertisement(id) {
+export async function getAdvertisement(cb, id) {
   try {
-    const snapshot = await get(ref(db, `/advertisements/${id}`));
-    return snapshot.val();
+    return onValue(
+      ref(db, `/advertisements/${id}`),
+      (snapshot) => {
+        cb(snapshot.val());
+      },
+      {
+        onlyOnce: true,
+      }
+    );
   } catch (error) {
     console.log(error.message);
-    return {};
+    cb({});
   }
 }
 
