@@ -1,9 +1,18 @@
-import React from 'react'
+import Advertisement from './Advertisement';
+import { getAdvertisement } from '@/data/firebase';
 
-import { Layout } from '../../components'
+import { Layout } from '../../components';
 
-function Car() {
-    return ( <h1>Car</h1> );
-}
+
+const Car = () => {
+  return (
+    <Layout>
+      <Advertisement 
+      getAdvertisement={getAdvertisement}
+      id={'929c3b9e-d7c5-49c5-9e9f-be6bae69f88d'}
+      />
+    </Layout>
+  );
+};
 
 export default Car;

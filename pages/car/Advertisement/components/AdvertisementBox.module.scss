@@ -1,0 +1,31 @@
+.characteristics {
+  display: flex;
+  justify-content: space-between;
+  &_font {
+    font-family: 'Gilroy';
+    font-weight: 800;
+    color: white;
+    font-size: 20px;
+  }
+  &_column {
+    display:flex;
+    flex-direction: column;
+    width: 35%;
+    height: 130px;
+    justify-content: space-between;
+  }
+  &_btn {
+    width: 170px;
+    background-color: #FF8A00;
+    cursor: pointer;
+    height: 40px;
+    font-family: 'Gilroy';
+    font-weight: 800;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+}
