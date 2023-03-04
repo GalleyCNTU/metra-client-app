@@ -12,7 +12,7 @@ import {
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { getAdvertisementList, getMakesList } from './firebase';
+import { getAllAdvertisements, getAllMakes } from '@/data/firebase';
 
 const Main = ({ advertisementList, makes }) => {
   return (
@@ -47,8 +47,8 @@ const Main = ({ advertisementList, makes }) => {
 export default Main;
 
 export async function getStaticProps() {
-  const advertisementList = await getAdvertisementList();
-  const makes = await getMakesList();
+  const advertisementList = await getAllAdvertisements();
+  const makes = await getAllMakes();
   return {
     props: {
       advertisementList,

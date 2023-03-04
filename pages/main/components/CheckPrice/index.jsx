@@ -1,16 +1,15 @@
 import classes from './CheckPrice.module.scss';
 import { useState, useEffect, useMemo, useRef } from 'react';
 
-import { carDataMapping } from 'utils';
-
 import Select from 'react-select';
 import { toast } from 'react-toastify';
-import { formatMakes, getModels } from '@/utils/formatData';
+
+import { makesToList, getModelList, setYearList } from '@/utils/getCarData';
 
 export const CheckPrice = ({ makes }) => {
   const [brand, setBrand] = useState();
   const [modelList, setModelList] = useState();
-  const [makeList, setMakeList] = useState(carDataMapping(formatMakes(makes)));
+  const [makeList, setMakeList] = useState();
   const [formSwitcher, setFormSwitcher] = useState(0);
   const [userInfo, setUserInfo] = useState({});
 
@@ -26,6 +25,20 @@ export const CheckPrice = ({ makes }) => {
   const [afterAccident, setAfterAccident] = useState(false);
 
   const selectRef = useRef();
+
+  useEffect(() => sendUserInfo(), [userInfo]);
+
+  useEffect(() => {
+    if (makes) setMakeList(makesToList(makes));
+  }, []);
+
+  useEffect(() => {
+    if (brand) setModelList(getModelList(makes, brand));
+  }, [brand]);
+
+  const carYears = useMemo(() => {
+    return setYearList();
+  }, []);
 
   const notify = (text) =>
     toast.error(text, {
@@ -75,10 +88,6 @@ export const CheckPrice = ({ makes }) => {
     });
   };
 
-  const getModelList = () => {
-    setModelList(carDataMapping(getModels(makes, brand)));
-  };
-
   const sendUserInfo = () => {
     if (brand && selectedBrand && selectedModel && selectedYear) {
       const requestOptions = {
@@ -91,21 +100,6 @@ export const CheckPrice = ({ makes }) => {
         .then((data) => console.log(data.message));
     }
   };
-
-  useEffect(() => sendUserInfo(), [userInfo]);
-
-  useEffect(() => {
-    if (brand) getModelList();
-  }, [brand]);
-
-  const carYears = useMemo(() => {
-    const currentYear = new Date().getFullYear();
-    const years = [];
-    for (let i = currentYear; i >= 1900; i--) {
-      years.push(i.toString());
-    }
-    return carDataMapping(years);
-  }, []);
 
   const resetInfo = () => {
     setBrand('');
@@ -310,7 +304,7 @@ export const CheckPrice = ({ makes }) => {
             <div className={classes.check_price_form_modal}>
               <span>
                 Ваша заявка прийнята до розгляду,<br></br>
-                після її опрацювання наші фахівці зв'яжуться з вами.
+                після її опрацювання наші фахівці зв&aposяжуться з вами.
                 <br></br>Як правило, це відбувається дуже швидко
               </span>
             </div>

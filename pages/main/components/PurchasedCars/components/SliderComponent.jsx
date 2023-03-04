@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import classes from './PurchasedCarBox.module.scss';
 import Image from 'next/image';
 
 const Slider = ({ items }) => {
@@ -20,14 +19,8 @@ const Slider = ({ items }) => {
       >
         {[...items].map((item, index) => (
           <Carousel.Item key={index}>
-            <Image
-              rel="preload"
-              as="image"
-              src={item.url}
-              alt={item.id}
-              width={350}
-              height={262}
-            />
+            {/* <Image src={item.url} alt={item.id} width={350} height={262} /> */}
+            <img src={item.url} alt={item.id} width={350} height={262} />
           </Carousel.Item>
         ))}
       </Carousel>

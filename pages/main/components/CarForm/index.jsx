@@ -10,13 +10,12 @@ import Select from 'react-select';
 import classes from './CarForm.module.scss';
 
 // Utils
-import { carDataMapping } from 'utils';
-import { formatMakes, getModels } from '@/utils/formatData';
+import { makesToList, getModelList, setYearList } from '@/utils/getCarData';
 
 export const CarForm = ({ makes }) => {
   const [brand, setBrand] = useState();
   const [modelList, setModelList] = useState();
-  const [makeList, setMakeList] = useState(carDataMapping(formatMakes(makes)));
+  const [makeList, setMakeList] = useState();
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
@@ -25,6 +24,19 @@ export const CarForm = ({ makes }) => {
 
   const selectRef = useRef();
 
+  useEffect(() => sendUserInfo(), [userInfo]);
+
+  useEffect(() => {
+    if (makes) setMakeList(makesToList(makes));
+  }, []);
+
+  useEffect(() => {
+    if (brand) setModelList(getModelList(makes, brand));
+  }, [brand]);
+
+  const carYears = useMemo(() => {
+    return setYearList();
+  }, []);
   const notify = (text) =>
     toast.error(text, {
       position: 'top-right',
@@ -52,10 +64,6 @@ export const CarForm = ({ makes }) => {
     } else if (!selectedYear) {
       notify('Виберіть модельний рік');
     } else setFormSwitcher(1);
-  };
-
-  const getModelList = () => {
-    setModelList(carDataMapping(getModels(makes, brand)));
   };
 
   const sendUserInfo = () => {
@@ -92,21 +100,6 @@ export const CarForm = ({ makes }) => {
     reset();
     setFormSwitcher(2);
   };
-
-  useEffect(() => sendUserInfo(), [userInfo]);
-
-  useEffect(() => {
-    if (brand) getModelList();
-  }, [brand]);
-
-  const carYears = useMemo(() => {
-    const currentYear = new Date().getFullYear();
-    const years = [];
-    for (let i = currentYear; i >= 1900; i--) {
-      years.push(i.toString());
-    }
-    return carDataMapping(years);
-  }, []);
 
   const colorStyles = {
     control: (styles) => ({ ...styles, backgroundColor: 'white', height: 50 }),
@@ -264,7 +257,8 @@ export const CarForm = ({ makes }) => {
           >
             <span className={classes.car_form_title}>
               Ваша заявка прийнята до розгляду, після її опрацювання наші
-              фахівці зв'яжуться з вами. Як правило, це відбувається дуже швидко
+              фахівці зв&aposяжуться з вами. Як правило, це відбувається дуже
+              швидко
             </span>
             <button
               className={classes.car_form_action_button}

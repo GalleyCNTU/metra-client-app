@@ -1,4 +1,4 @@
-import { formatData } from 'utils/formatData';
+import { advToList } from '@/utils/getCarData';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get } from 'firebase/database';
 
@@ -28,17 +28,17 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-export async function getAdvertisementList() {
-  let list;
+export async function getAllAdvertisements() {
   const snapshot = await get(ref(db, '/advertisements'));
-  list = formatData(snapshot.val());
-  return list;
+  return advToList(snapshot.val());
 }
-export async function getMakesList() {
-  let list;
+export async function getAdvertisement(id) {
+  const snapshot = await get(ref(db, `/advertisements/${id}`));
+  return advToList(snapshot.val());
+}
+export async function getAllMakes() {
   const snapshot = await get(ref(db, '/makes'));
-  list = snapshot.val();
-  return list;
+  return snapshot.val();
 }
 
 // export function getModelsList(cb, make) {
