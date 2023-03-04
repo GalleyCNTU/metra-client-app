@@ -1,6 +1,5 @@
 import { Layout } from 'components'
-import { useState, useEffect } from 'react';
-import { getAdvertisementList } from './components/firebase';
+import { Search } from './components/Search';
 
 function Cars() {
 
@@ -8,7 +7,7 @@ function Cars() {
     return (
         <>
             <Layout>
-                Cars
+                <Search />
             </Layout>
         </>
     )

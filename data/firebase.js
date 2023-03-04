@@ -28,7 +28,8 @@ function initFirebase() {
 export async function getAllAdvertisements() {
   try {
     const snapshot = await get(ref(db, '/advertisements'));
-    return advToList(snapshot.val());
+    if (snapshot.exists()) return advToList(snapshot.val());
+    else return [];
   } catch (error) {
     console.log(error.message);
     return [];
@@ -37,10 +38,12 @@ export async function getAllAdvertisements() {
 export async function getFilteredAdvertisements(cb, filters) {
   try {
     return onValue(
-      ref(db, `/advertisements`),
+      ref(db, '/advertisements'),
       (snapshot) => {
         const list = advToList(snapshot.val());
-        cb(list.filter((adv) => isValidAdv(adv, filters)));
+        if (snapshot.exists())
+          cb(list.filter((adv) => isValidAdv(adv, filters)));
+        else cb({});
       },
       {
         onlyOnce: true,
@@ -56,7 +59,8 @@ export async function getAdvertisement(cb, id) {
     return onValue(
       ref(db, `/advertisements/${id}`),
       (snapshot) => {
-        cb(snapshot.val());
+        if (snapshot.exists()) cb(snapshot.val());
+        else cb({});
       },
       {
         onlyOnce: true,
@@ -71,7 +75,8 @@ export async function getAdvertisement(cb, id) {
 export async function getAllMakes() {
   try {
     const snapshot = await get(ref(db, '/makes'));
-    return snapshot.val();
+    if (snapshot.exists()) return snapshot.val();
+    else return {};
   } catch (error) {
     console.log(error.message);
     return [];

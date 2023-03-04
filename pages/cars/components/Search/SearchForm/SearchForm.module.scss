@@ -1,0 +1,118 @@
+.form {
+
+    &_title {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+
+
+        &_text {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 18px;
+            color: white;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+    }
+
+    &_select {
+        margin-bottom: 10px;
+        width: 285px;
+        height: 50px;
+        text-align: center;
+        font-weight: 800;
+        color: #1E1E1E;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-size: 18px;
+        line-height: 20.75px;
+
+        &_text {
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 18px;
+            color: white;
+            text-align: left;
+            width: 25%;
+        }
+    }
+
+    &_input {
+        padding: 0;
+        width: 125px;
+        height: 50px;
+        border: 0;
+        font-style: normal;
+        font-weight: 800;
+        font-family: 'Gilroy';
+        transition: 0.3s all;
+        font-size: 18px;
+        color: #1E1E1E;
+        margin-bottom: 10px;
+        text-align: center;
+
+        &::placeholder {
+            text-align: center;
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 18px;
+            color: #808080;
+        }
+
+        &:focus {
+            outline: 2px solid #2684ff;
+        }
+
+        &:active {
+            outline: 2px solid #2684ff;
+        }
+    }
+
+    &_select_fromto {
+        margin-bottom: 10px;
+        width: 125px;
+        height: 50px;
+        text-align: center;
+        font-weight: 800;
+        color: #1E1E1E;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-size: 18px;
+        line-height: 20.75px;
+    }
+
+    &_under_section {
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+
+        &_button {
+            width: 285px;
+            height: 50px;
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 18px;
+            line-height: 12px;
+            text-align: center;
+            background: #FF8A00;
+            border: 0;
+            cursor: pointer;
+            color: white;
+        }
+    }
+}
+
+.fromto {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
