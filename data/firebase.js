@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, onValue } from 'firebase/database';
 
-import { advToList } from '@/utils/getCarData';
+import { advToList, isValidAdv } from '@/utils/getCarData';
 
 const db = initFirebase();
 
@@ -34,15 +34,21 @@ export async function getAllAdvertisements() {
     return [];
   }
 }
-export async function getFilteredAdvertisements(filters) {
+export async function getFilteredAdvertisements(cb, filters) {
   try {
-    const advs = await getAllAdvertisements();
-    return advs.filter((adv) =>
-      filters.every(({ attribute, value }) => adv[attribute] === value)
+    return onValue(
+      ref(db, `/advertisements`),
+      (snapshot) => {
+        const list = advToList(snapshot.val());
+        cb(list.filter((adv) => isValidAdv(adv, filters)));
+      },
+      {
+        onlyOnce: true,
+      }
     );
   } catch (error) {
     console.log(error.message);
-    return [];
+    cb([]);
   }
 }
 export async function getAdvertisement(cb, id) {

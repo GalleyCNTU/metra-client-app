@@ -35,3 +35,14 @@ export function setYearList() {
   }
   return carDataMapping(years);
 }
+
+export function isValidAdv(adv, filters) {
+  return filters.every((filter) => {
+    const current = adv[filter.attribute];
+    if (filter.to || filter.from) {
+      return current <= filter.to && current >= filter.from;
+    } else {
+      return current === filter.value;
+    }
+  });
+}
