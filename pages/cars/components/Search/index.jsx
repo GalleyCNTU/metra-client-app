@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 //constants
 import { setYearList } from "@/utils/getCarData"
@@ -22,11 +22,15 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-export const Search = () => {
+export const Search = ({ setAdvList }) => {
+  const fuelSelectRef = useRef();
+  const fromSelectRef = useRef();
+  const toSelectRef = useRef();
+  const inputRef = useRef();
+
   const [filterTrigger, setFilterTrigger] = useState(0);
-  const [advList, setAdvList] = useState();
   const [fuelType, setFuelType] = useState(null);
-  const [yearsArray, setYearsArray] = useState(setYearList());
+  const [yearsArray, setYearsArray] = useState(setYearList(1960));
 
   const [selectedYear, setSelectedYear] = useState({
     from: '',
@@ -43,12 +47,8 @@ export const Search = () => {
     to: ''
   });
 
-  const [expanded, setExpanded] = useState('panel1');
 
   const {
-    register,
-    handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({ mode: 'onSubmit' });
 
@@ -62,29 +62,53 @@ export const Search = () => {
       { from: mileage.from, to: mileage.to, attribute: "odometer" },
       { from: price.from, to: price.to, attribute: "price" },
       { value: fuelType, attribute: "fuel" },
-      // {
-      //   attribute: 'year',
-      //   from: '1999',
-      //   to: '2005',
-      // }
     ]
 
     getFilteredAdvertisements(setAdvList, filters)
   }, [filterTrigger])
 
+  const resetFilter = () => {
+    setSelectedYear({
+      from: '',
+      to: ''
+    })
+    setMileage({
+      from: '',
+      to: ''
+    })
+    setPrice({
+      from: '',
+      to: ''
+    })
+    setFuelType(null)
+
+    
+    if (fuelSelectRef.current && 
+      inputRef.current && 
+      fromSelectRef.current && 
+      toSelectRef.current) {
+
+      fuelSelectRef.current.clearValue();
+      fromSelectRef.current.clearValue();
+      toSelectRef.current.clearValue();
+      inputRef.current.reset();
+    }
+    setFilterTrigger(filterTrigger + 1)
+  };
+
   return (
-    <Box sx={{backgroundColor: "#1E1E1E",}}>
-      <Accordion sx={{border: 0, width: "100%",}}>
+    <Box sx={{ backgroundColor: "#1E1E1E", }}>
+      <Accordion sx={{ border: 0, width: "100%", }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon sx={{color: "white",}} />}
+          expandIcon={<ExpandMoreIcon sx={{ color: "white", }} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          sx={{backgroundColor: "#FF8A00", color: "white", display: "flex", justifyContent: "center" }}
+          sx={{ backgroundColor: "#FF8A00", color: "white", display: "flex", justifyContent: "center" }}
         >
-          <Typography sx={{fontWeight: 800}}>Фільтр</Typography>
+          <Typography sx={{ fontWeight: 800 }}>Фільтр</Typography>
         </AccordionSummary>
         <AccordionDetails
-        sx={{backgroundColor: "#1E1E1E", display: "flex", justifyContent: "center"}}
+          sx={{ backgroundColor: "#1E1E1E", display: "flex", justifyContent: "center" }}
         >
 
           <Box
@@ -106,6 +130,7 @@ export const Search = () => {
             <div className={classes.fromto}>
               <span className={classes.form_select_text}>Паливо</span>
               <Select
+                ref={fuelSelectRef}
                 placeholder={
                   <div>Оберіть тип палива</div>
                 }
@@ -116,7 +141,7 @@ export const Search = () => {
                 })}
                 styles={{ ...colorStyles, }}
                 options={carDataMapping(["Бензин", "Дизель", "Газ"])}
-                onChange={(e) => setFuelType(e.label)}
+                onChange={(e) => { if (e) setFuelType(e.label) }}
                 components={{
                   DropdownIndicator: () => null,
                   IndicatorSeparator: () => null,
@@ -131,6 +156,7 @@ export const Search = () => {
 
               <div className={classes.fromto} style={{ width: "75%" }}>
                 <Select
+                  ref={fromSelectRef}
                   placeholder={
                     <div>Від</div>
                   }
@@ -142,12 +168,13 @@ export const Search = () => {
                   styles={{ ...colorStyles, }}
                   options={yearsArray}
                   onChange={(e) => {
-                    const to = selectedYear.to;
-                    setSelectedYear({
-                      to,
-                      from: e.label
-                    })
-
+                    if (e) {
+                      const to = selectedYear.to;
+                      setSelectedYear({
+                        to,
+                        from: e.label
+                      })
+                    }
                   }}
                   components={{
                     DropdownIndicator: () => null,
@@ -160,6 +187,7 @@ export const Search = () => {
                 </span>
 
                 <Select
+                  ref={toSelectRef}
                   placeholder={
                     <div>До</div>
                   }
@@ -171,11 +199,13 @@ export const Search = () => {
                   styles={{ ...colorStyles, }}
                   options={yearsArray}
                   onChange={(e) => {
-                    const from = selectedYear.from;
-                    setSelectedYear({
-                      from,
-                      to: e.label
-                    })
+                    if (e) {
+                      const from = selectedYear.from;
+                      setSelectedYear({
+                        from,
+                        to: e.label
+                      })
+                    }
                   }}
                   components={{
                     DropdownIndicator: () => null,
@@ -184,13 +214,14 @@ export const Search = () => {
                 />
               </div>
             </div>
-            <form style={{ width: "100%" }}>
+            <form style={{ width: "100%" }} ref={inputRef}>
               <div className={classes.fromto}>
 
                 <span className={classes.form_select_text}>Пробіг</span>
 
                 <div className={classes.fromto} style={{ width: "75%" }}>
                   <input
+                    // ref={inputRef}
                     className={classes.form_input}
                     placeholder="Від"
                     style={{ backgroundColor: errors.userName && '#ffc38c' }}
@@ -201,11 +232,13 @@ export const Search = () => {
                       }
                     }}
                     onChange={(e) => {
-                      const to = mileage.to;
-                      setMileage({
-                        from: e.target.value,
-                        to
-                      })
+                      if (e) {
+                        const to = mileage.to;
+                        setMileage({
+                          from: e.target.value,
+                          to
+                        })
+                      }
                     }}
                   />
 
@@ -214,6 +247,7 @@ export const Search = () => {
                   </span>
 
                   <input
+                    // ref={inputRef}
                     className={classes.form_input}
                     placeholder="До"
                     style={{ backgroundColor: errors.userName && '#ffc38c' }}
@@ -224,11 +258,13 @@ export const Search = () => {
                       }
                     }}
                     onChange={(e) => {
-                      const from = mileage.from;
-                      setMileage({
-                        from,
-                        to: e.target.value
-                      })
+                      if (e) {
+                        const from = mileage.from;
+                        setMileage({
+                          from,
+                          to: e.target.value
+                        })
+                      }
                     }}
                   />
                 </div>
@@ -239,6 +275,7 @@ export const Search = () => {
 
                 <div className={classes.fromto} style={{ width: "75%" }}>
                   <input
+                    // ref={inputRef}
                     className={classes.form_input}
                     placeholder="Від"
                     style={{ backgroundColor: errors.userName && '#ffc38c' }}
@@ -249,11 +286,13 @@ export const Search = () => {
                       }
                     }}
                     onChange={(e) => {
-                      const to = price.to;
-                      setPrice({
-                        from: e.target.value,
-                        to
-                      })
+                      if (e) {
+                        const to = price.to;
+                        setPrice({
+                          from: e.target.value,
+                          to
+                        })
+                      }
                     }}
                   />
 
@@ -262,6 +301,7 @@ export const Search = () => {
                   </span>
 
                   <input
+                    // ref={inputRef}
                     className={classes.form_input}
                     placeholder="До"
                     style={{ backgroundColor: errors.userName && '#ffc38c' }}
@@ -272,11 +312,13 @@ export const Search = () => {
                       }
                     }}
                     onChange={(e) => {
-                      const from = price.from;
-                      setPrice({
-                        from,
-                        to: e.target.value
-                      })
+                      if (e) {
+                        const from = price.from;
+                        setPrice({
+                          from,
+                          to: e.target.value
+                        })
+                      }
                     }}
                   />
                 </div>
@@ -284,6 +326,7 @@ export const Search = () => {
             </form>
             <div className={classes.form_under_section}>
               <button className={classes.form_under_section_button} onClick={() => setFilterTrigger(filterTrigger + 1)}>Пошук</button>
+              <button className={classes.form_under_section_button} onClick={resetFilter}>Очистити фільтр</button>
             </div>
           </Box>
         </AccordionDetails>

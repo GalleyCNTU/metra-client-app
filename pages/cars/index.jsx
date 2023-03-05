@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { getAllAdvertisements } from '@/data/firebase';
 
 import { Layout } from 'components'
@@ -8,6 +10,9 @@ import backgroundImage from 'public/img/rotated_background.jpg';
 import { CarList } from './components/CarList';
 
 function Cars({ advertisementList }) {
+
+    const [advList, setAdvList] = useState(advertisementList);
+
     return (
         <>
             <Layout>
@@ -20,8 +25,8 @@ function Cars({ advertisementList }) {
                         marginBottom: 45
                     }}
                 >
-                    <Search />
-                    <CarList advertisementList={advertisementList} />
+                    <Search setAdvList={setAdvList} />
+                    <CarList filteredAdvList={advList}  />
                 </div>
             </Layout>
         </>

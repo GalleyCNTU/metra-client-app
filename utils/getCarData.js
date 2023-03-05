@@ -27,10 +27,10 @@ export function getModelList(makes, model) {
   return carDataMapping(modelList.reverse());
 }
 
-export function setYearList() {
+export function setYearList(year) {
   const currentYear = new Date().getFullYear();
   const years = [];
-  for (let i = currentYear; i >= 1960; i--) {
+  for (let i = currentYear; i >= year; i--) {
     years.push(i.toString());
   }
   return carDataMapping(years);

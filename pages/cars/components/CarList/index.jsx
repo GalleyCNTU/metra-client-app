@@ -1,20 +1,25 @@
 import classes from "./CarList.module.scss"
 
+import { useState, useEffect } from "react";
+
 import { Box, Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { AdvertisementItem } from "./components/AdvertisementItem";
+import { getRandomKey } from "@/utils/getRandomKey";
 
 
-export const CarList = ({ advertisementList }) => {
+export const CarList = ({ filteredAdvList }) => {
 
-    console.log(advertisementList)
+    const [advertisements, setAdvertisements] = useState(null)
+
+    useEffect(() => setAdvertisements(filteredAdvList), [filteredAdvList])
 
     return (
         <Box
             sx={{
                 width: "100%",
                 height: "100%",
-                minHeight:"862px",
+                minHeight: "862px",
                 backgroundColor: "#1E1E1E",
                 padding: "60px",
                 flexWrap: "wrap"
@@ -31,34 +36,26 @@ export const CarList = ({ advertisementList }) => {
                 {/* <Grid item style={{ width: "33%", height: "100%" }}>
                     <AdvertisementItem>xs=8</AdvertisementItem>
                 </Grid> */}
-                
-                {advertisementList.map((item) => (
+
+                {advertisements ? advertisements.map((item) => (
                     <Grid item style={{ width: "33%", height: "100%", minWidth: 262, maxWidth: 500 }}>
                         <AdvertisementItem
-                        make={item.make}
-                        model={item.model}
-                        price={item.price}
-                        img={item.images[0].url}
-                        fuel={item.fuel}
-                        transmission={item.transmission}
-                        odometer={item.odometer}
+                            make={item.make}
+                            model={item.model}
+                            price={item.price}
+                            img={item.images[0].url}
+                            fuel={item.fuel}
+                            transmission={item.transmission}
+                            odometer={item.odometer}
+                            id={item.id}
+                            key={getRandomKey()}
                         />
                     </Grid>
-                ))}
-                {advertisementList.map((item) => (
-                    <Grid item style={{ width: "33%", height: "100%", minWidth: 262, maxWidth: 500 }}>
-                        <AdvertisementItem
-                        make={item.make}
-                        model={item.model}
-                        price={item.price}
-                        img={item.images[0].url}
-                        fuel={item.fuel}
-                        transmission={item.transmission}
-                        odometer={item.odometer}
-                        id={item.id}
-                        />
-                    </Grid>
-                ))}
+                )) : (
+                    <>
+                        Hi
+                    </>
+                )}
             </Grid>
             {/* {advertisementList.length > 0 ? (
                     advertisementList.map((advertisement) => (

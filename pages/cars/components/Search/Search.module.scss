@@ -93,10 +93,10 @@
         height: 100%;
         display: flex;
         align-items: flex-end;
-        justify-content: flex-start;
+        justify-content: space-between;
 
         &_button {
-            width: 100%;
+            width: 45%;
             height: 50px;
             font-family: 'Gilroy';
             font-style: normal;

@@ -37,7 +37,7 @@ export const CheckPrice = ({ makes }) => {
   }, [brand]);
 
   const carYears = useMemo(() => {
-    return setYearList();
+    return setYearList(1960);
   }, []);
 
   const notify = (text) =>
