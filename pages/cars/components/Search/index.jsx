@@ -176,13 +176,15 @@ export const Search = ({ setAdvList }) => {
                   styles={{ ...colorStyles }}
                   options={yearsArray}
                   onChange={(e) => {
-                    if (e) {
-                      e.label = setLimits(
+                    if (e && fromSelectRef.current) {
+                      const data = setLimits(
                         'from',
                         e.label,
                         selectedYear.to,
                         setSelectedYear
                       );
+                      console.log(fromSelectRef.current)
+                      fromSelectRef.current.clearValue()
                     }
                   }}
                   components={{
@@ -204,15 +206,18 @@ export const Search = ({ setAdvList }) => {
                   styles={{ ...colorStyles }}
                   options={yearsArray}
                   onChange={(e) => {
-                    if (e) {
-                      e.label = setLimits(
+                    if (e && toSelectRef.current) {
+                      const data = setLimits(
                         'to',
                         selectedYear.from,
                         e.label,
                         setSelectedYear
                       );
+                      toSelectRef.current.clearValue()
+
                     }
                   }}
+                  value={"dasdas"}
                   components={{
                     DropdownIndicator: () => null,
                     IndicatorSeparator: () => null,

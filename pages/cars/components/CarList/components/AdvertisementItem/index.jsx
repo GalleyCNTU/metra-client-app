@@ -66,7 +66,7 @@ export const AdvertisementItem = ({ img, make, model, price, fuel, transmission,
                             <Grid item>
                                 <Typography sx={{ cursor: 'pointer' }} variant="body2">
                                     {id ?
-                                        <Button href={`/car/${id}`} variant="outlined">Детальніше</Button>
+                                        <Button href={`/car/${id}`} variant="outlined" sx={{borderColor: "#FF8A00", color: "#FF8A00"}}>Детальніше</Button>
                                         :
                                         <Button disabled variant="outlined">Детальніше</Button>
                                     }

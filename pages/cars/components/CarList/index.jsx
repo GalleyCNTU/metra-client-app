@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import { Box, Grid } from "@mui/material";
 import { Typography } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
 import { AdvertisementItem } from "./components/AdvertisementItem";
 import { getRandomKey } from "@/utils/getRandomKey";
 
@@ -22,7 +23,6 @@ export const CarList = ({ filteredAdvList }) => {
                 minHeight: "862px",
                 backgroundColor: "#1E1E1E",
                 padding: "60px",
-                flexWrap: "wrap"
             }}
         >
             <Grid
@@ -32,10 +32,8 @@ export const CarList = ({ filteredAdvList }) => {
                 justifyContent="flex-start"
                 alignItems="flex-start"
                 flexWrap="wrap"
+                className={classes.grid}
             >
-                {/* <Grid item style={{ width: "33%", height: "100%" }}>
-                    <AdvertisementItem>xs=8</AdvertisementItem>
-                </Grid> */}
 
                 {advertisements ? advertisements.map((item) => (
                     <Grid item style={{ width: "33%", height: "100%", minWidth: 262, maxWidth: 500 }}>
@@ -52,32 +50,30 @@ export const CarList = ({ filteredAdvList }) => {
                         />
                     </Grid>
                 )) : (
-                    <>
-                        Hi
-                    </>
+                    <div style={{width: "100%", height: "20vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <CircularProgress color="inherit"/>
+                    </div>
+                )}
+                {advertisements ? advertisements.map((item) => (
+                    <Grid item style={{ width: "33%", height: "100%", minWidth: 262, maxWidth: 500 }}>
+                        <AdvertisementItem
+                            make={item.make}
+                            model={item.model}
+                            price={item.price}
+                            img={item.images[0].url}
+                            fuel={item.fuel}
+                            transmission={item.transmission}
+                            odometer={item.odometer}
+                            id={item.id}
+                            key={getRandomKey()}
+                        />
+                    </Grid>
+                )) : (
+                    <div style={{width: "100%", height: "10vh", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <CircularProgress sx={{ color: "#ffffff" }}/>
+                    </div>
                 )}
             </Grid>
-            {/* {advertisementList.length > 0 ? (
-                    advertisementList.map((advertisement) => (
-                        <AdvertisementItem
-                            key={advertisement.id}
-                            advertisement={advertisement}
-                            loading={loading}
-                        />
-                    ))
-                ) : (
-                    <Box
-                        sx={{
-                            mt: 20,
-                            p: 2,
-                            textAlign: "center",
-                        }}
-                    >
-                        <Typography variant="body2" color="textSecondary">
-                            Активних оголошень немає
-                        </Typography>
-                    </Box>
-                )} */}
         </Box>
     )
 }
