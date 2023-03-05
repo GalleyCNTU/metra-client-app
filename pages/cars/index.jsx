@@ -20,7 +20,7 @@ function Cars({ advertisementList }) {
                         marginBottom: 45
                     }}
                 >
-                    {/* <Search /> */}
+                    <Search />
                     <CarList advertisementList={advertisementList} />
                 </div>
             </Layout>
