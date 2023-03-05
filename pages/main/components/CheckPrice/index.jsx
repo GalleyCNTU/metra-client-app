@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
 
-import { makesToList, getModelList, setYearList } from '@/utils/getCarData';
+import { makesToList, getModelList, setYearList } from 'utils';
 
 export const CheckPrice = ({ makes }) => {
   const [brand, setBrand] = useState();

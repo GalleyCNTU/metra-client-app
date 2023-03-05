@@ -10,7 +10,7 @@ import Select from 'react-select';
 import classes from './CarForm.module.scss';
 
 // Utils
-import { makesToList, getModelList, setYearList } from '@/utils/getCarData';
+import { makesToList, getModelList, setYearList } from 'utils';
 
 export const CarForm = ({ makes }) => {
   const [brand, setBrand] = useState();
