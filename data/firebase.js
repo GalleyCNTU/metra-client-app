@@ -60,7 +60,7 @@ export async function getAdvertisement(cb, id) {
       ref(db, `/advertisements/${id}`),
       (snapshot) => {
         if (snapshot.exists()) cb(snapshot.val());
-        else cb({});
+        else cb(null);
       },
       {
         onlyOnce: true,
@@ -68,7 +68,7 @@ export async function getAdvertisement(cb, id) {
     );
   } catch (error) {
     console.log(error.message);
-    cb({});
+    cb(null);
   }
 }
 

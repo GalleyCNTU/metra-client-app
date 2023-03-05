@@ -58,7 +58,7 @@ const Header = () => {
                 </div>
             </div>
             <div className={classes.header_nav}>
-                <a href='#header' className={classes.header_nav_link} style={{ color: '#FF8A00' }}>АВТОВИКУП</a>
+                <a href='#header' className={classes.header_nav_link}>АВТОВИКУП</a>
                 <a href='#purchased' className={`${classes.header_nav_link} ${classes.header_nav_link_margined}`}>АВТО В НАЯВНОСТІ</a>
                 <a href='#contacts' className={classes.header_nav_link}>КОНТАКТИ</a>
             </div>

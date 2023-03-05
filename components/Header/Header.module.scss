@@ -36,7 +36,9 @@
       text-align: center;
       text-decoration: none;
       color: white;
-
+      &:hover {
+        color: #FF8A00;
+      }
       &_margined {
         margin: 0 30px;
       }
@@ -151,6 +153,9 @@
       text-align: center;
       text-decoration: none;
       color: white;
+      &:hover {
+        color: #FF8A00;
+      }
     }
   }
 }
