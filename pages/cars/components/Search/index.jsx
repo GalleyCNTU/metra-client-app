@@ -10,9 +10,6 @@ import { useState, useEffect } from "react";
 //scss styles
 import classes from './Search.module.scss';
 
-//images
-import backgroundImage from 'public/img/rotated_background.jpg';
-
 //mui
 import Box from '@mui/material/Box';
 import { carDataMapping } from "@/utils/carDataMapping";
@@ -68,16 +65,7 @@ export const Search = () => {
   }, [filterTrigger])
 
   return (
-    <div
-      className={classes.main}
-      style={{
-        background: `url(${backgroundImage.src}) no-repeat`,
-        backgroundSize: '100%',
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-      }}
-    >
+    
       <Box
         sx={{
           width: 420,
@@ -277,6 +265,6 @@ export const Search = () => {
           <button className={classes.form_under_section_button} onClick={() => setFilterTrigger(filterTrigger + 1)}>Пошук</button>
         </div>
       </Box>
-    </div>
+    
   )
 }
