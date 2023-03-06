@@ -23,6 +23,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const Search = ({ setAdvList }) => {
   const fuelSelectRef = useRef();
+  const transmissionSelectRef = useRef();
   const inputRef = useRef();
 
   const [fromSelectValue, setFromSelectValue] = useState(null);
@@ -30,6 +31,7 @@ export const Search = ({ setAdvList }) => {
   const [newAdvertisementsListTrigger, setNewAdvertisementsListTrigger] =
     useState(0);
   const [fuelType, setFuelType] = useState(null);
+  const [transmissionType, setTransmissionType] = useState(null);
   const [yearsArray, setYearsArray] = useState(setYearList(1960));
 
   const [selectedYear, setSelectedYear] = useState({
@@ -61,6 +63,7 @@ export const Search = ({ setAdvList }) => {
       { from: mileage.from, to: mileage.to, attribute: 'odometer' },
       { from: price.from, to: price.to, attribute: 'price' },
       { value: fuelType, attribute: 'fuel' },
+      { value: transmissionType, attribute: 'transmission' }
     ];
 
     getFilteredAdvertisements(setAdvList, filters);
@@ -79,14 +82,18 @@ export const Search = ({ setAdvList }) => {
       from: '',
       to: '',
     });
+
     setFuelType(null);
+    setTransmissionType(null);
 
     if (fuelSelectRef.current && inputRef.current) {
       fuelSelectRef.current.clearValue();
+      transmissionSelectRef.current.clearValue();
       inputRef.current.reset();
     }
     setFromSelectValue(null);
     setToSelectValue(null);
+
     // If you need to refresh the list immediately after clicking the clear filters button, uncomment
     // setNewAdvertisementsListTrigger(newAdvertisementsListTrigger + 1);
   };
@@ -125,7 +132,7 @@ export const Search = ({ setAdvList }) => {
           <Box
             sx={{
               width: 420,
-              height: 430,
+              height: 470,
               backgroundColor: '#1E1E1E',
               padding: '20px',
               display: 'flex',
@@ -150,6 +157,28 @@ export const Search = ({ setAdvList }) => {
                 options={carDataMapping(['Бензин', 'Дизель', 'Газ'])}
                 onChange={(e) => {
                   if (e) setFuelType(e.label);
+                }}
+                components={{
+                  DropdownIndicator: () => null,
+                  IndicatorSeparator: () => null,
+                }}
+              />
+            </div>
+
+            <div className={classes.fromto}>
+              <span className={classes.form_select_text}>Коробка</span>
+              <Select
+                ref={transmissionSelectRef}
+                placeholder={<div>Оберіть коробку передач</div>}
+                className={classes.form_select}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                })}
+                styles={{ ...colorStyles }}
+                options={carDataMapping(['Механіка 6 ст.', 'Механіка 5 ст.', 'Автомат', 'Робот', 'Варіатор'])}
+                onChange={(e) => {
+                  if (e) setTransmissionType(e.label);
                 }}
                 components={{
                   DropdownIndicator: () => null,
@@ -329,6 +358,12 @@ export const Search = ({ setAdvList }) => {
             <div className={classes.form_under_section}>
               <button
                 className={classes.form_under_section_button}
+                onClick={resetFilter}
+              >
+                Очистити фільтр
+              </button>
+              <button
+                className={classes.form_under_section_button}
                 onClick={() =>
                   setNewAdvertisementsListTrigger(
                     newAdvertisementsListTrigger + 1
@@ -336,12 +371,6 @@ export const Search = ({ setAdvList }) => {
                 }
               >
                 Пошук
-              </button>
-              <button
-                className={classes.form_under_section_button}
-                onClick={resetFilter}
-              >
-                Очистити фільтр
               </button>
             </div>
           </Box>

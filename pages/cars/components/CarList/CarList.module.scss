@@ -1,6 +1,13 @@
-.grid {}
+@media (max-width : 2100px) {
+    .grid {
+        width: 100%;
+        justify-content: flex-start;
+        margin-left: 0;
+        padding: 0 20% ;
+    }
+}
 
-@media (max-width : 2000px) {
+@media (max-width : 1600px) {
     .grid {
         width: 100%;
         justify-content: flex-start;
@@ -9,8 +16,7 @@
     }
 }
 
-
-@media (max-width : 889px) {
+@media (max-width : 950px) {
     .grid {
         width: 100%;
         justify-content: center;

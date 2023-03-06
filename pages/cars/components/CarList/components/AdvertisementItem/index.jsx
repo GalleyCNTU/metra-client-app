@@ -1,3 +1,5 @@
+import classes from "./AdvertisementList.module.scss"
+
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -37,7 +39,7 @@ export const AdvertisementItem = ({ img, make, model, price, fuel, transmission,
                 }}
             >
                 <Grid container spacing={2}>
-                    <Grid item style={{ display: "flex", alignItems: "center" }}>
+                    <Grid item style={{ display: "flex", alignItems: "center", justifyContent: "center", }} className={classes.img_grid}>
                         <Image src={img} width="230px" height="168px" alt="complex" />
                     </Grid>
                     <Grid item xs={12} sm container>
