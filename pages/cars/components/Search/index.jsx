@@ -23,11 +23,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const Search = ({ setAdvList }) => {
   const fuelSelectRef = useRef();
-  const fromSelectRef = useRef();
-  const toSelectRef = useRef();
   const inputRef = useRef();
 
-  const [filterTrigger, setFilterTrigger] = useState(0);
+  const [fromSelectValue, setFromSelectValue] = useState(null);
+  const [toSelectValue, setToSelectValue] = useState(null);
+  const [newAdvertisementsListTrigger, setNewAdvertisementsListTrigger] =
+    useState(0);
   const [fuelType, setFuelType] = useState(null);
   const [yearsArray, setYearsArray] = useState(setYearList(1960));
 
@@ -63,7 +64,7 @@ export const Search = ({ setAdvList }) => {
     ];
 
     getFilteredAdvertisements(setAdvList, filters);
-  }, [filterTrigger]);
+  }, [newAdvertisementsListTrigger]);
 
   const resetFilter = () => {
     setSelectedYear({
@@ -80,18 +81,14 @@ export const Search = ({ setAdvList }) => {
     });
     setFuelType(null);
 
-    if (
-      fuelSelectRef.current &&
-      inputRef.current &&
-      fromSelectRef.current &&
-      toSelectRef.current
-    ) {
+    if (fuelSelectRef.current && inputRef.current) {
       fuelSelectRef.current.clearValue();
-      fromSelectRef.current.clearValue();
-      toSelectRef.current.clearValue();
       inputRef.current.reset();
     }
-    setFilterTrigger(filterTrigger + 1);
+    setFromSelectValue(null);
+    setToSelectValue(null);
+    // If you need to refresh the list immediately after clicking the clear filters button, uncomment
+    // setNewAdvertisementsListTrigger(newAdvertisementsListTrigger + 1);
   };
 
   const setLimits = (dependent, from, to, setLim) => {
@@ -166,7 +163,7 @@ export const Search = ({ setAdvList }) => {
 
               <div className={classes.fromto} style={{ width: '75%' }}>
                 <Select
-                  ref={fromSelectRef}
+                  value={fromSelectValue}
                   placeholder={<div>Від</div>}
                   className={classes.form_select_fromto}
                   theme={(theme) => ({
@@ -176,15 +173,14 @@ export const Search = ({ setAdvList }) => {
                   styles={{ ...colorStyles }}
                   options={yearsArray}
                   onChange={(e) => {
-                    if (e && fromSelectRef.current) {
+                    if (e) {
                       const data = setLimits(
                         'from',
                         e.label,
                         selectedYear.to,
                         setSelectedYear
                       );
-                      console.log(fromSelectRef.current)
-                      fromSelectRef.current.clearValue()
+                      setFromSelectValue({ value: data, label: data });
                     }
                   }}
                   components={{
@@ -196,7 +192,7 @@ export const Search = ({ setAdvList }) => {
                 <span className={classes.form_title_text}>-</span>
 
                 <Select
-                  ref={toSelectRef}
+                  value={toSelectValue}
                   placeholder={<div>До</div>}
                   className={classes.form_select_fromto}
                   theme={(theme) => ({
@@ -206,18 +202,16 @@ export const Search = ({ setAdvList }) => {
                   styles={{ ...colorStyles }}
                   options={yearsArray}
                   onChange={(e) => {
-                    if (e && toSelectRef.current) {
+                    if (e) {
                       const data = setLimits(
                         'to',
                         selectedYear.from,
                         e.label,
                         setSelectedYear
                       );
-                      toSelectRef.current.clearValue()
-
+                      setToSelectValue({ value: data, label: data });
                     }
                   }}
-                  value={"dasdas"}
                   components={{
                     DropdownIndicator: () => null,
                     IndicatorSeparator: () => null,
@@ -231,7 +225,6 @@ export const Search = ({ setAdvList }) => {
 
                 <div className={classes.fromto} style={{ width: '75%' }}>
                   <input
-                    // ref={inputRef}
                     className={classes.form_input}
                     placeholder="Від"
                     style={{ backgroundColor: errors.userName && '#ffc38c' }}
@@ -336,7 +329,11 @@ export const Search = ({ setAdvList }) => {
             <div className={classes.form_under_section}>
               <button
                 className={classes.form_under_section_button}
-                onClick={() => setFilterTrigger(filterTrigger + 1)}
+                onClick={() =>
+                  setNewAdvertisementsListTrigger(
+                    newAdvertisementsListTrigger + 1
+                  )
+                }
               >
                 Пошук
               </button>
