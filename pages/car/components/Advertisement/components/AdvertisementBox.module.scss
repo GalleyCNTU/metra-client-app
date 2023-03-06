@@ -72,15 +72,41 @@
   }
 }
 
+@media (max-width: 2500px) {
+  .slider {
+    &_img {
+      width: 100%;
+      height: 830px;
+    }
+    &_box {
+      width: 100%;
+      height: 830px;
+    }
+  }
+}
+
+@media (max-width: 2200px) {
+  .slider {
+    &_img {
+      width: 100%;
+      height: 700px;
+    }
+    &_box {
+      width: 100%;
+      height: 700px;
+    }
+  }
+}
+
 @media (max-width: 1850px) {
   .slider {
     &_img {
       width: 100%;
-      height: 560px;
+      height: 600px;
     }
     &_box {
       width: 100%;
-      height: 560px;
+      height: 600px;
     }
   }
 }

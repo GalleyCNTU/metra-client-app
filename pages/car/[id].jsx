@@ -1,4 +1,4 @@
-import Advertisement from './Advertisement';
+import Advertisement from './components/Advertisement/';
 import { getAdvertisement } from '@/data/firebase';
 import { useRouter } from 'next/router';
 import { CircularProgress, Box } from '@mui/material';

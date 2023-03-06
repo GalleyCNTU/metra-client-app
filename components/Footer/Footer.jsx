@@ -7,13 +7,14 @@ import up from 'public/img/UP.png';
 const Footer = () => (
   <footer className={classes.footer}>
     <div className={classes.footer_logo}>
-      <Image src={logo} alt="logo" />
+      <a href="http://localhost:3000/">
+        <Image src={logo} alt="logo" />
+      </a>
     </div>
     <a href="#header" className={classes.footer_up}>
       <Image src={up} alt="up_button" />
     </a>
   </footer>
 );
-
 
 export default Footer;

@@ -1,12 +1,9 @@
 import { Typography, Button, Box } from '@mui/material';
 import Slider from './SliderComponent';
 
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
 import classes from './AdvertisementBox.module.scss';
 
-import { VIBER_URL } from 'constants/contacts';
+import { TELEGRAM_URL } from 'constants/contacts';
 
 const AdvertisementBox = ({
   color,
@@ -22,12 +19,12 @@ const AdvertisementBox = ({
   transmission,
   year,
 }) => {
+  console.log(description)
   return (
     <>
       <Box
         my={5}
         sx={{
-          borderRadius: '10px',
           width: '100%',
           backgroundColor: '#1E1E1E',
         }}
@@ -90,19 +87,18 @@ const AdvertisementBox = ({
         </Box>
 
         {description ? (
-          <Box>
+          <Box mx={3} className={classes.characteristics_column}>
             <hr style={{ height: '2px', color: 'white' }}></hr>
             <Typography
               className={classes.characteristics_font}
             >{`Опис: ${description}`}</Typography>
             <Box
-              my={4}
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
               }}
             >
-              <Button href={VIBER_URL} className={classes.btn_characteristics}>
+              <Button href={TELEGRAM_URL} className={classes.btn_characteristics}>
                 Детальніше
               </Button>
             </Box>
@@ -114,7 +110,7 @@ const AdvertisementBox = ({
               justifyContent: 'center',
             }}
           >
-            <Button href={VIBER_URL} className={classes.btn_characteristics}>
+            <Button href={TELEGRAM_URL} className={classes.btn_characteristics}>
               Детальніше
             </Button>
           </Box>

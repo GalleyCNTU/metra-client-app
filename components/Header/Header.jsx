@@ -28,7 +28,9 @@ const Header = () => {
         <header className={classes.header} id="header">
             <div className={classes.header_logo}>
                 <div className={classes.header_logo_image}>
-                    <Image src={logo} alt="logo" />
+                    <a href='http://localhost:3000/'>
+                        <Image src={logo} alt="logo"/>
+                    </a>
                 </div>
             </div>
             <div className={classes.header_mobile_menu}>
