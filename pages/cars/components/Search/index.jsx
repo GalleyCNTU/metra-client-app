@@ -1,49 +1,55 @@
+import { useState, useEffect, useRef } from 'react';
+
 //constants
-import { setYearList } from "@/utils/getCarData"
+import { setNormBoundaries, setYearList } from 'utils';
 
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 import Select from 'react-select';
 
-import { useState, useEffect } from "react";
+//utils
+import { carDataMapping } from '@/utils/carDataMapping';
+import { getFilteredAdvertisements } from '@/data/firebase';
 
 //scss styles
 import classes from './Search.module.scss';
 
-//images
-import backgroundImage from 'public/img/rotated_background.jpg';
-
 //mui
 import Box from '@mui/material/Box';
-import { carDataMapping } from "@/utils/carDataMapping";
-import { getFilteredAdvertisements } from "@/data/firebase";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+export const Search = ({ setAdvList }) => {
+  const fuelSelectRef = useRef();
+  const transmissionSelectRef = useRef();
+  const inputRef = useRef();
 
-export const Search = () => {
-  const [filterTrigger, setFilterTrigger] = useState(0);
-  const [advList, setAdvList] = useState();
+  const [fromSelectValue, setFromSelectValue] = useState(null);
+  const [toSelectValue, setToSelectValue] = useState(null);
+  const [newAdvertisementsListTrigger, setNewAdvertisementsListTrigger] =
+    useState(0);
   const [fuelType, setFuelType] = useState(null);
-  const [yearsArray, setYearsArray] = useState(setYearList());
+  const [transmissionType, setTransmissionType] = useState(null);
+  const [yearsArray, setYearsArray] = useState(setYearList(1960));
 
   const [selectedYear, setSelectedYear] = useState({
     from: '',
-    to: ''
-  })
+    to: '',
+  });
 
   const [mileage, setMileage] = useState({
     from: '',
-    to: ''
+    to: '',
   });
 
   const [price, setPrice] = useState({
     from: '',
-    to: ''
+    to: '',
   });
 
   const {
-    register,
-    handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({ mode: 'onSubmit' });
 
@@ -53,230 +59,323 @@ export const Search = () => {
 
   useEffect(() => {
     const filters = [
-      {from: selectedYear.from, to: selectedYear.to, attribute: "year"},
-      {from: mileage.from, to: mileage.to, attribute: "odometer"},
-      {from: price.from, to: price.to, attribute: "price"},
-      {value: fuelType, attribute: "fuel"},
-      // {
-      //   attribute: 'year',
-      //   from: '1999',
-      //   to: '2005',
-      // }
-    ]
+      { from: selectedYear.from, to: selectedYear.to, attribute: 'year' },
+      { from: mileage.from, to: mileage.to, attribute: 'odometer' },
+      { from: price.from, to: price.to, attribute: 'price' },
+      { value: fuelType, attribute: 'fuel' },
+      { value: transmissionType, attribute: 'transmission' }
+    ];
 
-    getFilteredAdvertisements(setAdvList, filters)
-  }, [filterTrigger])
+    getFilteredAdvertisements(setAdvList, filters);
+  }, [newAdvertisementsListTrigger]);
+
+  const resetFilter = () => {
+    setSelectedYear({
+      from: '',
+      to: '',
+    });
+    setMileage({
+      from: '',
+      to: '',
+    });
+    setPrice({
+      from: '',
+      to: '',
+    });
+
+    setFuelType(null);
+    setTransmissionType(null);
+
+    if (fuelSelectRef.current && inputRef.current) {
+      fuelSelectRef.current.clearValue();
+      transmissionSelectRef.current.clearValue();
+      inputRef.current.reset();
+    }
+    setFromSelectValue(null);
+    setToSelectValue(null);
+
+    // If you need to refresh the list immediately after clicking the clear filters button, uncomment
+    // setNewAdvertisementsListTrigger(newAdvertisementsListTrigger + 1);
+  };
+
+  const setLimits = (dependent, from, to, setLim) => {
+    const limit = { to, from };
+    const newLimit = setNormBoundaries(dependent, limit);
+    setLim(newLimit);
+    if (dependent === 'from') return newLimit.from;
+    else return newLimit.to;
+  };
 
   return (
-    <div
-      className={classes.main}
-      style={{
-        background: `url(${backgroundImage.src}) no-repeat`,
-        backgroundSize: '100%',
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-      }}
-    >
-      <Box
-        sx={{
-          width: 420,
-          height: 430,
-          backgroundColor: "#1E1E1E",
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center"
-        }}
-      >
-        <div className={classes.form_title}>
-          <span className={classes.form_title_text}>
-            Пошук авто
-          </span>
-        </div>
-        <div className={classes.fromto}>
-          <span className={classes.form_select_text}>Паливо</span>
-          <Select
-            placeholder={
-              <div>Оберіть тип палива</div>
-            }
-            className={classes.form_select}
-            theme={(theme) => ({
-              ...theme,
-              borderRadius: 0,
-            })}
-            styles={{ ...colorStyles, }}
-            options={carDataMapping(["Бензин", "Дизель", "Газ"])}
-            onChange={(e) => setFuelType(e.label)}
-            components={{
-              DropdownIndicator: () => null,
-              IndicatorSeparator: () => null,
+    <Box sx={{ backgroundColor: '#1E1E1E' }}>
+      <Accordion sx={{ border: 0, width: '100%' }}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+          sx={{
+            backgroundColor: '#FF8A00',
+            color: 'white',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Typography sx={{ fontWeight: 800 }}>Фільтр</Typography>
+        </AccordionSummary>
+        <AccordionDetails
+          sx={{
+            backgroundColor: '#1E1E1E',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              width: 420,
+              height: 470,
+              backgroundColor: '#1E1E1E',
+              padding: '20px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
-          />
-
-        </div>
-
-        <div className={classes.fromto}>
-
-          <span className={classes.form_select_text}>Рік</span>
-
-          <div className={classes.fromto} style={{ width: "75%" }}>
-            <Select
-              placeholder={
-                <div>Від</div>
-              }
-              className={classes.form_select_fromto}
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: 0,
-              })}
-              styles={{ ...colorStyles, }}
-              options={yearsArray}
-              onChange={(e) => {
-                const to = selectedYear.to;
-                setSelectedYear({
-                  to,
-                  from: e.label
-                })
-
-              }}
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null,
-              }}
-            />
-
-            <span className={classes.form_title_text}>
-              -
-            </span>
-
-            <Select
-              placeholder={
-                <div>До</div>
-              }
-              className={classes.form_select_fromto}
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: 0,
-              })}
-              styles={{ ...colorStyles, }}
-              options={yearsArray}
-              onChange={(e) => {
-                const from = selectedYear.from;
-                setSelectedYear({
-                  from,
-                  to: e.label
-                })
-              }}
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null,
-              }}
-            />
-          </div>
-        </div>
-        <form style={{ width: "100%" }}>
-          <div className={classes.fromto}>
-
-            <span className={classes.form_select_text}>Пробіг</span>
-
-            <div className={classes.fromto} style={{ width: "75%" }}>
-              <input
-                className={classes.form_input}
-                placeholder="Від"
-                style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                type="text"
-                onKeyPress={(event) => {
-                  if (!/[0-9+]/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
+          >
+            <div className={classes.form_title}>
+              <span className={classes.form_title_text}>Пошук авто</span>
+            </div>
+            <div className={classes.fromto}>
+              <span className={classes.form_select_text}>Паливо</span>
+              <Select
+                ref={fuelSelectRef}
+                placeholder={<div>Оберіть тип палива</div>}
+                className={classes.form_select}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                })}
+                styles={{ ...colorStyles }}
+                options={carDataMapping(['Бензин', 'Дизель', 'Газ'])}
                 onChange={(e) => {
-                  const to = mileage.to;
-                  setMileage({
-                    from: e.target.value,
-                    to
-                  })
+                  if (e) setFuelType(e.label);
                 }}
-              />
-
-              <span className={classes.form_title_text}>
-                -
-              </span>
-
-              <input
-                className={classes.form_input}
-                placeholder="До"
-                style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                type="text"
-                onKeyPress={(event) => {
-                  if (!/[0-9+]/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
-                onChange={(e) => {
-                  const from = mileage.from;
-                  setMileage({
-                    from,
-                    to: e.target.value
-                  })
+                components={{
+                  DropdownIndicator: () => null,
+                  IndicatorSeparator: () => null,
                 }}
               />
             </div>
-          </div>
-          <div className={classes.fromto}>
 
-            <span className={classes.form_select_text}>Ціна</span>
-
-            <div className={classes.fromto} style={{ width: "75%" }}>
-              <input
-                className={classes.form_input}
-                placeholder="Від"
-                style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                type="text"
-                onKeyPress={(event) => {
-                  if (!/[0-9+]/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
+            <div className={classes.fromto}>
+              <span className={classes.form_select_text}>Коробка</span>
+              <Select
+                ref={transmissionSelectRef}
+                placeholder={<div>Оберіть коробку передач</div>}
+                className={classes.form_select}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                })}
+                styles={{ ...colorStyles }}
+                options={carDataMapping(['Механіка 6 ст.', 'Механіка 5 ст.', 'Автомат', 'Робот', 'Варіатор'])}
                 onChange={(e) => {
-                  const to = price.to;
-                  setPrice({
-                    from: e.target.value,
-                    to
-                  })
+                  if (e) setTransmissionType(e.label);
                 }}
-              />
-
-              <span className={classes.form_title_text}>
-                -
-              </span>
-
-              <input
-                className={classes.form_input}
-                placeholder="До"
-                style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                type="text"
-                onKeyPress={(event) => {
-                  if (!/[0-9+]/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
-                onChange={(e) => {
-                  const from = price.from;
-                  setPrice({
-                    from,
-                    to: e.target.value
-                  })
+                components={{
+                  DropdownIndicator: () => null,
+                  IndicatorSeparator: () => null,
                 }}
               />
             </div>
-          </div>
-        </form>
-        <div className={classes.form_under_section}>
-          <button className={classes.form_under_section_button} onClick={() => setFilterTrigger(filterTrigger + 1)}>Пошук</button>
-        </div>
-      </Box>
-    </div>
-  )
-}
+
+            <div className={classes.fromto}>
+              <span className={classes.form_select_text}>Рік</span>
+
+              <div className={classes.fromto} style={{ width: '75%' }}>
+                <Select
+                  value={fromSelectValue}
+                  placeholder={<div>Від</div>}
+                  className={classes.form_select_fromto}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                  })}
+                  styles={{ ...colorStyles }}
+                  options={yearsArray}
+                  onChange={(e) => {
+                    if (e) {
+                      const data = setLimits(
+                        'from',
+                        e.label,
+                        selectedYear.to,
+                        setSelectedYear
+                      );
+                      setFromSelectValue({ value: data, label: data });
+                    }
+                  }}
+                  components={{
+                    DropdownIndicator: () => null,
+                    IndicatorSeparator: () => null,
+                  }}
+                />
+
+                <span className={classes.form_title_text}>-</span>
+
+                <Select
+                  value={toSelectValue}
+                  placeholder={<div>До</div>}
+                  className={classes.form_select_fromto}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                  })}
+                  styles={{ ...colorStyles }}
+                  options={yearsArray}
+                  onChange={(e) => {
+                    if (e) {
+                      const data = setLimits(
+                        'to',
+                        selectedYear.from,
+                        e.label,
+                        setSelectedYear
+                      );
+                      setToSelectValue({ value: data, label: data });
+                    }
+                  }}
+                  components={{
+                    DropdownIndicator: () => null,
+                    IndicatorSeparator: () => null,
+                  }}
+                />
+              </div>
+            </div>
+            <form style={{ width: '100%' }} ref={inputRef}>
+              <div className={classes.fromto}>
+                <span className={classes.form_select_text}>Пробіг</span>
+
+                <div className={classes.fromto} style={{ width: '75%' }}>
+                  <input
+                    className={classes.form_input}
+                    placeholder="Від"
+                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
+                    type="text"
+                    onKeyPress={(event) => {
+                      if (!/[0-9+]/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e) {
+                        e.target.value = setLimits(
+                          'from',
+                          e.target.value,
+                          mileage.to,
+                          setMileage
+                        );
+                      }
+                    }}
+                  />
+
+                  <span className={classes.form_title_text}>-</span>
+
+                  <input
+                    // ref={inputRef}
+                    className={classes.form_input}
+                    placeholder="До"
+                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
+                    type="text"
+                    onKeyPress={(event) => {
+                      if (!/[0-9+]/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e) {
+                        e.target.value = setLimits(
+                          'to',
+                          mileage.from,
+                          e.target.value,
+                          setMileage
+                        );
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+              <div className={classes.fromto}>
+                <span className={classes.form_select_text}>Ціна</span>
+
+                <div className={classes.fromto} style={{ width: '75%' }}>
+                  <input
+                    // ref={inputRef}
+                    className={classes.form_input}
+                    placeholder="Від"
+                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
+                    type="text"
+                    onKeyPress={(event) => {
+                      if (!/[0-9+]/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e) {
+                        e.target.value = setLimits(
+                          'from',
+                          e.target.value,
+                          price.to,
+                          setPrice
+                        );
+                      }
+                    }}
+                  />
+
+                  <span className={classes.form_title_text}>-</span>
+
+                  <input
+                    // ref={inputRef}
+                    className={classes.form_input}
+                    placeholder="До"
+                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
+                    type="text"
+                    onKeyPress={(event) => {
+                      if (!/[0-9+]/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                    onBlur={(e) => {
+                      if (e) {
+                        e.target.value = setLimits(
+                          'to',
+                          price.from,
+                          e.target.value,
+                          setPrice
+                        );
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+            </form>
+            <div className={classes.form_under_section}>
+              <button
+                className={classes.form_under_section_button}
+                onClick={resetFilter}
+              >
+                Очистити фільтр
+              </button>
+              <button
+                className={classes.form_under_section_button}
+                onClick={() =>
+                  setNewAdvertisementsListTrigger(
+                    newAdvertisementsListTrigger + 1
+                  )
+                }
+              >
+                Пошук
+              </button>
+            </div>
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+    </Box>
+  );
+};

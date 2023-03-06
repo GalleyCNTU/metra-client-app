@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, onValue } from 'firebase/database';
 
-import { advToList, isValidAdv } from '@/utils/getCarData';
+import { advToList, isValidAdv } from 'utils';
 
 const db = initFirebase();
 
