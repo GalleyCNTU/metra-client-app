@@ -32,7 +32,7 @@ export const Search = ({ setAdvList }) => {
     useState(0);
   const [fuelType, setFuelType] = useState(null);
   const [transmissionType, setTransmissionType] = useState(null);
-  const [yearsArray, setYearsArray] = useState(setYearList(1960));
+  const [yearsArray, setYearsArray] = useState();
 
   const [selectedYear, setSelectedYear] = useState({
     from: '',
@@ -63,11 +63,17 @@ export const Search = ({ setAdvList }) => {
       { from: mileage.from, to: mileage.to, attribute: 'odometer' },
       { from: price.from, to: price.to, attribute: 'price' },
       { value: fuelType, attribute: 'fuel' },
-      { value: transmissionType, attribute: 'transmission' }
+      { value: transmissionType, attribute: 'transmission' },
     ];
 
     getFilteredAdvertisements(setAdvList, filters);
   }, [newAdvertisementsListTrigger]);
+
+  useEffect(() => {
+    const list = [{ value: '', label: 'None' }];
+    list.push(...setYearList(1960));
+    setYearsArray(list);
+  }, []);
 
   const resetFilter = () => {
     setSelectedYear({
@@ -176,7 +182,13 @@ export const Search = ({ setAdvList }) => {
                   borderRadius: 0,
                 })}
                 styles={{ ...colorStyles }}
-                options={carDataMapping(['Механіка 6 ст.', 'Механіка 5 ст.', 'Автомат', 'Робот', 'Варіатор'])}
+                options={carDataMapping([
+                  'Механіка 6 ст.',
+                  'Механіка 5 ст.',
+                  'Автомат',
+                  'Робот',
+                  'Варіатор',
+                ])}
                 onChange={(e) => {
                   if (e) setTransmissionType(e.label);
                 }}
@@ -205,11 +217,14 @@ export const Search = ({ setAdvList }) => {
                     if (e) {
                       const data = setLimits(
                         'from',
-                        e.label,
+                        e.value,
                         selectedYear.to,
                         setSelectedYear
                       );
-                      setFromSelectValue({ value: data, label: data });
+                      console.log(data);
+                      if (data)
+                        setFromSelectValue({ value: data, label: data });
+                      else setFromSelectValue(null);
                     }
                   }}
                   components={{
@@ -235,10 +250,11 @@ export const Search = ({ setAdvList }) => {
                       const data = setLimits(
                         'to',
                         selectedYear.from,
-                        e.label,
+                        e.value,
                         setSelectedYear
                       );
-                      setToSelectValue({ value: data, label: data });
+                      if (data) setToSelectValue({ value: data, label: data });
+                      else setToSelectValue(null);
                     }
                   }}
                   components={{
