@@ -5,8 +5,39 @@
     }
 }
 
+.main_greed {
+    display: flex;
+    flex-direction: column;
+}
 
-@media (max-width : 1480px) {
-    .img_grid {
+
+@media (max-width : 1870px) {
+    .grid {
+        width: 100%;
+        justify-content: flex-start;
+        margin-left: 0;
     }
 }
+
+@media (max-width : 1170px) {
+    .grid {
+        width: 100%;
+        padding: 0 20%;
+        justify-content: flex-start;
+        margin-left: 0;
+        
+    }
+}
+
+@media (max-width : 1000px) {
+    .grid {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        padding: 20px ;
+    }
+}
+
+
+
+

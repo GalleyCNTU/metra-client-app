@@ -1,4 +1,5 @@
 import { Box, Grid } from '@mui/material';
+import Pagination from '@mui/material/Pagination';
 import classes from './CardLayout.module.scss';
 
 export const CardLayout = ({ children }) => {
@@ -23,6 +24,7 @@ export const CardLayout = ({ children }) => {
       >
         {children}
       </Grid>
+      <Pagination count={10} variant="outlined" shape="rounded" />
     </Box>
   );
 };

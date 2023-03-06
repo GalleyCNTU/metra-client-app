@@ -10,11 +10,27 @@ import { CardLayout } from './components/CardLayout';
 
 export const CarList = ({ filteredAdvList }) => {
   const [advertisements, setAdvertisements] = useState();
-
   useEffect(() => setAdvertisements(filteredAdvList), [filteredAdvList]);
 
   if (advertisements === null) {
-    return <CardLayout>Об&#39;яв не знайдено</CardLayout>;
+    return (
+      <CardLayout>
+        <div
+          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+        >
+          <span
+            style={{
+              color: 'white',
+              fontFamily: 'Gilroy',
+              fontSize: 48,
+              textAlign: 'center',
+            }}
+          >
+            Об&#39;яв не знайдено
+          </span>
+        </div>
+      </CardLayout>
+    );
   }
 
   return (
@@ -22,10 +38,11 @@ export const CarList = ({ filteredAdvList }) => {
       {advertisements ? (
         advertisements.map((item) => (
           <Grid
+          spacing={25}
             item
             key={getRandomKey()}
             style={{
-              width: '33%',
+              width: '25%',
               height: '100%',
               minWidth: 262,
               maxWidth: 500,

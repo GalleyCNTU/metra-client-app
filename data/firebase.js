@@ -40,9 +40,11 @@ export async function getFilteredAdvertisements(cb, filters) {
     return onValue(
       ref(db, '/advertisements'),
       (snapshot) => {
-        const list = advToList(snapshot.val());
-        if (snapshot.exists())
-          cb(list.filter((adv) => isValidAdv(adv, filters)));
+        if (snapshot.exists()) {
+          const list = advToList(snapshot.val()).filter((adv) => isValidAdv(adv, filters));
+          if(list.length) cb(list);
+          else cb(null);
+        }
         else cb(null);
       },
       {
