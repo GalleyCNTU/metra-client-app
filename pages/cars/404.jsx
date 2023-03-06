@@ -13,7 +13,7 @@ export default function Custom404() {
       <IconButton
         size="large"
         className={classes.btn_back}
-        href={'http://localhost:3000/cars'}
+        href={'/cars'}
       >
         <ArrowBackIcon fontSize="large" />
         Назад

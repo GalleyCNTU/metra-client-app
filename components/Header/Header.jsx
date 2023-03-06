@@ -28,7 +28,7 @@ const Header = () => {
         <header className={classes.header} id="header">
             <div className={classes.header_logo}>
                 <div className={classes.header_logo_image}>
-                    <a href='http://localhost:3000/'>
+                    <a href='/'>
                         <Image src={logo} alt="logo"/>
                     </a>
                 </div>
@@ -49,8 +49,8 @@ const Header = () => {
                             </div>
                         </div>
                         <div className={classes.drawer_body_nav}>
-                            <a href='#header' className={classes.drawer_body_nav_link} style={{ color: '#FF8A00' }}>АВТОВИКУП</a>
-                            <a href='#purchased' className={classes.drawer_body_nav_link}>АВТО В НАЯВНОСТІ</a>
+                            <a href='/' className={classes.drawer_body_nav_link} style={{ color: '#FF8A00' }}>АВТОВИКУП</a>
+                            <a href='/cars' className={classes.drawer_body_nav_link}>АВТО В НАЯВНОСТІ</a>
                             <a href='#contacts' className={classes.drawer_body_nav_link}>КОНТАКТИ</a>
                         </div>
                     </div>
@@ -60,8 +60,8 @@ const Header = () => {
                 </div>
             </div>
             <div className={classes.header_nav}>
-                <a href='#header' className={classes.header_nav_link}>АВТОВИКУП</a>
-                <a href='#purchased' className={`${classes.header_nav_link} ${classes.header_nav_link_margined}`}>АВТО В НАЯВНОСТІ</a>
+                <a href='/' className={classes.header_nav_link}>АВТОВИКУП</a>
+                <a href='/cars' className={`${classes.header_nav_link} ${classes.header_nav_link_margined}`}>АВТО В НАЯВНОСТІ</a>
                 <a href='#contacts' className={classes.header_nav_link}>КОНТАКТИ</a>
             </div>
             <div className={classes.header_info}>

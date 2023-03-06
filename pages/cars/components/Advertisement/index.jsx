@@ -23,7 +23,7 @@ const Advertisement = ({ getAdvertisement, id }) => {
   }
 
   function call() {
-    router.push(`/car/404`);
+    router.push(`/cars/404`);
   }
 
   return (
@@ -31,7 +31,7 @@ const Advertisement = ({ getAdvertisement, id }) => {
       <IconButton
         size="large"
         className={classes.btn_back}
-        href={'http://localhost:3000/cars'}
+        href={'/cars'}
       >
         <ArrowBackIcon fontSize="large" />
         Назад

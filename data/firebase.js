@@ -43,7 +43,7 @@ export async function getFilteredAdvertisements(cb, filters) {
         const list = advToList(snapshot.val());
         if (snapshot.exists())
           cb(list.filter((adv) => isValidAdv(adv, filters)));
-        else cb({});
+        else cb(null);
       },
       {
         onlyOnce: true,
@@ -51,7 +51,7 @@ export async function getFilteredAdvertisements(cb, filters) {
     );
   } catch (error) {
     console.log(error.message);
-    cb([]);
+    cb(null);
   }
 }
 export async function getAdvertisement(cb, id) {
