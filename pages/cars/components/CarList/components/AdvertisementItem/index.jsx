@@ -32,21 +32,18 @@ export const AdvertisementItem = ({
   odometer,
   id,
 }) => {
-  console.log(id);
   return (
     <Item>
       <Paper
-        
         sx={{
           p: 2,
-
           maxWidth: 500,
           flexGrow: 1,
           backgroundColor: (theme) =>
             theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         }}
       >
-        <Grid container spacing={2}  sx={{flexDirection: "column"}}>
+        <Grid container spacing={2} sx={{ flexDirection: 'column' }}>
           <Grid
             item
             style={{

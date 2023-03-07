@@ -9,7 +9,8 @@ export function isValidAdv(adv, filters) {
     const to = filter.to ? +current <= +filter.to : true;
     const from = filter.from ? +current >= +filter.from : true;
 
-    if (filter.value) return current.search(filter.value) != -1;
+    if (filter.value)
+      return current.toLowerCase().search(filter.value.toLowerCase()) != -1;
     else return from && to;
   });
 }

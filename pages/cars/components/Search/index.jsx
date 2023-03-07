@@ -22,18 +22,22 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const Search = ({ setAdvList }) => {
-  const fuelSelectRef = useRef();
-  const transmissionSelectRef = useRef();
   const inputRef = useRef();
+
+  const [newAdvertisementsListTrigger, setNewAdvertisementsListTrigger] =
+    useState(0);
 
   const [fromSelectValue, setFromSelectValue] = useState(null);
   const [toSelectValue, setToSelectValue] = useState(null);
-  const [newAdvertisementsListTrigger, setNewAdvertisementsListTrigger] =
-    useState(0);
+  const [selectedFuel, setSelectedFuel] = useState(null);
+  const [selectedTransmition, setSelectedTransmition] = useState(null);
+
+  const [yearsArray, setYearsArray] = useState();
+  const [transmissionList, setTransmissionList] = useState();
+  const [fuelList, setFuelList] = useState();
+
   const [fuelType, setFuelType] = useState(null);
   const [transmissionType, setTransmissionType] = useState(null);
-  const [yearsArray, setYearsArray] = useState();
-
   const [selectedYear, setSelectedYear] = useState({
     from: '',
     to: '',
@@ -70,9 +74,25 @@ export const Search = ({ setAdvList }) => {
   }, [newAdvertisementsListTrigger]);
 
   useEffect(() => {
-    const list = [{ value: '', label: 'None' }];
-    list.push(...setYearList(1960));
-    setYearsArray(list);
+    const yList = [{ value: '', label: 'Рік' }, ...setYearList(1960)];
+    const trList = [
+      { value: '', label: 'Коробка передач' },
+      ...carDataMapping([
+        'Механіка 6 ст.',
+        'Механіка 5 ст.',
+        'Автомат',
+        'Робот',
+        'Варіатор',
+      ]),
+    ];
+    const fList = [
+      { value: '', label: 'Тип палива' },
+      ...carDataMapping(['Бензин', 'Дизель', 'Газ']),
+    ];
+
+    setFuelList(fList);
+    setTransmissionList(trList);
+    setYearsArray(yList);
   }, []);
 
   const resetFilter = () => {
@@ -89,14 +109,13 @@ export const Search = ({ setAdvList }) => {
       to: '',
     });
 
+    if (inputRef.current) inputRef.current.reset();
     setFuelType(null);
     setTransmissionType(null);
 
-    if (fuelSelectRef.current && inputRef.current) {
-      fuelSelectRef.current.clearValue();
-      transmissionSelectRef.current.clearValue();
-      inputRef.current.reset();
-    }
+    setSelectedFuel(null);
+    setSelectedTransmition(null);
+
     setFromSelectValue(null);
     setToSelectValue(null);
 
@@ -152,7 +171,7 @@ export const Search = ({ setAdvList }) => {
             <div className={classes.fromto}>
               <span className={classes.form_select_text}>Паливо</span>
               <Select
-                ref={fuelSelectRef}
+                value={selectedFuel}
                 placeholder={<div>Оберіть тип палива</div>}
                 className={classes.form_select}
                 theme={(theme) => ({
@@ -160,9 +179,14 @@ export const Search = ({ setAdvList }) => {
                   borderRadius: 0,
                 })}
                 styles={{ ...colorStyles }}
-                options={carDataMapping(['Бензин', 'Дизель', 'Газ'])}
+                options={fuelList}
                 onChange={(e) => {
-                  if (e) setFuelType(e.label);
+                  if (e) {
+                    if (e.value)
+                      setSelectedFuel({ value: e.value, label: e.label });
+                    else setSelectedFuel(null);
+                    setFuelType(e.value);
+                  }
                 }}
                 components={{
                   DropdownIndicator: () => null,
@@ -174,7 +198,7 @@ export const Search = ({ setAdvList }) => {
             <div className={classes.fromto}>
               <span className={classes.form_select_text}>Коробка</span>
               <Select
-                ref={transmissionSelectRef}
+                value={selectedTransmition}
                 placeholder={<div>Оберіть коробку передач</div>}
                 className={classes.form_select}
                 theme={(theme) => ({
@@ -182,15 +206,17 @@ export const Search = ({ setAdvList }) => {
                   borderRadius: 0,
                 })}
                 styles={{ ...colorStyles }}
-                options={carDataMapping([
-                  'Механіка 6 ст.',
-                  'Механіка 5 ст.',
-                  'Автомат',
-                  'Робот',
-                  'Варіатор',
-                ])}
+                options={transmissionList}
                 onChange={(e) => {
-                  if (e) setTransmissionType(e.label);
+                  if (e) {
+                    if (e.value)
+                      setSelectedTransmition({
+                        value: e.value,
+                        label: e.label,
+                      });
+                    else setSelectedTransmition(null);
+                    setTransmissionType(e.value);
+                  }
                 }}
                 components={{
                   DropdownIndicator: () => null,
@@ -221,7 +247,6 @@ export const Search = ({ setAdvList }) => {
                         selectedYear.to,
                         setSelectedYear
                       );
-                      console.log(data);
                       if (data)
                         setFromSelectValue({ value: data, label: data });
                       else setFromSelectValue(null);
