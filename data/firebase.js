@@ -41,11 +41,12 @@ export async function getFilteredAdvertisements(cb, filters) {
       ref(db, '/advertisements'),
       (snapshot) => {
         if (snapshot.exists()) {
-          const list = advToList(snapshot.val()).filter((adv) => isValidAdv(adv, filters));
-          if(list.length) cb(list);
-          else cb(null);
-        }
-        else cb(null);
+          const list = advToList(snapshot.val()).filter((adv) =>
+            isValidAdv(adv, filters)
+          );
+          if (list.length) cb(list);
+          else cb([]);
+        } else cb([]);
       },
       {
         onlyOnce: true,
@@ -53,7 +54,7 @@ export async function getFilteredAdvertisements(cb, filters) {
     );
   } catch (error) {
     console.log(error.message);
-    cb(null);
+    cb([]);
   }
 }
 export async function getAdvertisement(cb, id) {
