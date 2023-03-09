@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { getAllAdvertisements, getAllMakes } from '@/data/firebase';
+import { initTelegramBot } from '@/data/telegram';
 
 const Main = ({ advertisementList, makes }) => {
   return (
@@ -49,6 +50,7 @@ export default Main;
 export async function getStaticProps() {
   const advertisementList = await getAllAdvertisements();
   const makes = await getAllMakes();
+  initTelegramBot()
   return {
     props: {
       advertisementList,

@@ -27,6 +27,8 @@ const nextConfig = {
     STORAGE_BUCKET: process.env.STORAGE_BUCKET,
     MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
     APP_ID: process.env.APP_ID,
+    TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
+    TELEGRAM_TIMUR_ID: process.env.TELEGRAM_TIMUR_ID,
   },
 };
 

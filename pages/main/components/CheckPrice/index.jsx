@@ -92,11 +92,10 @@ export const CheckPrice = ({ makes }) => {
     if (brand && selectedBrand && selectedModel && selectedYear) {
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userInfo),
       };
-      fetch('api/sendMail', requestOptions)
-        .then((response) => response.json())
+      fetch('/api/telegram', requestOptions)
+        .then((res) => res.json())
         .then((data) => console.log(data.message));
     }
   };
