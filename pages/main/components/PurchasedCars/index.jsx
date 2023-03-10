@@ -4,8 +4,6 @@ import classes from './PurchasedCars.module.scss';
 import { getRandomKey } from 'utils';
 
 export const PurchasedCars = ({ advertisementList }) => {
-  // console.log(advertisementList);
-
   return (
     <div className={classes.purchased_cars} id="purchased">
       <div className={classes.purchased_cars_top}>

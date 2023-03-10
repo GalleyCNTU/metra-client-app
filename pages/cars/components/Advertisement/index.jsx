@@ -28,11 +28,7 @@ const Advertisement = ({ getAdvertisement, id }) => {
 
   return (
     <>
-      <IconButton
-        size="large"
-        className={classes.btn_back}
-        href={'/cars'}
-      >
+      <IconButton size="large" className={classes.btn_back} href={'/cars'}>
         <ArrowBackIcon fontSize="large" />
         Назад
       </IconButton>
@@ -61,7 +57,7 @@ const Advertisement = ({ getAdvertisement, id }) => {
               height: '400px',
             }}
           >
-            <CircularProgress sx={{color:'#ff8a00'}}/>
+            <CircularProgress sx={{ color: '#ff8a00' }} />
           </Box>
         )}
       </Container>

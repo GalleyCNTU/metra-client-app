@@ -5,8 +5,6 @@ import { getAllAdvertisements } from '@/data/firebase';
 import { Layout } from 'components';
 import { Search } from './components/Search';
 
-//images
-import backgroundImage from 'public/img/rotated_background.jpg';
 import { CarList } from './components/CarList';
 
 function Cars({ advertisementList }) {

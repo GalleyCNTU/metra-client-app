@@ -5,16 +5,12 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import classes from './Advertisement/components/AdvertisementBox.module.scss';
+import classes from './components/Advertisement/components/AdvertisementBox.module.scss';
 
 export default function Custom404() {
   return (
     <Layout>
-      <IconButton
-        size="large"
-        className={classes.btn_back}
-        href={'/cars'}
-      >
+      <IconButton size="large" className={classes.btn_back} href={'/cars'}>
         <ArrowBackIcon fontSize="large" />
         Назад
       </IconButton>
@@ -27,7 +23,7 @@ export default function Custom404() {
           height: '250px',
         }}
       >
-        <Typography variant='h3'>Об&#39;яву не знайдено</Typography>
+        <Typography variant="h3">Об&#39;яву не знайдено</Typography>
       </Box>
     </Layout>
   );

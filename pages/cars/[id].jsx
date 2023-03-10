@@ -21,7 +21,7 @@ const Car = () => {
             height: '400px',
           }}
         >
-          <CircularProgress sx={{color:'#ff8a00'}}/>
+          <CircularProgress sx={{ color: '#ff8a00' }} />
         </Box>
       )}
     </Layout>

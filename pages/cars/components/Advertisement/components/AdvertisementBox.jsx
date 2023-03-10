@@ -19,7 +19,6 @@ const AdvertisementBox = ({
   transmission,
   year,
 }) => {
-  console.log(description)
   return (
     <>
       <Box
@@ -98,7 +97,10 @@ const AdvertisementBox = ({
                 justifyContent: 'center',
               }}
             >
-              <Button href={TELEGRAM_URL} className={classes.btn_characteristics}>
+              <Button
+                href={TELEGRAM_URL}
+                className={classes.btn_characteristics}
+              >
                 Детальніше
               </Button>
             </Box>

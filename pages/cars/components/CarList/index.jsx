@@ -32,9 +32,9 @@ const StyledPagination = styled(Pagination)(({ theme }) => ({
 }));
 
 export const CarList = ({ filteredAdvList }) => {
-  const [advertisements, setAdvertisements] = useState(null);
+  const [advertisements, setAdvertisements] = useState();
   const [currentPage, setCurrentPage] = useState(0);
-  const [pageCount, setPageCount] = useState(1);
+  const [pageCount, setPageCount] = useState();
 
   useEffect(
     () => (currentPage === 0 ? setAdvOnPage() : setCurrentPage(0)),
@@ -44,7 +44,7 @@ export const CarList = ({ filteredAdvList }) => {
 
   const setAdvOnPage = () => {
     if (filteredAdvList) {
-      const advsOnPage = 1;
+      const advsOnPage = 8;
       const advsLength = filteredAdvList.length;
       const visibleAdvCount = advsLength > advsOnPage ? advsOnPage : advsLength;
       const start = currentPage * visibleAdvCount;
@@ -57,12 +57,13 @@ export const CarList = ({ filteredAdvList }) => {
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value - 1);
+    window.location.href = '#header';
   };
 
   return (
     <>
       <CardLayout>
-        {advertisements === null ? (
+        {!advertisements ? (
           <div
             style={{
               width: '100%',
@@ -122,15 +123,17 @@ export const CarList = ({ filteredAdvList }) => {
           ))
         )}
       </CardLayout>
-      <StyledPagination
-        count={pageCount}
-        page={currentPage + 1}
-        onChange={handlePageChange}
-        variant="outlined"
-        shape="rounded"
-        showFirstButton
-        showLastButton
-      />
+      <a href="#header">
+        <StyledPagination
+          count={pageCount}
+          page={currentPage + 1}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+          showFirstButton
+          showLastButton
+        />
+      </a>
     </>
   );
 };

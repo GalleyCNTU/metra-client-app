@@ -23,7 +23,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const Search = ({ setAdvList }) => {
   const inputRef = useRef();
-
   const [newAdvertisementsListTrigger, setNewAdvertisementsListTrigger] =
     useState(0);
 
