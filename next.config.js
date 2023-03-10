@@ -15,7 +15,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   env: {
-    API: 'http://localhost:3001',
+    API: process.env.API,
     SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
     MESSENGER_MAIL: process.env.MESSENGER_MAIL,
     MESSAGE_RECEIVING_MAIL: process.env.MESSAGE_RECEIVING_MAIL,
@@ -28,7 +28,7 @@ const nextConfig = {
     MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
     APP_ID: process.env.APP_ID,
     TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
-    TELEGRAM_TIMUR_ID: process.env.TELEGRAM_TIMUR_ID,
+    TELEGRAM_ADMIN_ID: process.env.TELEGRAM_ADMIN_ID,
   },
 };
 

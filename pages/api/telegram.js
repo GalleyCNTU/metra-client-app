@@ -1,19 +1,20 @@
 import { bot } from 'data/telegram';
-export default function handler(req, res) {
+
+export default async function handler(req, res) {
   try {
     if (req.method === 'POST') {
       const user = JSON.parse(req.body);
 
       bot.sendMessage(
-        process.env.TELEGRAM_TIMUR_ID,
+        process.env.TELEGRAM_ADMIN_ID,
         getMessageTemplate(user, user?.carProperties)
       );
       res.status(200).json({ message: 'ok' });
     } else {
-      res.status(405).json({ message: 'Method Not Allowed' });
+      res.status(200).json({ message: 'Telegram bot enabled' });
     }
-  } catch (error) {
-    console.log(error.message);
+  } catch ({ message }) {
+    res.status(500).send({ message });
   }
 }
 
