@@ -1,14 +1,35 @@
-import classes from './CarList.module.scss';
-
 import { useState, useEffect } from 'react';
 
-import { Grid } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import Pagination from '@mui/material/Pagination';
+import styled from '@emotion/styled';
 
 import { AdvertisementItem } from './components/AdvertisementItem';
 import { getRandomKey } from '@/utils/getRandomKey';
 import { CardLayout } from './components/CardLayout';
+
+// Створюємо стилі для Pagination
+const StyledPagination = styled(Pagination)(({ theme }) => ({
+  '& .MuiPagination-ul': {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  '& .MuiPaginationItem-root': {
+    color: '#ff8a00',
+    border: `1px solid #ff8a00`,
+    borderRadius: 4,
+    '&.Mui-selected': {
+      backgroundColor: '#ff8a00',
+      color: '#fff',
+      border: `1px solid #ff8a00`,
+    },
+    '&:hover': {
+      backgroundColor: '#ff8a00',
+      color: '#fff',
+      border: `1px solid #ff8a00`,
+    },
+  },
+}));
 
 export const CarList = ({ filteredAdvList }) => {
   const [advertisements, setAdvertisements] = useState(null);
@@ -23,7 +44,7 @@ export const CarList = ({ filteredAdvList }) => {
 
   const setAdvOnPage = () => {
     if (filteredAdvList) {
-      const advsOnPage = 8;
+      const advsOnPage = 1;
       const advsLength = filteredAdvList.length;
       const visibleAdvCount = advsLength > advsOnPage ? advsOnPage : advsLength;
       const start = currentPage * visibleAdvCount;
@@ -101,13 +122,14 @@ export const CarList = ({ filteredAdvList }) => {
           ))
         )}
       </CardLayout>
-      <Pagination
+      <StyledPagination
         count={pageCount}
         page={currentPage + 1}
         onChange={handlePageChange}
         variant="outlined"
         shape="rounded"
-        className={classes.pagination}
+        showFirstButton
+        showLastButton
       />
     </>
   );
