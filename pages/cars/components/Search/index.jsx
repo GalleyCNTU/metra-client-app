@@ -37,12 +37,8 @@ export const Search = ({ setAdvList }) => {
 
   const [fuelType, setFuelType] = useState(null);
   const [transmissionType, setTransmissionType] = useState(null);
-  const [selectedYear, setSelectedYear] = useState({
-    from: '',
-    to: '',
-  });
 
-  const [mileage, setMileage] = useState({
+  const [selectedYear, setSelectedYear] = useState({
     from: '',
     to: '',
   });
@@ -63,7 +59,6 @@ export const Search = ({ setAdvList }) => {
   useEffect(() => {
     const filters = [
       { from: selectedYear.from, to: selectedYear.to, attribute: 'year' },
-      { from: mileage.from, to: mileage.to, attribute: 'odometer' },
       { from: price.from, to: price.to, attribute: 'price' },
       { value: fuelType, attribute: 'fuel' },
       { value: transmissionType, attribute: 'transmission' },
@@ -96,10 +91,6 @@ export const Search = ({ setAdvList }) => {
 
   const resetFilter = () => {
     setSelectedYear({
-      from: '',
-      to: '',
-    });
-    setMileage({
       from: '',
       to: '',
     });
@@ -156,7 +147,7 @@ export const Search = ({ setAdvList }) => {
           <Box
             sx={{
               width: 420,
-              height: 470,
+              height: 370,
               backgroundColor: '#1E1E1E',
               padding: '20px',
               display: 'flex',
@@ -289,58 +280,6 @@ export const Search = ({ setAdvList }) => {
               </div>
             </div>
             <form style={{ width: '100%' }} ref={inputRef}>
-              <div className={classes.fromto}>
-                <span className={classes.form_select_text}>Пробіг</span>
-
-                <div className={classes.fromto} style={{ width: '75%' }}>
-                  <input
-                    className={classes.form_input}
-                    placeholder="Від"
-                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                    type="text"
-                    onKeyPress={(event) => {
-                      if (!/[0-9+]/.test(event.key)) {
-                        event.preventDefault();
-                      }
-                    }}
-                    onBlur={(e) => {
-                      if (e) {
-                        e.target.value = setLimits(
-                          'from',
-                          e.target.value,
-                          mileage.to,
-                          setMileage
-                        );
-                      }
-                    }}
-                  />
-
-                  <span className={classes.form_title_text}>-</span>
-
-                  <input
-                    // ref={inputRef}
-                    className={classes.form_input}
-                    placeholder="До"
-                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                    type="text"
-                    onKeyPress={(event) => {
-                      if (!/[0-9+]/.test(event.key)) {
-                        event.preventDefault();
-                      }
-                    }}
-                    onBlur={(e) => {
-                      if (e) {
-                        e.target.value = setLimits(
-                          'to',
-                          mileage.from,
-                          e.target.value,
-                          setMileage
-                        );
-                      }
-                    }}
-                  />
-                </div>
-              </div>
               <div className={classes.fromto}>
                 <span className={classes.form_select_text}>Ціна</span>
 
