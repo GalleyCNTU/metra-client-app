@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import AdvertisementBox from './components/AdvertisementBox';
+import Link from 'next/link';
 
 const Advertisement = ({ getAdvertisement, id }) => {
   const router = useRouter();
@@ -28,10 +29,12 @@ const Advertisement = ({ getAdvertisement, id }) => {
 
   return (
     <>
-      <IconButton size="large" className={classes.btn_back} href={'/cars'}>
-        <ArrowBackIcon fontSize="large" />
-        Назад
-      </IconButton>
+      <Link href={`/cars`}>
+        <IconButton size="large" className={classes.btn_back}>
+          <ArrowBackIcon fontSize="large" />
+          Назад
+        </IconButton>
+      </Link>
       <Container maxWidth={false} className={classes.container}>
         {adv ? (
           <AdvertisementBox

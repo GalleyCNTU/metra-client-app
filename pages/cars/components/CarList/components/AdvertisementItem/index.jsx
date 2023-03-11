@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -36,6 +37,7 @@ export const AdvertisementItem = ({
     <Item>
       <Paper
         sx={{
+          cursor: 'pointer',
           p: 2,
           maxWidth: 500,
           flexGrow: 1,
@@ -43,61 +45,64 @@ export const AdvertisementItem = ({
             theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         }}
       >
-        <Grid container spacing={2} sx={{ flexDirection: 'column' }}>
-          <Grid
-            item
-            style={{
-              display: 'flex',
-            }}
-            className={classes.img_grid}
-          >
-            <Image src={img} width="230px" height="172px" alt="complex" />
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" component="div">
-                  {make}
-                  <br />
-                  {model}
-                </Typography>
+        <Link href={`/cars/${id}`}>
+          <Grid container spacing={2} sx={{ flexDirection: 'column' }}>
+            <Grid
+              item
+              style={{
+                display: 'flex',
+              }}
+              className={classes.img_grid}
+            >
+              <Image src={img} width="230px" height="172px" alt="complex" />
+            </Grid>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={2}>
+                <Grid item xs>
+                  <Typography gutterBottom variant="subtitle1" component="div">
+                    {make}
+                    <br />
+                    {model}
+                  </Typography>
 
-                <Typography variant="body2" color="text.secondary">
-                  Паливо: {fuel}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Коробка: {transmission}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Пробіг: {odometer} км.
-                </Typography>
-              </Grid>
+                  <Typography variant="body2" color="text.secondary">
+                    Паливо: {fuel}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Коробка: {transmission}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Пробіг: {odometer} км.
+                  </Typography>
+                </Grid>
 
-              <Grid item>
-                <Typography variant="subtitle1" component="div">
-                  {price}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography sx={{ cursor: 'pointer' }} variant="body2">
-                  {id ? (
-                    <Button
-                      href={`/cars/${id}`}
-                      variant="outlined"
-                      sx={{ borderColor: '#FF8A00', color: '#FF8A00' }}
-                    >
-                      Детальніше
-                    </Button>
-                  ) : (
-                    <Button disabled variant="outlined">
-                      Детальніше
-                    </Button>
-                  )}
-                </Typography>
+                <Grid item>
+                  <Typography variant="subtitle1" component="div">
+                    {price}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography sx={{ cursor: 'pointer' }} variant="body2">
+                    {id ? (
+                      <Link href={`/cars/${id}`}>
+                        <Button
+                          variant="outlined"
+                          sx={{ borderColor: '#FF8A00', color: '#FF8A00' }}
+                        >
+                          Детальніше
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button disabled variant="outlined">
+                        Детальніше
+                      </Button>
+                    )}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Link>
       </Paper>
     </Item>
   );
