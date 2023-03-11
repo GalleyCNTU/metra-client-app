@@ -19,6 +19,9 @@ const AdvertisementBox = ({
   transmission,
   year,
 }) => {
+  const openLinkHandler = () => {
+    window.open(TELEGRAM_URL, '_blank');
+  };
   return (
     <>
       <Box
@@ -112,7 +115,10 @@ const AdvertisementBox = ({
               justifyContent: 'center',
             }}
           >
-            <Button href={TELEGRAM_URL} className={classes.btn_characteristics}>
+            <Button
+              onClick={openLinkHandler}
+              className={classes.btn_characteristics}
+            >
               Детальніше
             </Button>
           </Box>
