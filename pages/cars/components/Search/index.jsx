@@ -8,7 +8,7 @@ import Select from 'react-select';
 
 //utils
 import { carDataMapping } from '@/utils/carDataMapping';
-import { getFilteredAdvertisements } from '@/data/firebase';
+import { getFilteredAdvertisements, setAdvMakes } from '@/data/firebase';
 
 //scss styles
 import classes from './Search.module.scss';
@@ -23,58 +23,32 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const Search = ({ setAdvList }) => {
   const inputRef = useRef();
-  const [newAdvertisementsListTrigger, setNewAdvertisementsListTrigger] =
-    useState(0);
 
-  const [fromSelectValue, setFromSelectValue] = useState(null);
-  const [toSelectValue, setToSelectValue] = useState(null);
+  const [yearsList, setYearsList] = useState([]);
+  const [transmissionList, setTransmissionList] = useState([]);
+  const [fuelList, setFuelList] = useState([]);
+  const [makeList, setMakeList] = useState([]);
+
+  const [selectedYearFrom, setSelectedYearFrom] = useState(null);
+  const [selectedYearTo, setSelectedYearTo] = useState(null);
+
+  const [selectedPriceFrom, setSelectedPriceFrom] = useState(null);
+  const [selectedPriceTo, setSelectedPriceTo] = useState(null);
+
   const [selectedFuel, setSelectedFuel] = useState(null);
   const [selectedTransmition, setSelectedTransmition] = useState(null);
-
-  const [yearsArray, setYearsArray] = useState();
-  const [transmissionList, setTransmissionList] = useState();
-  const [fuelList, setFuelList] = useState();
-
-  const [fuelType, setFuelType] = useState(null);
-  const [transmissionType, setTransmissionType] = useState(null);
-  const [selectedYear, setSelectedYear] = useState({
-    from: '',
-    to: '',
-  });
-
-  const [mileage, setMileage] = useState({
-    from: '',
-    to: '',
-  });
-
-  const [price, setPrice] = useState({
-    from: '',
-    to: '',
-  });
-
-  const {
-    formState: { errors },
-  } = useForm({ mode: 'onSubmit' });
-
-  const colorStyles = {
-    control: (styles) => ({ ...styles, backgroundColor: 'white', height: 50 }),
-  };
+  const [selectedMake, setSelectedMake] = useState(null);
 
   useEffect(() => {
-    const filters = [
-      { from: selectedYear.from, to: selectedYear.to, attribute: 'year' },
-      { from: mileage.from, to: mileage.to, attribute: 'odometer' },
-      { from: price.from, to: price.to, attribute: 'price' },
-      { value: fuelType, attribute: 'fuel' },
-      { value: transmissionType, attribute: 'transmission' },
-    ];
+    setAdvMakes(setMakeList);
+    setYearsList([{ value: '', label: 'Рік' }, ...setYearList(1960)]);
 
-    getFilteredAdvertisements(setAdvList, filters);
-  }, [newAdvertisementsListTrigger]);
+    setFuelList([
+      { value: '', label: 'Тип палива' },
+      ...carDataMapping(['Бензин', 'Дизель', 'Газ']),
+    ]);
 
-  useEffect(() => {
-    const yList = [{ value: '', label: 'Рік' }, ...setYearList(1960)];
-    const trList = [
+    setTransmissionList([
       { value: '', label: 'Коробка передач' },
       ...carDataMapping([
         'Механіка 6 ст.',
@@ -83,51 +57,64 @@ export const Search = ({ setAdvList }) => {
         'Робот',
         'Варіатор',
       ]),
-    ];
-    const fList = [
-      { value: '', label: 'Тип палива' },
-      ...carDataMapping(['Бензин', 'Дизель', 'Газ']),
-    ];
-
-    setFuelList(fList);
-    setTransmissionList(trList);
-    setYearsArray(yList);
+    ]);
   }, []);
 
-  const resetFilter = () => {
-    setSelectedYear({
-      from: '',
-      to: '',
-    });
-    setMileage({
-      from: '',
-      to: '',
-    });
-    setPrice({
-      from: '',
-      to: '',
-    });
+  const searchHandler = () => {
+    const filters = [
+      {
+        from: selectedYearFrom?.value,
+        to: selectedYearTo?.value,
+        attribute: 'year',
+      },
+      {
+        from: selectedPriceFrom?.value,
+        to: selectedPriceTo?.value,
+        attribute: 'price',
+      },
+      { value: selectedFuel?.value, attribute: 'fuel' },
+      { value: selectedMake?.value, attribute: 'make' },
+      { value: selectedTransmition?.value, attribute: 'transmission' },
+    ];
 
-    if (inputRef.current) inputRef.current.reset();
-    setFuelType(null);
-    setTransmissionType(null);
-
-    setSelectedFuel(null);
-    setSelectedTransmition(null);
-
-    setFromSelectValue(null);
-    setToSelectValue(null);
-
-    // If you need to refresh the list immediately after clicking the clear filters button, uncomment
-    // setNewAdvertisementsListTrigger(newAdvertisementsListTrigger + 1);
+    getFilteredAdvertisements(setAdvList, filters);
   };
 
-  const setLimits = (dependent, from, to, setLim) => {
-    const limit = { to, from };
-    const newLimit = setNormBoundaries(dependent, limit);
-    setLim(newLimit);
-    if (dependent === 'from') return newLimit.from;
-    else return newLimit.to;
+  const resetHandler = () => {
+    if (inputRef.current) inputRef.current.reset();
+    setSelectedYearFrom(null);
+    setSelectedYearTo(null);
+    setSelectedPriceFrom(null);
+    setSelectedPriceTo(null);
+    setSelectedFuel(null);
+    setSelectedMake(null);
+    setSelectedTransmition(null);
+
+    // If you need to refresh the list immediately after clicking the clear filters button, uncomment
+    // searchHandler();
+  };
+
+  const setLimits = (dependent, oldFrom, oldTo, setLim) => {
+    const { to, from } = setNormBoundaries(dependent, {
+      from: oldFrom,
+      to: oldTo,
+    });
+
+    if (dependent === 'from') {
+      setLim(from ? { value: from, label: from } : null);
+      return from;
+    } else {
+      setLim(to ? { value: to, label: to } : null);
+      return to;
+    }
+  };
+
+  const {
+    formState: { errors },
+  } = useForm({ mode: 'onSubmit' });
+
+  const colorStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: 'white', height: 50 }),
   };
 
   return (
@@ -168,6 +155,32 @@ export const Search = ({ setAdvList }) => {
               <span className={classes.form_title_text}>Пошук авто</span>
             </div>
             <div className={classes.fromto}>
+              <span className={classes.form_select_text}>Марка</span>
+              <Select
+                value={selectedMake}
+                placeholder={<div>Оберіть марку авто</div>}
+                className={classes.form_select}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                })}
+                styles={{ ...colorStyles }}
+                options={makeList}
+                onChange={(e) => {
+                  if (e) {
+                    if (e.value)
+                      setSelectedMake({ value: e.value, label: e.label });
+                    else setSelectedMake(null);
+                  }
+                }}
+                components={{
+                  DropdownIndicator: () => null,
+                  IndicatorSeparator: () => null,
+                }}
+              />
+            </div>
+
+            <div className={classes.fromto}>
               <span className={classes.form_select_text}>Паливо</span>
               <Select
                 value={selectedFuel}
@@ -184,7 +197,6 @@ export const Search = ({ setAdvList }) => {
                     if (e.value)
                       setSelectedFuel({ value: e.value, label: e.label });
                     else setSelectedFuel(null);
-                    setFuelType(e.value);
                   }
                 }}
                 components={{
@@ -214,7 +226,6 @@ export const Search = ({ setAdvList }) => {
                         label: e.label,
                       });
                     else setSelectedTransmition(null);
-                    setTransmissionType(e.value);
                   }
                 }}
                 components={{
@@ -229,7 +240,7 @@ export const Search = ({ setAdvList }) => {
 
               <div className={classes.fromto} style={{ width: '75%' }}>
                 <Select
-                  value={fromSelectValue}
+                  value={selectedYearFrom}
                   placeholder={<div>Від</div>}
                   className={classes.form_select_fromto}
                   theme={(theme) => ({
@@ -237,18 +248,15 @@ export const Search = ({ setAdvList }) => {
                     borderRadius: 0,
                   })}
                   styles={{ ...colorStyles }}
-                  options={yearsArray}
+                  options={yearsList}
                   onChange={(e) => {
                     if (e) {
-                      const data = setLimits(
+                      setLimits(
                         'from',
                         e.value,
-                        selectedYear.to,
-                        setSelectedYear
+                        selectedYearTo?.value,
+                        setSelectedYearFrom
                       );
-                      if (data)
-                        setFromSelectValue({ value: data, label: data });
-                      else setFromSelectValue(null);
                     }
                   }}
                   components={{
@@ -260,7 +268,7 @@ export const Search = ({ setAdvList }) => {
                 <span className={classes.form_title_text}>-</span>
 
                 <Select
-                  value={toSelectValue}
+                  value={selectedYearTo}
                   placeholder={<div>До</div>}
                   className={classes.form_select_fromto}
                   theme={(theme) => ({
@@ -268,17 +276,15 @@ export const Search = ({ setAdvList }) => {
                     borderRadius: 0,
                   })}
                   styles={{ ...colorStyles }}
-                  options={yearsArray}
+                  options={yearsList}
                   onChange={(e) => {
                     if (e) {
-                      const data = setLimits(
+                      setLimits(
                         'to',
-                        selectedYear.from,
+                        selectedYearFrom?.value,
                         e.value,
-                        setSelectedYear
+                        setSelectedYearTo
                       );
-                      if (data) setToSelectValue({ value: data, label: data });
-                      else setToSelectValue(null);
                     }
                   }}
                   components={{
@@ -290,63 +296,10 @@ export const Search = ({ setAdvList }) => {
             </div>
             <form style={{ width: '100%' }} ref={inputRef}>
               <div className={classes.fromto}>
-                <span className={classes.form_select_text}>Пробіг</span>
-
-                <div className={classes.fromto} style={{ width: '75%' }}>
-                  <input
-                    className={classes.form_input}
-                    placeholder="Від"
-                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                    type="text"
-                    onKeyPress={(event) => {
-                      if (!/[0-9+]/.test(event.key)) {
-                        event.preventDefault();
-                      }
-                    }}
-                    onBlur={(e) => {
-                      if (e) {
-                        e.target.value = setLimits(
-                          'from',
-                          e.target.value,
-                          mileage.to,
-                          setMileage
-                        );
-                      }
-                    }}
-                  />
-
-                  <span className={classes.form_title_text}>-</span>
-
-                  <input
-                    // ref={inputRef}
-                    className={classes.form_input}
-                    placeholder="До"
-                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                    type="text"
-                    onKeyPress={(event) => {
-                      if (!/[0-9+]/.test(event.key)) {
-                        event.preventDefault();
-                      }
-                    }}
-                    onBlur={(e) => {
-                      if (e) {
-                        e.target.value = setLimits(
-                          'to',
-                          mileage.from,
-                          e.target.value,
-                          setMileage
-                        );
-                      }
-                    }}
-                  />
-                </div>
-              </div>
-              <div className={classes.fromto}>
                 <span className={classes.form_select_text}>Ціна</span>
 
                 <div className={classes.fromto} style={{ width: '75%' }}>
                   <input
-                    // ref={inputRef}
                     className={classes.form_input}
                     placeholder="Від"
                     style={{ backgroundColor: errors.userName && '#ffc38c' }}
@@ -361,8 +314,8 @@ export const Search = ({ setAdvList }) => {
                         e.target.value = setLimits(
                           'from',
                           e.target.value,
-                          price.to,
-                          setPrice
+                          selectedPriceTo?.value,
+                          setSelectedPriceFrom
                         );
                       }
                     }}
@@ -385,9 +338,9 @@ export const Search = ({ setAdvList }) => {
                       if (e) {
                         e.target.value = setLimits(
                           'to',
-                          price.from,
+                          selectedPriceFrom?.value,
                           e.target.value,
-                          setPrice
+                          setSelectedPriceTo
                         );
                       }
                     }}
@@ -398,17 +351,13 @@ export const Search = ({ setAdvList }) => {
             <div className={classes.form_under_section}>
               <button
                 className={classes.form_under_section_button}
-                onClick={resetFilter}
+                onClick={resetHandler}
               >
                 Очистити фільтр
               </button>
               <button
                 className={classes.form_under_section_button}
-                onClick={() =>
-                  setNewAdvertisementsListTrigger(
-                    newAdvertisementsListTrigger + 1
-                  )
-                }
+                onClick={searchHandler}
               >
                 Пошук
               </button>

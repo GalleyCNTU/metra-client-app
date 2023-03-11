@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, onValue } from 'firebase/database';
 
-import { advToList, isValidAdv } from 'utils';
+import { advToList, carDataMapping, isValidAdv } from 'utils';
 
 const db = initFirebase();
 
@@ -84,4 +84,15 @@ export async function getAllMakes() {
     console.log(error.message);
     return [];
   }
+}
+
+export async function setAdvMakes(cb) {
+  const advList = await getAllAdvertisements();
+  const advMakeList = advList.map((adv) => adv.make);
+  const uniqueMakeList = [...new Set(advMakeList)];
+  const mList = [
+    { value: '', label: 'Марка' },
+    ...carDataMapping(uniqueMakeList),
+  ];
+  cb(mList);
 }
