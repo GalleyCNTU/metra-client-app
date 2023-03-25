@@ -38,7 +38,7 @@ const AdvertisementBox = ({
             justifyContent: 'center',
           }}
         >
-          <Slider items={images} />
+          <Slider items={images} make={make} model={model} />
         </Box>
         <Box ml={3}>
           <Typography
