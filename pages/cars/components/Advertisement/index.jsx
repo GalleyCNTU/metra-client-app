@@ -1,15 +1,16 @@
-import { Container, CircularProgress, Box } from '@mui/material';
-
 import React, { useState, useEffect } from 'react';
-
-import classes from './components/AdvertisementBox.module.scss';
 import { useRouter } from 'next/router';
 
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import AdvertisementBox from './components/AdvertisementBox';
-import Link from 'next/link';
+
+import { Container, CircularProgress, Box } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+
+import BackIcon from 'assets/BackIcon.svg';
+import classes from './components/AdvertisementBox.module.scss';
 
 const Advertisement = ({ getAdvertisement, id }) => {
   const router = useRouter();
@@ -31,8 +32,8 @@ const Advertisement = ({ getAdvertisement, id }) => {
     <>
       <Link href={`/cars`}>
         <IconButton size="large" className={classes.btn_back}>
-          <ArrowBackIcon fontSize="large" />
-          Назад
+          <Image src={BackIcon} alt="back-icon" />
+          {adv && `${adv.make} ${adv.model}`}
         </IconButton>
       </Link>
       <Container maxWidth={false} className={classes.container}>
