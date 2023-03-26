@@ -1,17 +1,45 @@
 .characteristics {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  &_head {
+    font-family: Gilroy;
+    font-weight: 800;
+    color: white;
+    margin: 10px 0;
+    &_make {
+      font-size: 40px;
+    }
+    &_price {
+      font-size: 30px;
+    }
+  }
+  &_block {
+    background: #393e46;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 50px;
+    width: 90%;
+  }
   &_font {
     font-family: 'Gilroy';
     font-weight: 800;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     word-break: break-all;
+    margin-left: 5px;
   }
   &_column {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 100%;
+
+    &_box {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      width: 50%;
+    }
   }
 }
 
@@ -19,25 +47,21 @@
   &_back {
     width: 100%;
     cursor: pointer;
-    height: 40px;
     font-family: 'Gilroy';
-    font-weight: 800;
-    color: white;
-    font-size: 18px;
+    font-size: 70px;
+    line-height: 116px;
+    font-weight: 900;
+    color: #393e46;
+    text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: flex-start;
     border-radius: 0%;
-    background-color: #ff8a00;
-    &:hover {
-      background-color: #ff8a00;
-      color: white;
-    }
   }
   &_characteristics {
     margin: 40px 0 20px 0;
-    width: 170px;
+    width: 230px;
     background-color: #ff8a00;
     cursor: pointer;
     height: 40px;
@@ -59,27 +83,34 @@
 .container {
   display: flex;
   justify-content: center;
-  width: 60%;
+}
+
+.sandboxCarousel {
+  width: 90%;
+  position: relative;
 }
 
 .embla {
   --slide-spacing: 1rem;
   --slide-size: 100%;
   --slide-height: 19rem;
-  padding: 1.6rem;
 }
 .emblaViewport {
   overflow: hidden;
+  background: #393e46;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 .emblaContainer {
   display: flex;
-  margin-left: calc(var(--slide-spacing) * -1);
+  padding: 0.7rem;
 }
 .emblaSlide {
   flex: 0 0 var(--slide-size);
   min-width: 0;
-  padding-left: var(--slide-spacing);
+  margin: 0 0.5rem;
   position: relative;
+  cursor: pointer;
 }
 .emblaSlideImg {
   display: block;
@@ -97,31 +128,26 @@
 }
 .emblaThumbsContainer {
   display: flex;
-  justify-content: center;
-  margin: 0;
+  justify-content: flex-start;
 }
 .emblaThumbsSlide {
-  flex: 0 0 28%;
-  margin: 0 10px;
+  flex: 0 0 30%;
+  margin: 10px;
+  padding: 0.7rem;
   min-width: 0;
-  position: relative;
+  background: #393e46;
+  border-radius: 10px;
 }
-@media (min-width: 576px) {
-  .emblaThumbsSlide {
-    flex: 0 0 18%;
-  }
-}
+
 .emblaThumbsSlideButton {
+  position: relative;
   background-color: transparent;
   touch-action: manipulation;
-  display: block;
   text-decoration: none;
   cursor: pointer;
   border: 0;
-  padding: 0;
-  margin: 0;
   width: 100%;
-  opacity: 0.2;
+  opacity: 0.5;
   transition: opacity 0.2s;
 }
 .emblaThumbsSlideSelected .emblaThumbsSlideButton {
@@ -129,37 +155,21 @@
 }
 .emblaThumbsSlideImg {
   object-fit: cover;
-}
-
-.sandboxCarousel {
-  width: 100%;
-  position: relative;
-  background-color: var(--background-code);
-}
-@media (max-width: 749px) {
-  .sandboxCarousel {
-    border-top: 0.1rem solid var(--detail-low-contrast);
-    border-bottom: 0.1rem solid var(--detail-low-contrast);
-  }
-}
-@media (min-width: 750px) {
-  .sandboxCarousel {
-    border-radius: 0.4rem;
-    border: 0.1rem solid var(--detail-low-contrast);
-  }
+  border-radius: 10px;
 }
 
 .slider {
   &_img {
     width: 100%;
-    height: 530px;
-    &_nav {
-      height: 120px;
-    }
-  }
-  &_box {
-    width: 100%;
     height: 630px;
+
+    &_png {
+      border-radius: 10px;
+      filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.1));
+    }
+    &_nav {
+      height: 250px;
+    }
   }
 }
 
@@ -167,14 +177,18 @@
   .slider {
     &_img {
       width: 100%;
-      height: 830px;
+      height: 1100px;
       &_nav {
-        height: 188px;
+        height: 330px;
       }
     }
-    &_box {
-      width: 100%;
-      height: 830px;
+  }
+  .sandboxCarousel {
+    width: 70%;
+  }
+  .characteristics {
+    &_block {
+      width: 70%;
     }
   }
 }
@@ -183,14 +197,19 @@
   .slider {
     &_img {
       width: 100%;
-      height: 700px;
+      height: 969px;
+
       &_nav {
-        height: 158px;
+        height: 290px;
       }
     }
-    &_box {
-      width: 100%;
-      height: 700px;
+  }
+  .sandboxCarousel {
+    width: 70%;
+  }
+  .characteristics {
+    &_block {
+      width: 70%;
     }
   }
 }
@@ -199,14 +218,18 @@
   .slider {
     &_img {
       width: 100%;
-      height: 600px;
+      height: 872px;
       &_nav {
-        height: 136px;
+        height: 261px;
       }
     }
-    &_box {
-      width: 100%;
-      height: 600px;
+  }
+  .sandboxCarousel {
+    width: 75%;
+  }
+  .characteristics {
+    &_block {
+      width: 75%;
     }
   }
 }
@@ -215,98 +238,197 @@
   .slider {
     &_img {
       width: 100%;
-      height: 480px;
+      height: 688px;
       &_nav {
-        height: 108px;
+        height: 206px;
       }
     }
-    &_box {
-      width: 100%;
-      height: 480px;
+  }
+  .sandboxCarousel {
+    width: 75%;
+  }
+  .characteristics {
+    &_block {
+      width: 75%;
     }
   }
 }
 
 @media (max-width: 1150px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    width: 70%;
-  }
   .slider {
     &_img {
       width: 100%;
-      height: 450px;
+      height: 541px;
       &_nav {
-        height: 101px;
+        height: 162px;
       }
     }
-    &_box {
-      width: 100%;
-      height: 450px;
+  }
+  .sandboxCarousel {
+    width: 75%;
+  }
+  .characteristics {
+    &_block {
+      width: 75%;
     }
   }
 }
 
 @media (max-width: 850px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    width: 75%;
+  .btn {
+    &_back {
+      font-size: 50px;
+    }
   }
   .slider {
     &_img {
       width: 100%;
-      height: 400px;
+      height: 454px;
       &_nav {
-        height: 90px;
+        height: 136px;
       }
     }
-    &_box {
-      width: 100%;
-      height: 400px;
+  }
+  .sandboxCarousel {
+    width: 85%;
+  }
+  .characteristics {
+    &_block {
+      width: 85%;
     }
   }
 }
 
-@media (max-width: 690px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    width: 90%;
+@media (max-width: 756px) {
+  .characteristics {
+    &_block {
+      padding: 9px;
+    }
+    &_head {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &_column {
+      justify-content: center;
+      &_box {
+        width: 55%;
+      }
+    }
+  }
+  .btn {
+    &_back {
+      font-size: 40px;
+    }
   }
   .slider {
     &_img {
       width: 100%;
-      height: 350px;
+      height: 390px;
       &_nav {
-        height: 79px;
+        height: 176px;
       }
     }
-    &_box {
+  }
+  .emblaThumbsSlide {
+    flex: 0 0 45%;
+  }
+  .sandboxCarousel {
+    width: 90%;
+  }
+  .characteristics {
+    &_block {
+      width: 90%;
+    }
+  }
+}
+@media (max-width: 715px) {
+  .characteristics {
+    &_block {
+      padding: 5px;
+    }
+    &_head {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &_column {
+      justify-content: center;
+      &_box {
+        width: 67%;
+      }
+    }
+  }
+  .btn {
+    &_back {
+      font-size: 40px;
+    }
+  }
+  .slider {
+    &_img {
       width: 100%;
-      height: 350px;
+      height: 314px;
+      &_nav {
+        height: 141px;
+      }
+    }
+  }
+  .emblaThumbsSlide {
+    flex: 0 0 45%;
+  }
+  .sandboxCarousel {
+    width: 100%;
+  }
+  .characteristics {
+    &_block {
+      width: 100%;
     }
   }
 }
 
 @media (max-width: 500px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    width: 95%;
+  .characteristics {
+    &_block {
+      padding: 0;
+    }
+    &_head {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &_column {
+      justify-content: center;
+      &_box {
+        width: 67%;
+      }
+    }
+  }
+  .btn {
+    &_back {
+      font-size: 40px;
+    }
   }
   .slider {
     &_img {
       width: 100%;
-      height: 280px;
+      height: 314px;
       &_nav {
-        height: 63px;
+        height: 141px;
       }
     }
-    &_box {
+  }
+  .emblaThumbsSlide {
+    flex: 0 0 45%;
+  }
+  .sandboxCarousel {
+    width: 100%;
+  }
+  .characteristics {
+    &_block {
       width: 100%;
-      height: 280px;
     }
   }
 }

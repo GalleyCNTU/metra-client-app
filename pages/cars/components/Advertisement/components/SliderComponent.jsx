@@ -63,6 +63,7 @@ const SliderComponent = ({ items, model, make }) => {
                         src={item.url}
                         alt={`${make} ${model}`}
                         layout="fill"
+                        className={classes.slider_img_png}
                       />
                     </div>
                   </a>
