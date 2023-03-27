@@ -1,11 +1,22 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-          "@/components/*": ["components/*"],
-          "@/utils/*": ["utils/*"],
-          "@/public/*": ["public/*"],
-          "@/data/*": ["data/*"]
-        }
-      }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "@/public/*": [
+        "public/*"
+      ],
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/assets/*": [
+        "assets/*"
+      ]
+    }
+  }
 }
