@@ -1,46 +1,37 @@
+import Image from 'next/image';
+
 import classes from './CarBuying.module.scss';
-import { CarForm } from '../CarForm';
 
-import IMG from 'public/img/rotated_background.jpg';
+import yellowCarBackground from 'public/img/carBuyingYellow.png';
+import drawerMenu from 'public/img/blackDrawerMenu.svg';
 
-export const CarBuying = ({ makes }) => (
-  <div
-    className={classes.car_buying}
-    style={{ background: `url(${IMG.src}) no-repeat`, backgroundSize: '100%' }}
-  >
-    <div className={classes.car_buying_upper}>
-      <div className={classes.car_buying_upper_title}>
-        <span className={classes.car_buying_upper_title_text}>
-          ТЕРМІНОВИЙ ВИКУП АВТО
-        </span>
+export const CarBuying = ({isOpen, setIsOpen}) => {
+  return (
+    <div className={classes.carBuying}>
+      <div className={classes.mobileMenu_button}>
+        <Image
+          src={drawerMenu}
+          onClick={() => setIsOpen(!isOpen)}
+          alt="menuButton"
+          width="39px"
+          height="29px"
+          style={{ cursor: 'pointer' }}
+        />
       </div>
-      <div className={classes.car_buying_upper_form}>
-        <CarForm makes={makes} />
+      <div className={classes.carBuying_upper}>
+        <div className={classes.carBuying_upper_title}>
+          <span className={classes.carBuying_upper_title_text}>
+            ТЕРМІНОВИЙ ВИКУП АВТО
+          </span>
+        </div>
+        <div
+          className={classes.carBuying_upper_car}
+          style={{
+            background: `url(${yellowCarBackground.src}) no-repeat`,
+            backgroundSize: '100%',
+          }}
+        ></div>
       </div>
     </div>
-    <div className={classes.car_buying_lower}>
-      <div className={classes.car_buying_lower_info}>
-        <span style={{ marginTop: 20 }}>
-          БУДЬ-ЯКИЙ
-          <br />
-          СТАН ТА ПРОБІГ
-        </span>
-        <span>
-          РІЗНИХ РОКІВ
-          <br />
-          ТА БУДЬ-ЯКИХ МАРОК
-        </span>
-        <span>
-          ЕКОНОМІЯ
-          <br />
-          ЧАСУ ПІД ЧАС ПРОДАЖУ
-        </span>
-        <span>
-          ОФІЦІЙНЕ
-          <br />
-          ОФОРМЛЕННЯ УГОДИ
-        </span>
-      </div>
-    </div>
-  </div>
-);
+  );
+};

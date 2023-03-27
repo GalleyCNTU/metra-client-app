@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 //constants
-import { setNormBoundaries, setYearList } from 'utils';
+import { getSliderMarks, setNormBoundaries, setYearList } from 'utils';
 
 import { useForm } from 'react-hook-form';
 import Select from 'react-select';
@@ -20,6 +20,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Slider from '@mui/material/Slider';
+
+const minDistance = 500;
 
 export const Search = ({ setAdvList }) => {
   const inputRef = useRef();
@@ -32,12 +35,14 @@ export const Search = ({ setAdvList }) => {
   const [selectedYearFrom, setSelectedYearFrom] = useState(null);
   const [selectedYearTo, setSelectedYearTo] = useState(null);
 
-  const [selectedPriceFrom, setSelectedPriceFrom] = useState(null);
-  const [selectedPriceTo, setSelectedPriceTo] = useState(null);
-
   const [selectedFuel, setSelectedFuel] = useState(null);
   const [selectedTransmition, setSelectedTransmition] = useState(null);
   const [selectedMake, setSelectedMake] = useState(null);
+
+  const [price, setPrice] = useState([0, 30000]);
+  const [sliderMarks, setSliderMarks] = useState(
+    getSliderMarks(30000, 10000)
+  );
 
   useEffect(() => {
     setAdvMakes(setMakeList);
@@ -68,8 +73,8 @@ export const Search = ({ setAdvList }) => {
         attribute: 'year',
       },
       {
-        from: selectedPriceFrom?.value,
-        to: selectedPriceTo?.value,
+        from: price[0],
+        to: price[1],
         attribute: 'price',
       },
       { value: selectedFuel?.value, attribute: 'fuel' },
@@ -84,14 +89,24 @@ export const Search = ({ setAdvList }) => {
     if (inputRef.current) inputRef.current.reset();
     setSelectedYearFrom(null);
     setSelectedYearTo(null);
-    setSelectedPriceFrom(null);
-    setSelectedPriceTo(null);
     setSelectedFuel(null);
     setSelectedMake(null);
     setSelectedTransmition(null);
-
+    setPrice([0, 500000]);
     // If you need to refresh the list immediately after clicking the clear filters button, uncomment
     // searchHandler();
+  };
+
+  const sliderChangeHandle = (event, newValue, activeThumb) => {
+    if (!Array.isArray(newValue)) {
+      return;
+    }
+
+    if (activeThumb === 0) {
+      setPrice([Math.min(newValue[0], price[1] - minDistance), price[1]]);
+    } else {
+      setPrice([price[0], Math.max(newValue[1], price[0] + minDistance)]);
+    }
   };
 
   const setLimits = (dependent, oldFrom, oldTo, setLim) => {
@@ -298,54 +313,25 @@ export const Search = ({ setAdvList }) => {
               <div className={classes.fromto}>
                 <span className={classes.form_select_text}>Ціна</span>
 
-                <div className={classes.fromto} style={{ width: '75%' }}>
-                  <input
-                    className={classes.form_input}
-                    placeholder="Від"
-                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                    type="text"
-                    onKeyPress={(event) => {
-                      if (!/[0-9+]/.test(event.key)) {
-                        event.preventDefault();
-                      }
-                    }}
-                    onBlur={(e) => {
-                      if (e) {
-                        e.target.value = setLimits(
-                          'from',
-                          e.target.value,
-                          selectedPriceTo?.value,
-                          setSelectedPriceFrom
-                        );
-                      }
+                <Box sx={{ width: '75%' }}>
+                  <Slider
+                    getAriaLabel={() => 'Minimum distance'}
+                    value={price}
+                    onChange={sliderChangeHandle}
+                    valueLabelDisplay="auto"
+                    min={0}
+                    max={30000}
+                    step={500}
+                    disableSwap
+                    marks={sliderMarks}
+                    classes={{
+                      markLabelActive: classes.sliderDisabledMarks,
+                      markLabel: classes.sliderActiveMarks,
+                      colorPrimary: classes.sliderRange,
+                      colorSecondary: classes.sliderPoint,
                     }}
                   />
-
-                  <span className={classes.form_title_text}>-</span>
-
-                  <input
-                    // ref={inputRef}
-                    className={classes.form_input}
-                    placeholder="До"
-                    style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                    type="text"
-                    onKeyPress={(event) => {
-                      if (!/[0-9+]/.test(event.key)) {
-                        event.preventDefault();
-                      }
-                    }}
-                    onBlur={(e) => {
-                      if (e) {
-                        e.target.value = setLimits(
-                          'to',
-                          selectedPriceFrom?.value,
-                          e.target.value,
-                          setSelectedPriceTo
-                        );
-                      }
-                    }}
-                  />
-                </div>
+                </Box>
               </div>
             </form>
             <div className={classes.form_under_section}>
@@ -368,3 +354,54 @@ export const Search = ({ setAdvList }) => {
     </Box>
   );
 };
+
+{
+  /* <div className={classes.fromto} style={{ width: '75%' }}>
+  <input
+    className={classes.form_input}
+    placeholder="Від"
+    style={{ backgroundColor: errors.userName && '#ffc38c' }}
+    type="text"
+    onKeyPress={(event) => {
+      if (!/[0-9+]/.test(event.key)) {
+        event.preventDefault();
+      }
+    }}
+    onBlur={(e) => {
+      if (e) {
+        e.target.value = setLimits(
+          'from',
+          e.target.value,
+          selectedPriceTo?.value,
+          setSelectedPriceFrom
+        );
+      }
+    }}
+  />
+
+  <span className={classes.form_title_text}>-</span>
+
+  <input
+    // ref={inputRef}
+    className={classes.form_input}
+    placeholder="До"
+    style={{ backgroundColor: errors.userName && '#ffc38c' }}
+    type="text"
+    onKeyPress={(event) => {
+      if (!/[0-9+]/.test(event.key)) {
+        event.preventDefault();
+      }
+    }}
+    onBlur={(e) => {
+      if (e) {
+        e.target.value = setLimits(
+          'to',
+          selectedPriceFrom?.value,
+          e.target.value,
+          setSelectedPriceTo
+        );
+      }
+    }}
+  />
+</div> */
+}

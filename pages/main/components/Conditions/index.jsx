@@ -36,7 +36,6 @@ export const Conditions = () => {
     return (
         <div className={classes.what_cars}>
             <div className={classes.what_cars_background}>
-                <span>?</span>
             </div>
             <div className={classes.what_cars_top}>
                 <span className={classes.what_cars_top_title}>Які авто <br /> ми купуємо?</span>
