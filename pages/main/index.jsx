@@ -42,7 +42,7 @@ const Main = ({ advertisementList, makes }) => {
         <BuyingInfo />
         <WhyWe />
         <PurchasedCars advertisementList={advertisementList} />
-        <CheckPrice makes={makes} />
+        {/* <CheckPrice makes={makes} /> */}
         <Details />
         <CarForm makes={makes} />
       </div>
