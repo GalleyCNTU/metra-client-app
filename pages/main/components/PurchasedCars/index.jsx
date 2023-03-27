@@ -19,25 +19,24 @@ export const PurchasedCars = ({ advertisementList }) => {
               <PurchasedCarBox
                 images={item.images}
                 purchasedCarTitle={`${item.make} ${item.model}`}
-                purchasedCarSubtitle={`${item.year} р., ${
-                  item.odometer !== '0'
-                    ? item.odometer + ' тис.'
-                    : item.odometer + ' км.'
-                }, ${item.fuel}, ${item.engine}, ${item.drive}, ${
-                  item.transmission
-                }`}
+                transmission={item.transmission}
+                drive={item.drive}
+                fuel={item.fuel}
+                engine={item.engine}
+                odometer={item.odometer}
                 purchasedCarPrice={item.price}
                 key={getRandomKey(item[i])}
               />
             );
           })}
         </div>
-        <div className={classes.purchased_cars_bottom_button}>
-          <a href="#price">
-            <button>ДІЗНАТИСЯ ВАРТІСТЬ</button>
-          </a>
-        </div>
       </div>
     </div>
   );
 };
+
+// // ${item.year} р., ${
+//   item.odometer !== '0'
+//     ? item.odometer + ' тис.'
+//     : item.odometer + ' км.'
+// },

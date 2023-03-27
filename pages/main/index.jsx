@@ -1,4 +1,6 @@
-import { Layout } from 'components';
+import { useState } from 'react';
+
+import { Layout, Drawer } from 'components';
 import {
   CarBuying,
   AboutUs,
@@ -7,6 +9,7 @@ import {
   WhyWe,
   PurchasedCars,
   CheckPrice,
+  Details,
   CarForm,
 } from './components';
 
@@ -16,9 +19,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getAllAdvertisements, getAllMakes } from '@/data/firebase';
 
 const Main = ({ advertisementList, makes }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Layout>
+    <Layout isOpen={isOpen} setIsOpen={setIsOpen}>
       <div>
+        <Drawer isOpen={isOpen} setIsOpen={setIsOpen} anchor="left" />
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -30,17 +36,15 @@ const Main = ({ advertisementList, makes }) => {
           draggable
           pauseOnHover
         />
-        {/* <Header /> */}
-        {/* <CarBuying makes={makes} /> */}
-        {/* <AboutUs /> */}
+        <CarBuying isOpen={isOpen} setIsOpen={setIsOpen} />
+        <AboutUs />
         <Conditions />
         <BuyingInfo />
         <WhyWe />
-        {/* <PurchasedCars advertisementList={advertisementList} /> */}
-        {/* <CheckPrice makes={makes} /> */}
+        <PurchasedCars advertisementList={advertisementList} />
+        <CheckPrice makes={makes} />
+        <Details />
         <CarForm makes={makes} />
-        {/* <Contacts />
-        <Footer />  */}
       </div>
     </Layout>
   );

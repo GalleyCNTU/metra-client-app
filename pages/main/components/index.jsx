@@ -6,3 +6,4 @@ export { CheckPrice } from './CheckPrice';
 export { Conditions } from './Conditions';
 export { PurchasedCars } from './PurchasedCars';
 export { WhyWe } from './WhyWe';
+export { Details } from './Details';
