@@ -1,19 +1,20 @@
-import classes from "../WhyWe.module.scss"
+import { Box, Typography } from '@mui/material';
+import classes from '../WhyWe.module.scss';
 
-export const WhyWeItem = ({ svgPath, title, subtitle }) => (
-    <div className={classes.why_we_left_block}>
-        <div className={classes.why_we_left_block_image}>
-            <svg fill='orange' xmlns="http://www.w3.org/2000/svg" height="50" width="50"><path d={svgPath} /></svg>
-        </div>
-
-        <div className={classes.why_we_left_block_text}>
-            <div className={classes.why_we_left_block_text_title}>
-                {title}
-            </div>
-
-            <div className={classes.why_we_left_block_text_subtitle}>
-                {subtitle}
-            </div>
-        </div>
-    </div>
-)
+export const WhyWeItem = ({ title, subtitle }) => (
+  <Box className={classes.why_we_item_block}>
+    <Box className={classes.why_we_item_info}>
+      <Box className={classes.why_we_item_header}>
+        <Typography className={classes.why_we_item_title}>{title}</Typography>
+        <Typography
+          className={`${classes.why_we_item_title} ${classes.why_we_item_plus}`}
+        >
+          +
+        </Typography>
+      </Box>
+      <Typography className={classes.why_we_item_subtitle}>
+        {subtitle}
+      </Typography>
+    </Box>
+  </Box>
+);

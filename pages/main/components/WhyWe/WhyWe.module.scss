@@ -1,164 +1,183 @@
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 1650px;
+  width: 100%;
+}
+
 .why_we {
-    margin-top: 10px;
-    width: 100%;
-    height: 470px;
-    background-color: #1E1E1E;
+  width: 100%;
+  background: url('../../../../public/img/whyWeBackground.png') no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rem 2rem;
+
+  &_header {
     display: flex;
     align-items: center;
-    padding: 0 161px;
-    z-index: 10;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 7rem;
+  }
 
-    &_left {
-        padding: 115px 0;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+  &_title {
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 41px;
+    text-align: center;
+    letter-spacing: 0.374px;
+    color: #393e46;
+  }
 
-        &_block {
-            width: 500px;
-            display: flex;
-            height: 50px;
-
-            &_image {
-                margin-top: 3px;
-                width: 53px;
-                margin-right: 30px;
-                display: flex;
-                align-items:center;
-                justify-content: center;
-            }
-
-            &_text {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-
-                &_title {
-                    font-family: 'Gilroy';
-                    font-style: normal;
-                    font-weight: 800;
-                    font-size: 24px;
-                    line-height: 20px;
-                    color: #FFFFFF;
-                    margin-bottom: 5px;
-                }
-
-                &_subtitle {
-                    font-family: 'Gilroy';
-                    font-style: normal;
-                    font-size: 18px;
-                    line-height: 20px;
-                    color: #FFFFFF;
-                }
-            }
-        }
+  &_row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &_item {
+    &_block {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      background: #393e46;
+      width: 25rem;
+      gap: 1rem;
+      padding: 1.25rem;
+      height: 18.75rem;
+      margin: 0 2rem;
+      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
     }
 
-    &_right {
-        width: 50%;
+    &_info {
+      display: flex;
+      height: 10.813rem;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &_header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_title {
+      font-family: 'Gilroy-Bold', sans-serif;
+      font-size: 5.375rem;
+      line-height: 116px;
+      text-align: center;
+      color: #ff8a00;
+      font-weight: 700;
+    }
+
+    &_subtitle {
+      font-family: 'Gilroy-Bold', sans-serif;
+      font-size: 1.75rem;
+      line-height: 34px;
+
+      text-align: center;
+      letter-spacing: 0.36px;
+      font-weight: 500;
+      color: #fbfbfd;
+    }
+    &_plus {
+      color: #fbfbfd;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .why_we {
+    width: 100%;
+    background: #fbfbfd;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 0 2rem;
+
+    &_header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      margin-bottom: 0;
+    }
+
+    &_title {
+      font-family: 'Gilroy-Bold', sans-serif;
+      font-size: 1.875rem;
+      font-weight: 700;
+      line-height: 41px;
+      text-align: center;
+      letter-spacing: 0.374px;
+      color: #393e46;
+    }
+
+    &_row {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    &_item {
+      &_block {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: #393e46;
+        width: 16.5rem;
+        gap: 1rem;
+        padding: 0 1.25rem;
+        padding-bottom: 1.5rem;
+        height: 13.5rem;
+        margin: 1.5rem;
+        box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+      }
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         height: 100%;
+      }
+
+      &_header {
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      &_title {
+        font-family: 'Gilroy-Bold', sans-serif;
+        font-size: 3rem;
+        line-height: 116px;
+        text-align: center;
+        color: #ff8a00;
+        font-weight: 700;
+      }
 
-        span {
-            font-family: 'Gilroy';
-            font-style: normal;
-            font-weight: 800;
-            font-size: 72px;
-            line-height: 100px;
-            text-align: right;
-            text-transform: uppercase;
-            color: #FFFFFF;
-            width: 573px;
-        }
+      &_subtitle {
+        font-family: 'Gilroy-Bold', sans-serif;
+        font-size: 1.375rem;
+        line-height: 34px;
+
+        text-align: center;
+        letter-spacing: 0.36px;
+        font-weight: 500;
+        color: #fbfbfd;
+      }
+      &_plus {
+        color: #fbfbfd;
+      }
     }
-}
-
-
-@media (max-width : 1150px) {
-    .why_we {
-        margin-top: 10px;
-        width: 100%;
-        height: 570px;
-        background-color: #1E1E1E;
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        padding: 0;
-    
-        &_left {
-            padding: 0px;
-            width: 100%;
-            height: 70%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-    
-            &_block {
-                width: 300px;
-                display: flex;
-                height: 50px;
-                margin-left: 40px;
-    
-                &_image {
-                    margin-top: 3px;
-                    width: 53px;
-                    margin-right: 25px;
-                    display: flex;
-                    align-items:center;
-                    justify-content: center;
-                }
-    
-                &_text {
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-    
-                    &_title {
-                        font-family: 'Gilroy';
-                        font-style: normal;
-                        font-weight: 800;
-                        font-size: 24px;
-                        line-height: 20px;
-                        color: #FFFFFF;
-                        margin-bottom: 5px;
-                    }
-    
-                    &_subtitle {
-                        font-family: 'Gilroy';
-                        font-style: normal;
-                        font-size: 18px;
-                        line-height: 20px;
-                        color: #FFFFFF;
-                    }
-                }
-            }
-        }
-    
-        &_right {
-            margin-top: 10px;
-            width: 100%;
-            height: 30%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-    
-            span {
-                font-family: 'Gilroy';
-                font-style: normal;
-                font-weight: 800;
-                font-size: 34px;
-                line-height: 45px;
-                text-align: center;
-                text-transform: uppercase;
-                color: #FFFFFF;
-                width: 573px;
-            }
-        }
-    }
+  }
 }

@@ -1,198 +1,213 @@
-.what_cars {
-    width: 100%;
-    height: 820px;
-    background-color: #1E1E1E;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 10;
-
-    &_background {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-
-        span {
-            position: absolute;
-            font-family: 'Gilroy';
-            font-style: normal;
-            font-weight: 800;
-            font-size: 1400px;
-            height: 660px;
-            color: rgba(255, 255, 255, 0.1);
-            -moz-user-select: none;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-            top: -450px;
-            margin-left: 60px;
-            z-index: 0;
-        }
-    }
-
-    &_top {
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        width: 100%;
-        height: 33%;
-
-        &_title {
-            margin-right: 200px;
-            font-family: 'Gilroy';
-            font-style: normal;
-            font-weight: 800;
-            font-size: 72px;
-            line-height: 100px;
-            text-align: right;
-            text-transform: uppercase;
-            color: #FFFFFF;
-
-        }
-    }
-
-    &_bottom {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 67%;
-
-        &_block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 326px;
-            height: 390px;
-            margin: 0 -15px;
-            z-index: 1;
-
-            &_image {
-                width: 326px;
-                height: 228px;
-            }
-
-            &_title {
-                width: 255px;
-                font-family: 'Gilroy';
-                font-style: normal;
-                font-weight: 800;
-                font-size: 24px;
-                line-height: 30px;
-                text-align: center;
-                color: #FFFFFF;
-                margin-bottom: 20px;
-            }
-
-            &_subtitle {
-                width: 255px;
-                padding: 0 15px;
-                font-family: 'Gilroy';
-                font-style: normal;
-                font-size: 16px;
-                line-height: 20px;
-                text-align: center;
-                color: #FFFFFF;
-            }
-
-        }
-    }
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
-@media (max-width : 1310px) {}
-
-@media (max-width : 1150px) {
-    .what_cars {
-        width: 100%;
-        height: 2000px;
-        background-color: #1E1E1E;
-        display: flex;
-        flex-direction: column;
-
-        &_background {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            display: none;
-
-            span {
-                position: absolute;
-                font-family: 'Gilroy';
-                font-style: normal;
-                font-weight: 800;
-                font-size: 1400px;
-
-                color: rgba(255, 255, 255, 0.1);
-            }
-        }
-
-        &_top {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 7%;
-
-            &_title {
-                margin-top: 50px;
-                margin-right: 0px;
-                font-family: 'Gilroy';
-                font-style: normal;
-                font-weight: 800;
-                font-size: 40px;
-                line-height: 50px;
-                text-align: center;
-                text-transform: uppercase;
-                color: #FFFFFF;
-
-            }
-        }
-
-        &_bottom {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-            height: 93%;
-
-            &_block {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 326px;
-                height: 390px;
-                margin: 0 -15px;
-
-                &_image {
-                    width: 326px;
-                    height: 228px;
-                }
-
-                &_title {
-                    width: 255px;
-                    font-family: 'Gilroy';
-                    font-style: normal;
-                    font-weight: 800;
-                    font-size: 24px;
-                    line-height: 30px;
-                    text-align: center;
-                    color: #FFFFFF;
-                    margin-bottom: 20px;
-                }
-
-                &_subtitle {
-                    width: 255px;
-                    padding: 0 15px;
-                    font-family: 'Gilroy';
-                    font-style: normal;
-                    font-size: 16px;
-                    line-height: 20px;
-                    text-align: center;
-                    color: #FFFFFF;
-                }
-
-            }
-        }
+.conditions {
+  width: 100%;
+  background: url('../../../../public/img/conditionsBackground.png') no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  &_title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 4rem;
+    &_info {
+      width: 80%;
+      text-align: center;
+      font-family: 'Gilroy-Bold', sans-serif;
+      font-size: 4.5rem;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 100px;
+      color: #ff8a00;
     }
+  }
+}
+
+.conditionItem {
+  &_body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  &_evenRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem 0 12rem;
+    width: 100%;
+  }
+  &_unevenRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8rem 0 6rem;
+    width: 100%;
+  }
+  &_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 1rem;
+    width: 37%;
+    position: relative;
+    background: #393e46;
+
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+  }
+  &_evenIcon {
+    position: absolute;
+    width: 6.25rem;
+    height: 6.25rem;
+    left: 98%;
+    top: -10%;
+    transform: translate(-50%, 0);
+  }
+  &_unevenIcon {
+    position: absolute;
+    width: 6.25rem;
+    height: 6.25rem;
+    left: 20%;
+    top: -12%;
+    transform: translate(-50%, 0);
+  }
+  &_img {
+    display: flex;
+    align-items: center;
+    width: 44.375rem;
+    height: 32.5rem;
+  }
+  &_info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+    &_title {
+      font-family: 'Gilroy-Bold', sans-serif;
+      font-size: 28px;
+      line-height: 2rem;
+      text-align: center;
+      font-weight: 700;
+      color: #fbfbfd;
+    }
+    &_subtitle {
+      font-family: 'Gilroy-Bold', sans-serif;
+      font-size: 24px;
+      line-height: 34px;
+      text-align: center;
+      letter-spacing: 0.364px;
+      color: #fbfbfd;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .conditions {
+    width: 100%;
+    background: white;
+    background-size: cover;
+    padding-top: 2rem;
+    &_title {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 4rem;
+      &_info {
+        width: 90%;
+        text-align: center;
+        font-family: 'Gilroy-Bold', sans-serif;
+        font-size: 2.6rem;
+        font-style: normal;
+        color: #ff8a00;
+        line-height: 4rem;
+        letter-spacing: 0.36000001430511475px;
+      }
+    }
+  }
+
+  .conditionItem {
+    &_body {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    &_evenRow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      width: 100%;
+    }
+    &_unevenRow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      width: 100%;
+    }
+    &_container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 0.8rem;
+      max-width: 350px  ;
+      width: 90%;
+      position: relative;
+      background: #393e46;
+      margin-bottom: 3rem;
+
+      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+    }
+    &_evenIcon {
+      position: absolute;
+      width: 5.25rem;
+      height: 5.25rem;
+      left: 88%;
+      top: -8.8%;
+      transform: translate(-50%, 0);
+    }
+    &_unevenIcon {
+      position: absolute;
+      width: 5.25rem;
+      height: 5.25rem;
+      left: 88%;
+      top: -10.8%;
+      transform: translate(-50%, 0);
+    }
+    &_img {
+      display: none;
+    }
+    &_info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 1rem;
+      &_title {
+        font-family: 'Gilroy-Bold', sans-serif;
+        font-size: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        font-weight: 700;
+        color: #fbfbfd;
+      }
+      &_subtitle {
+        font-family: 'Gilroy-Bold', sans-serif;
+        font-size: 24px;
+        line-height: 34px;
+        text-align: center;
+        letter-spacing: 0.364px;
+        color: #fbfbfd;
+      }
+    }
+  }
 }

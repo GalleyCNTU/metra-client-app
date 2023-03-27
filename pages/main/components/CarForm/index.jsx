@@ -11,6 +11,7 @@ import classes from './CarForm.module.scss';
 
 // Utils
 import { makesToList, getModelList, setYearList } from 'utils';
+import { Box, Button, Typography } from '@mui/material';
 
 export const CarForm = ({ makes }) => {
   const [brand, setBrand] = useState();
@@ -101,7 +102,25 @@ export const CarForm = ({ makes }) => {
   };
 
   const colorStyles = {
-    control: (styles) => ({ ...styles, backgroundColor: 'white', height: 50 }),
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: 'white',
+      height: 50,
+      borderRadius: 10,
+    }),
+    option: (provided) => ({
+      ...provided,
+      borderRadius: 10,
+      padding: 15,
+    }),
+    menu: (provided) => ({
+      ...provided,
+      zIndex:9999,
+    }),
+    menuList: (provided) => ({
+      ...provided,
+      padding:0,
+    }),
   };
 
   const clearValue = () => {
@@ -113,13 +132,13 @@ export const CarForm = ({ makes }) => {
   };
 
   return (
-    <div>
+    <div className={classes.car_form}>
       {formSwitcher === 0 && (
-        <div className={classes.car_form}>
-          <span className={classes.car_form_title}>
-            Онлайн розрахунок попередньої вартості вашого авто
-          </span>
-          <div className={classes.car_form_action}>
+        <Box className={classes.car_form_body}>
+          <Typography className={classes.car_form_title}>
+            Онлайн розрахунок попередньої вартості авто
+          </Typography>
+          <Box className={classes.car_form_action}>
             <Select
               placeholder={
                 <div className={classes.car_form_placeholder}>Марка авто</div>
@@ -127,7 +146,7 @@ export const CarForm = ({ makes }) => {
               className={classes.car_form_action_select}
               theme={(theme) => ({
                 ...theme,
-                borderRadius: 0,
+                borderRadius: 10,
               })}
               styles={colorStyles}
               options={makeList}
@@ -150,7 +169,7 @@ export const CarForm = ({ makes }) => {
               className={classes.car_form_action_select}
               theme={(theme) => ({
                 ...theme,
-                borderRadius: 0,
+                borderRadius: 10,
               })}
               styles={colorStyles}
               options={modelList}
@@ -172,7 +191,7 @@ export const CarForm = ({ makes }) => {
               isSearchable={false}
               theme={(theme) => ({
                 ...theme,
-                borderRadius: 0,
+                borderRadius: 10,
               })}
               styles={colorStyles}
               className={classes.car_form_action_select}
@@ -185,20 +204,20 @@ export const CarForm = ({ makes }) => {
                 IndicatorSeparator: () => null,
               }}
             />
-            <button
+            <Button
               className={classes.car_form_action_button}
               onClick={showCarPrice}
             >
-              ДАЛІ
-            </button>
-          </div>
-        </div>
+              РОЗРАХУВАТИ
+            </Button>
+          </Box>
+        </Box>
       )}
       {formSwitcher === 1 && (
-        <div className={classes.car_form}>
-          <span className={classes.car_form_title}>
-            Онлайн розрахунок попередньої вартості вашого авто
-          </span>
+        <Box className={classes.car_form_body}>
+          <Typography className={classes.car_form_title}>
+            Онлайн розрахунок попередньої вартості авто
+          </Typography>
           <form
             className={classes.car_form_action}
             onSubmit={handleSubmit(sellCar)}
@@ -243,30 +262,30 @@ export const CarForm = ({ makes }) => {
                 </p>
               ))}
 
-            <button className={classes.car_form_action_button} type="submit">
+            <Button className={classes.car_form_send_button} type="submit">
               ПРОДАТИ АВТО
-            </button>
+            </Button>
           </form>
-        </div>
+        </Box>
       )}
       {formSwitcher === 2 && (
-        <div className={classes.car_form}>
+        <Box className={classes.car_form_body}>
           <div
             className={`${classes.car_form_action} ${classes.car_form_modal}`}
           >
-            <span className={classes.car_form_title}>
+            <Typography className={classes.car_form_title}>
               Ваша заявка прийнята до розгляду, після її опрацювання наші
               фахівці зв&#39;яжуться з вами. Як правило, це відбувається дуже
               швидко
-            </span>
-            <button
+            </Typography>
+            <Button
               className={classes.car_form_action_button}
               onClick={() => resetInfo()}
             >
               ДОБРЕ
-            </button>
+            </Button>
           </div>
-        </div>
+        </Box>
       )}
     </div>
   );

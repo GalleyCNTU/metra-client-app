@@ -1,16 +1,56 @@
-//NextJS components
 import Image from 'next/image';
+
+import { Box } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import classes from '../Conditions.module.scss';
 
-export const ConditionsItem = ({ img, title, subtitle }) => (
-    <div className={classes.what_cars_bottom_block}>
-        <Image src={img} alt="firstCar" className={classes.what_cars_bottom_block_image} />
-        <span className={classes.what_cars_bottom_block_title}>
-            {title}
-        </span>
-        <span className={classes.what_cars_bottom_block_subtitle}>
-            {subtitle}
-        </span>
+export const ConditionsItem = ({ img, title, subtitle, index, icon }) =>{
+  return (
+    <div className={classes.container}>
+      {index % 2 !== 0 ? (
+        <div className={classes.conditionItem_body}>
+          <Box className={classes.conditionItem_unevenRow}>
+            <div className={classes.conditionItem_img}>
+              <Image src={img} alt="" />
+            </div>
+            <Box className={classes.conditionItem_container}>
+              <div className={classes.conditionItem_unevenIcon}>
+                <Image src={icon} alt={`${icon}`} />
+              </div>
+              <Box className={classes.conditionItem_info}>
+                <Typography className={classes.conditionItem_info_title}>
+                  {title}
+                </Typography>
+                <Typography className={classes.conditionItem_info_subtitle}>
+                  {subtitle}
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+        </div>
+      ) : (
+        <div className={classes.conditionItem_body}>
+          <Box className={classes.conditionItem_evenRow}>
+            <Box className={classes.conditionItem_container}>
+              <div className={classes.conditionItem_evenIcon}>
+                <Image src={icon} alt={`${icon}`} />
+              </div>
+              <Box className={classes.conditionItem_info}>
+                <Typography className={classes.conditionItem_info_title}>
+                  {title}
+                </Typography>
+                <Typography className={classes.conditionItem_info_subtitle}>
+                  {subtitle}
+                </Typography>
+              </Box>
+            </Box>
+            <div className={classes.conditionItem_img}>
+              <Image src={img} alt="" />
+            </div>
+          </Box>
+        </div>
+      )}
     </div>
-)
+  );
+} 

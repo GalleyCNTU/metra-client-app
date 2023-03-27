@@ -7,6 +7,7 @@ import {
   WhyWe,
   PurchasedCars,
   CheckPrice,
+  CarForm,
 } from './components';
 
 import { ToastContainer } from 'react-toastify';
@@ -30,15 +31,16 @@ const Main = ({ advertisementList, makes }) => {
           pauseOnHover
         />
         {/* <Header /> */}
-        <CarBuying makes={makes} />
-        <AboutUs />
+        {/* <CarBuying makes={makes} /> */}
+        {/* <AboutUs /> */}
         <Conditions />
         <BuyingInfo />
         <WhyWe />
-        <PurchasedCars advertisementList={advertisementList} />
-        <CheckPrice makes={makes} />
-        {/* <Contacts /> */}
-        {/* <Footer />  */}
+        {/* <PurchasedCars advertisementList={advertisementList} /> */}
+        {/* <CheckPrice makes={makes} /> */}
+        <CarForm makes={makes} />
+        {/* <Contacts />
+        <Footer />  */}
       </div>
     </Layout>
   );
