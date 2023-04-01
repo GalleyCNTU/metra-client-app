@@ -15,7 +15,6 @@ export const CarBuying = ({isOpen, setIsOpen}) => {
           alt="menuButton"
           width="39px"
           height="29px"
-          style={{ cursor: 'pointer' }}
         />
       </div>
       <div className={classes.carBuying_upper}>

@@ -1,6 +1,7 @@
+import Image from 'next/image';
+
 import classes from './Details.module.scss';
 
-import learnMore from 'public/img/learnMore.png';
 import arrow from 'public/img/detailsArrow.svg';
 
 import Image from 'next/image';

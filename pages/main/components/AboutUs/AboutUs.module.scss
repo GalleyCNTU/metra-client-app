@@ -55,7 +55,7 @@
   }
 }
 
-.about_us {
+.aboutUs {
   position: relative;
   width: 100%;
   height: 631px;
@@ -72,14 +72,14 @@
     align-items: center;
   }
 
-  .about_us_image {
+  &_image {
     height: 50px;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
   }
 
-  .about_us_title {
+  &_title {
     text-align: center;
     font-family: $fontFamily;
     font-style: normal;
@@ -93,7 +93,7 @@
     height: 70px;
   }
 
-  .about_us_subtitle {
+  &_subtitle {
     text-align: center;
     font-family: $fontFamily;
     font-style: normal;
@@ -113,25 +113,6 @@
   }
 }
 
-@media (max-width: 1310px) {
-
-  .about_us {
-    margin: 0;
-
-    .about_us_image {
-      z-index: 3;
-    }
-
-    .about_us_title {
-      z-index: 2;
-    }
-
-    .about_us_subtitle {
-      z-index: 1;
-    }
-  }
-}
-
 @media (max-width: 1150px) {
   .adjoiningBlock {
     width: 100%;
@@ -146,6 +127,7 @@
     &_title {
       display: block;
       margin-bottom: 30px;
+      
 
       &_yellow {
         font-family: $fontFamily;
@@ -210,7 +192,7 @@
     }
   }
 
-  .about_us {
+  .aboutUs {
     width: 100%;
     height: auto;
     display: flex;
@@ -218,7 +200,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 35px 0;
-    margin-top: 650px;
+    margin-top: 83vh;
 
     &_bottom {
       display: flex;
@@ -226,11 +208,12 @@
       align-items: center;
     }
 
-    .about_us_image {
+    &_image {
       margin-bottom: 15px;
     }
 
-    .about_us_title {
+    &_title {
+      height: auto;
       text-align: left;
       font-family: $fontFamily;
       font-style: normal;
@@ -242,7 +225,7 @@
       padding: 0px;
     }
 
-    .about_us_subtitle {
+    &_subtitle {
       text-align: left;
       font-family: $fontFamily;
       font-weight: 100;
@@ -254,8 +237,8 @@
 
     &_block {
       width: 100%;
-      height: 230px;
-      padding: 0 30px;
+      height: auto;
+      margin: 20px 0px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;

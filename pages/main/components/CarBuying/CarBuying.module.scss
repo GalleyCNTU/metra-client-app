@@ -84,6 +84,10 @@
     align-items: center;
     padding-right: 10px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    
+    img {
+      cursor: pointer;
+    }
   }
 
   .carBuying {

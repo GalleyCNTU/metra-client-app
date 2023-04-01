@@ -2,12 +2,6 @@ import Image from 'next/image';
 import classes from './PurchasedCarBox.module.scss';
 import { Button } from '@mui/material';
 
-// import cardDriveUnit from 'public/img/cardDriveUnit.svg';
-// import cardEngine from 'public/img/cardEngine.svg';
-// import cardOdometer from 'public/img/cardMileage.svg';
-// import cardFuel from 'public/img/cardFuel.svg';
-// import cardTransmission from 'public/img/cardTransmission.svg';
-
 const PurchasedCarBox = ({
   purchasedCarTitle,
   transmission,

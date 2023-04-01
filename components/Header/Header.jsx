@@ -1,11 +1,14 @@
 //NextJS components
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Style file
 import classes from './Header.module.scss';
 
 // Images
 import drawerMenu from 'public/img/whiteDrawerMenu.svg';
+
+import { PHONE_NUMBER_MAIN, PHONE_NUMBER_SECONDARY } from 'constants';
 
 const Header = ({ isOpen, setIsOpen }) => {
   return (
@@ -17,16 +20,15 @@ const Header = ({ isOpen, setIsOpen }) => {
           alt="menuButton"
           width="39px"
           height="29px"
-          style={{ cursor: 'pointer', height: '250px' }}
         />
       </div>
       <div className={classes.header_info}>
-        <a href="tel:+380631244667">
-          <span className={classes.header_info_number}>063 124 4667</span>
-        </a>
-        <a href="tel:+380680930002">
-          <span className={classes.header_info_number}>068 093 0002</span>
-        </a>
+        <Link href={`tel:${PHONE_NUMBER_MAIN}`}>
+          <span className={classes.header_info_number}>+380 063 124 4667</span>
+        </Link>
+        <Link href={`tel:${PHONE_NUMBER_SECONDARY}`}>
+          <span className={classes.header_info_number}>+380 068 098 0002</span>
+        </Link>
       </div>
     </header>
   );
