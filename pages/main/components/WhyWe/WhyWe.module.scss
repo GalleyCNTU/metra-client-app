@@ -1,3 +1,5 @@
+@import "styles/variables.module.scss";
+
 .container {
   display: flex;
   justify-content: center;
@@ -25,13 +27,13 @@
   }
 
   &_title {
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: $fontFamilyBold;
     font-size: 3.25rem;
     font-weight: 800;
     line-height: 41px;
     text-align: center;
     letter-spacing: 0.374px;
-    color: #393e46;
+    color: $colorMainBlueBlack;
   }
 
   &_row {
@@ -45,13 +47,13 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      background: #393e46;
+      background: $colorMainBlueBlack;
       width: 25rem;
       gap: 1rem;
       padding: 1.25rem;
       height: 18.75rem;
       margin: 0 2rem;
-      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: $boxShadow;
       border-radius: 20px;
     }
 
@@ -68,26 +70,26 @@
       align-items: center;
     }
     &_title {
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-size: 5.375rem;
       line-height: 116px;
       text-align: center;
-      color: #ff8a00;
+      color: $colorMainOrange;
       font-weight: 700;
     }
 
     &_subtitle {
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-size: 1.75rem;
       line-height: 34px;
 
       text-align: center;
       letter-spacing: 0.36px;
       font-weight: 500;
-      color: #fbfbfd;
+      color: $colorMainWhite;
     }
     &_plus {
-      color: #fbfbfd;
+      color: $colorMainWhite;
     }
   }
 }
@@ -95,7 +97,7 @@
 @media (max-width: 1150px) {
   .why_we {
     width: 100%;
-    background: #fbfbfd;
+    background: $colorMainWhite;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -111,13 +113,13 @@
     }
 
     &_title {
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-size: 1.875rem;
       font-weight: 700;
       line-height: 41px;
       text-align: center;
       letter-spacing: 0.374px;
-      color: #393e46;
+      color: $colorMainBlueBlack;
     }
 
     &_row {
@@ -133,14 +135,14 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        background: #393e46;
+        background: $colorMainBlueBlack;
         width: 16.5rem;
         gap: 1rem;
         padding: 0 1.25rem;
         padding-bottom: 1.5rem;
         height: 13.5rem;
         margin: 1.5rem;
-        box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: $boxShadow;
         border-radius: 20px;
       }
 
@@ -157,26 +159,26 @@
         align-items: center;
       }
       &_title {
-        font-family: 'Gilroy-Bold', sans-serif;
+        font-family: $fontFamilyBold;
         font-size: 3rem;
         line-height: 116px;
         text-align: center;
-        color: #ff8a00;
+        color: $colorMainOrange;
         font-weight: 700;
       }
 
       &_subtitle {
-        font-family: 'Gilroy-Bold', sans-serif;
+        font-family: $fontFamilyBold;
         font-size: 1.375rem;
         line-height: 34px;
 
         text-align: center;
         letter-spacing: 0.36px;
         font-weight: 500;
-        color: #fbfbfd;
+        color: $colorMainWhite;
       }
       &_plus {
-        color: #fbfbfd;
+        color: $colorMainWhite;
       }
     }
   }

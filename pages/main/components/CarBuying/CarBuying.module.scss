@@ -1,3 +1,5 @@
+@import "styles/variables.module.scss";
+
 .mobileMenu_button {
   display: none;
 }
@@ -33,7 +35,7 @@
       align-items: center;
 
       &_text {
-        font-family: 'Gilroy';
+        font-family: $fontFamily;
         font-style: normal;
         font-weight: 800;
         // font-size: 86px;
@@ -45,7 +47,7 @@
         display: table-caption;
         text-align: left;
         font-size: 5.4vw;
-        color: #ff8a00;
+        color: $colorMainOrange;
         text-align: left;
         position: absolute;
         top: 3%;

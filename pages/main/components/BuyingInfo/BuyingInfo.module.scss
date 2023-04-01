@@ -1,3 +1,5 @@
+@import "styles/variables.module.scss";
+
 .container {
   display: flex;
   justify-content: center;
@@ -8,7 +10,7 @@
 .buying_info {
   width: 100%;
   display: flex;
-  background: #393e46;
+  background: $colorMainBlueBlack;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 4rem;
@@ -24,13 +26,13 @@
   }
 
   &_title {
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: $fontFamilyBold;
     font-size: 3.25rem;
     font-weight: 700;
     line-height: 41px;
     text-align: center;
     letter-spacing: 0.374px;
-    color: #fbfbfd;
+    color: $colorMainWhite;
   }
 
   &_numbers {
@@ -67,24 +69,24 @@
   }
   &_title {
     white-space: pre-line;
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: $fontFamilyBold;
     font-style: normal;
     font-weight: 800;
     font-size: 1.5rem;
     line-height: 30px;
     text-align: center;
-    color: #fbfbfd;
+    color: $colorMainWhite;
   }
 
   &_subtitle {
     white-space: pre-line;
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: $fontFamilyBold;
     font-style: normal;
     font-weight: 300;
     font-size: 1.125rem;
     line-height: 20px;
     text-align: center;
-    color: #fbfbfd;
+    color: $colorMainWhite;
   }
 }
 
@@ -92,7 +94,7 @@
   .buying_info {
     width: 100%;
     display: flex;
-    background: #393e46;
+    background: $colorMainBlueBlack;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 2rem;
@@ -108,13 +110,13 @@
     }
 
     &_title {
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-size: 2rem;
       font-weight: 700;
       line-height: 41px;
       text-align: center;
       letter-spacing: 0.374px;
-      color: #fbfbfd;
+      color: $colorMainWhite;
     }
 
     &_row {
@@ -147,24 +149,24 @@
 
     &_title {
       white-space: pre-line;
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-style: normal;
       font-weight: 800;
       font-size: 1.5rem;
       line-height: 30px;
       text-align: center;
-      color: #fbfbfd;
+      color: $colorMainWhite;
     }
 
     &_subtitle {
       white-space: pre-line;
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-style: normal;
       font-weight: 300;
       font-size: 1.125rem;
       line-height: 20px;
       text-align: center;
-      color: #fbfbfd;
+      color: $colorMainWhite;
     }
   }
 }

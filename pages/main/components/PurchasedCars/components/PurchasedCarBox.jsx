@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import classes from './PurchasedCarBox.module.scss';
+import { Button } from '@mui/material';
 
 // import cardDriveUnit from 'public/img/cardDriveUnit.svg';
 // import cardEngine from 'public/img/cardEngine.svg';
@@ -44,7 +45,7 @@ const PurchasedCarBox = ({
         </span>
       </div>
 
-      <button className={classes.purchased_car_button}>Детальніше</button>
+      <Button className={classes.purchased_car_button}>Детальніше</Button>
     </div>
   );
 };

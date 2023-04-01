@@ -1,3 +1,5 @@
+@import "styles/variables.module.scss";
+
 .purchased_car {
   width: 400px;
   height: 458px;
@@ -5,8 +7,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  background: #fbfbfd;
-  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+  background: $colorMainWhite;
+  box-shadow: $boxShadow;
   border-radius: 10px;
 
   &_odometer {
@@ -18,20 +20,20 @@
       margin-left: 5px;
       display: flex;
       align-items: center;
-      font-family: 'Gilroy';
+      font-family: $fontFamily;
       font-size: 18px;
       line-height: 25px;
       letter-spacing: 0.38px;
-      color: #363534;
+      color: $colorMainDarkGrey;
     }
   }
 
   &_info {
-    font-family: 'Gilroy';
+    font-family: $fontFamily;
     font-style: normal;
     font-size: 14px;
     line-height: 20px;
-    color: #393e46;
+    color: $colorMainBlueBlack;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -54,26 +56,26 @@
     border: 30px;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow($boxShadow);
     margin-bottom: 5px;
   }
 
   &_title {
-    font-family: 'Gilroy';
+    font-family: $fontFamily;
     font-style: normal;
     font-weight: 800;
     font-size: 24px;
     line-height: 30px;
-    color: #393e46;
+    color: $colorMainBlueBlack;
     text-align: center;
   }
 
   &_subtitle {
-    font-family: 'Gilroy';
+    font-family: $fontFamily;
     font-style: normal;
     font-size: 14px;
     line-height: 20px;
-    color: #393e46;
+    color: $colorMainBlueBlack;
     text-align: center;
   }
 
@@ -82,16 +84,16 @@
     
 
     &_usd {
-      font-family: 'Gilroy';
+      font-family: $fontFamily;
       font-style: normal;
       font-weight: 800;
       font-size: 24px;
       line-height: 30px;
-      color: orange;
+      color: $colorMainOrange;
     }
 
     &_between {
-      font-family: 'Gilroy';
+      font-family: $fontFamily;
       font-style: normal;
       font-weight: 800;
       font-size: 24px;
@@ -100,12 +102,12 @@
     }
 
     &_uah {
-      font-family: 'Gilroy';
+      font-family: $fontFamily;
       font-style: normal;
       font-weight: 800;
       font-size: 19px;
       line-height: 22px;
-      color: #393e46;
+      color: $colorMainBlueBlack;
     }
   }
 
@@ -113,23 +115,20 @@
     border: 0;
     width: 80%;
     height: 39px;
-    background: #ff8a00;
+    background: $colorMainOrange;
     border-radius: 4px;
-    font-family: 'Gilroy';
+    font-family: $fontFamily;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    color: #ffffff;
+    color: $colorMainWhite;
     cursor: pointer;
     transition: 0.2s all;
     margin: 0 auto;
-
-    &:active {
-      background: #cf6f00;
-      -webkit-box-shadow: 0px 0px 5px -2px #000000;
-      box-shadow: 0px 0px 5px -2px #000000;
+    &:hover {
+      background: $colorMainOrange;
     }
   }
 }

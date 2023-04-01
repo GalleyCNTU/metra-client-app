@@ -1,3 +1,5 @@
+@import "styles/variables.module.scss";
+
 .details {
   position: relative;
   width: 100%;
@@ -13,20 +15,16 @@
     height: 74px;
     padding: 20px 0px;
     text-align: center;
-    background: #ff8a00;
-    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+    background: $colorMainOrange;
+    box-shadow: $boxShadow;
     border-radius: 10px;
-    color: white;
+    color: $colorMainWhite;
     font-size: 24px;
     line-height: 34px;
     letter-spacing: 0.36px;
     cursor: pointer;
-    transition: 0.2s all;
-
-    &:active {
-      background: #cf6f00;
-      -webkit-box-shadow: 0px 0px 5px -2px #000000;
-      box-shadow: 0px 0px 5px -2px #000000;
+    &:hover {
+      background: $colorMainOrange;
     }
   }
 
