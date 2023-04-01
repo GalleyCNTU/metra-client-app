@@ -4,7 +4,6 @@ import classes from './Details.module.scss';
 
 import arrow from 'public/img/detailsArrow.svg';
 
-import Image from 'next/image';
 import { Button } from '@mui/material';
 
 export const Details = () => (
