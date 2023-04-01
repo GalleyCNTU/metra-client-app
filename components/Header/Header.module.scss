@@ -9,6 +9,10 @@
 
   &_mobileMenu {
     display: none;
+
+    &_button {
+      cursor: pointer;
+    }
   }
 
   &_logo {
@@ -28,9 +32,11 @@
     justify-content: space-between;
     align-items: center;
 
-    a {
+    &_number {
       text-decoration: none;
+      cursor: pointer;
       color: white;
+      letter-spacing: 0.35px;
     }
 
     span {

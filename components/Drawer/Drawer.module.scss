@@ -3,6 +3,31 @@
   height: 65%;
   max-height: 500px;
   border-radius: 10px;
+  overflow-x: hidden;
+
+   /* width */
+   &::-webkit-scrollbar {
+    width: 8px;
+
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:active {
+    background: #a5a5a5;
+  }
 
   &_body {
     width: 400px;

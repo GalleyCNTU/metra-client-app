@@ -1,16 +1,15 @@
-import Image from 'next/image';
 import classes from './AboutUs.module.scss';
 
-import { AboutUsUpperItem, AboutUsBottomItem } from './components/index';
+import { AboutUsUpperItem, AboutUsBottomItem } from './components';
 
-import { BOTTOM_ITEMS, UPPER_ITEMS } from './constants';
+import { BOTTOM_ITEMS, UPPER_ITEMS, TITLE } from './constants';
 
 export const AboutUs = () => (
-  <div className={classes.about_us}>
+  <div className={classes.aboutUs}>
     <div className={classes.adjoiningBlock}>
       <div className={classes.adjoiningBlock_title}>
-        <span className={classes.adjoiningBlock_title_yellow}>METRA AVTO</span>
-        <span className={classes.adjoiningBlock_title_black}> - ЦЕ</span>
+        <span className={classes.adjoiningBlock_title_yellow}>{TITLE.beginning}</span>
+        <span className={classes.adjoiningBlock_title_black}>{TITLE.end}</span>
       </div>
       {UPPER_ITEMS.map((item, i) => (
         <AboutUsUpperItem
@@ -21,7 +20,7 @@ export const AboutUs = () => (
         />
       ))}
     </div>
-    <div className={classes.about_us_bottom}>
+    <div className={classes.aboutUs_bottom}>
       {BOTTOM_ITEMS.map((item, i) => (
         <AboutUsBottomItem
           key={i}
