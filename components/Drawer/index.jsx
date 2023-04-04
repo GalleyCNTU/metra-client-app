@@ -13,11 +13,14 @@ import drawerBodyLogo from 'public/img/drawerBodyLogo.png';
 import drawerCloseButton from 'public/img/drawerClose.svg';
 
 import { PAGES } from './constants';
+import { getRandomKey } from 'utils';
 
 export const Drawer = ({ anchor, isOpen, setIsOpen }) => (
   <SwipeableDrawer
+    key={getRandomKey}
     anchor={anchor}
     open={isOpen}
+    onOpen={() => setIsOpen(!isOpen)}
     onClose={() => setIsOpen(!isOpen)}
     classes={{
       paper: classes.drawer,
@@ -32,11 +35,11 @@ export const Drawer = ({ anchor, isOpen, setIsOpen }) => (
         <Image src={drawerBodyLogo} />
       </div>
       <div className={classes.drawer_body_nav}>
-        {PAGES.map((item) => (
-          <Link href={item.link}>
+        {PAGES.map((page) => (
+          <Link href={page.link}>
             <div className={classes.drawer_body_nav_link}>
-              <Image src={item.icon} />
-              <span>{item.title}</span>
+              <Image src={page.icon} />
+              <span>{page.title}</span>
             </div>
           </Link>
         ))}

@@ -8,7 +8,7 @@ import drawerMenu from 'public/img/blackDrawerMenu.svg';
 export const CarBuying = ({isOpen, setIsOpen}) => {
   return (
     <div className={classes.carBuying}>
-      <div className={classes.mobileMenu_button}>
+      {/* <div className={classes.mobileMenu_button}>
         <Image
           src={drawerMenu}
           onClick={() => setIsOpen(!isOpen)}
@@ -16,7 +16,7 @@ export const CarBuying = ({isOpen, setIsOpen}) => {
           width="39px"
           height="29px"
         />
-      </div>
+      </div> */}
       <div className={classes.carBuying_upper}>
         <div className={classes.carBuying_upper_title}>
           <span className={classes.carBuying_upper_title_text}>

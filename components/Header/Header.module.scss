@@ -15,14 +15,15 @@
     }
   }
 
-  &_logo {
-    height: 120px;
+  &_mobileMenu_button {
+    width: 39px;
+    height: 29px;
     display: flex;
-    align-items: center;
-
-    &_image {
-      width: 60px;
-    }
+    z-index: 99;
+    cursor: pointer;
+    background: url('../../public/img/whiteDrawerMenu.svg') no-repeat;
+    background-size: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   &_info {
@@ -58,33 +59,34 @@
 
 @media (max-width: 1150px) {
   .header {
-    display: none;
-    padding: 0px;
-    justify-content: flex-end;
-    padding: 0 40px;
+    display: flex;
+    position: absolute;
+    z-index: 0;
+    opacity: 100;
+    background-color: #ffffff00;
+    height: 100px;
+    padding: 0 10px;
 
     &_info {
       display: none;
-      flex-direction: column;
-      align-items: flex-end;
-
-      span {
-        font-family: 'Gilroy';
-        font-style: normal;
-        font-weight: 800;
-        font-size: 14px;
-        line-height: 22px;
-        color: white;
-        width: 88.86px;
-      }
     }
 
-    &_nav {
+    &_logo {
       display: none;
     }
 
-    &_mobileMenu {
-      display: block;
+    &_mobileMenu_button {
+      width: 39px;
+      height: 29px;
+      display: flex;
+      position: absolute;
+      top: 4vh;
+      right: 2vw;
+      z-index: 99;
+      cursor: pointer;
+      background: url('../../public/img/blackDrawerMenu.svg') no-repeat;
+      background-size: 100%;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
   }
 }

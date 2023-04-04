@@ -40,9 +40,7 @@ export const Search = ({ setAdvList }) => {
   const [selectedMake, setSelectedMake] = useState(null);
 
   const [price, setPrice] = useState([0, 30000]);
-  const [sliderMarks, setSliderMarks] = useState(
-    getSliderMarks(30000, 10000)
-  );
+  const [sliderMarks, setSliderMarks] = useState(getSliderMarks(30000, 10000));
 
   useEffect(() => {
     setAdvMakes(setMakeList);
@@ -154,209 +152,13 @@ export const Search = ({ setAdvList }) => {
             display: 'flex',
             justifyContent: 'center',
           }}
-        >
-          <Box
-            sx={{
-              width: 420,
-              height: 470,
-              backgroundColor: '#1E1E1E',
-              padding: '20px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <div className={classes.form_title}>
-              <span className={classes.form_title_text}>Пошук авто</span>
-            </div>
-            <div className={classes.fromto}>
-              <span className={classes.form_select_text}>Марка</span>
-              <Select
-                value={selectedMake}
-                placeholder={<div>Оберіть марку авто</div>}
-                className={classes.form_select}
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                })}
-                styles={{ ...colorStyles }}
-                options={makeList}
-                onChange={(e) => {
-                  if (e) {
-                    if (e.value)
-                      setSelectedMake({ value: e.value, label: e.label });
-                    else setSelectedMake(null);
-                  }
-                }}
-                components={{
-                  DropdownIndicator: () => null,
-                  IndicatorSeparator: () => null,
-                }}
-              />
-            </div>
-
-            <div className={classes.fromto}>
-              <span className={classes.form_select_text}>Паливо</span>
-              <Select
-                value={selectedFuel}
-                placeholder={<div>Оберіть тип палива</div>}
-                className={classes.form_select}
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                })}
-                styles={{ ...colorStyles }}
-                options={fuelList}
-                onChange={(e) => {
-                  if (e) {
-                    if (e.value)
-                      setSelectedFuel({ value: e.value, label: e.label });
-                    else setSelectedFuel(null);
-                  }
-                }}
-                components={{
-                  DropdownIndicator: () => null,
-                  IndicatorSeparator: () => null,
-                }}
-              />
-            </div>
-
-            <div className={classes.fromto}>
-              <span className={classes.form_select_text}>Коробка</span>
-              <Select
-                value={selectedTransmition}
-                placeholder={<div>Оберіть коробку передач</div>}
-                className={classes.form_select}
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                })}
-                styles={{ ...colorStyles }}
-                options={transmissionList}
-                onChange={(e) => {
-                  if (e) {
-                    if (e.value)
-                      setSelectedTransmition({
-                        value: e.value,
-                        label: e.label,
-                      });
-                    else setSelectedTransmition(null);
-                  }
-                }}
-                components={{
-                  DropdownIndicator: () => null,
-                  IndicatorSeparator: () => null,
-                }}
-              />
-            </div>
-
-            <div className={classes.fromto}>
-              <span className={classes.form_select_text}>Рік</span>
-
-              <div className={classes.fromto} style={{ width: '75%' }}>
-                <Select
-                  value={selectedYearFrom}
-                  placeholder={<div>Від</div>}
-                  className={classes.form_select_fromto}
-                  theme={(theme) => ({
-                    ...theme,
-                    borderRadius: 0,
-                  })}
-                  styles={{ ...colorStyles }}
-                  options={yearsList}
-                  onChange={(e) => {
-                    if (e) {
-                      setLimits(
-                        'from',
-                        e.value,
-                        selectedYearTo?.value,
-                        setSelectedYearFrom
-                      );
-                    }
-                  }}
-                  components={{
-                    DropdownIndicator: () => null,
-                    IndicatorSeparator: () => null,
-                  }}
-                />
-
-                <span className={classes.form_title_text}>-</span>
-
-                <Select
-                  value={selectedYearTo}
-                  placeholder={<div>До</div>}
-                  className={classes.form_select_fromto}
-                  theme={(theme) => ({
-                    ...theme,
-                    borderRadius: 0,
-                  })}
-                  styles={{ ...colorStyles }}
-                  options={yearsList}
-                  onChange={(e) => {
-                    if (e) {
-                      setLimits(
-                        'to',
-                        selectedYearFrom?.value,
-                        e.value,
-                        setSelectedYearTo
-                      );
-                    }
-                  }}
-                  components={{
-                    DropdownIndicator: () => null,
-                    IndicatorSeparator: () => null,
-                  }}
-                />
-              </div>
-            </div>
-            <form style={{ width: '100%' }} ref={inputRef}>
-              <div className={classes.fromto}>
-                <span className={classes.form_select_text}>Ціна</span>
-
-                <Box sx={{ width: '75%' }}>
-                  <Slider
-                    getAriaLabel={() => 'Minimum distance'}
-                    value={price}
-                    onChange={sliderChangeHandle}
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={30000}
-                    step={500}
-                    disableSwap
-                    marks={sliderMarks}
-                    classes={{
-                      markLabelActive: classes.sliderDisabledMarks,
-                      markLabel: classes.sliderActiveMarks,
-                      colorPrimary: classes.sliderRange,
-                      colorSecondary: classes.sliderPoint,
-                    }}
-                  />
-                </Box>
-              </div>
-            </form>
-            <div className={classes.form_under_section}>
-              <button
-                className={classes.form_under_section_button}
-                onClick={resetHandler}
-              >
-                Очистити фільтр
-              </button>
-              <button
-                className={classes.form_under_section_button}
-                onClick={searchHandler}
-              >
-                Пошук
-              </button>
-            </div>
-          </Box>
-        </AccordionDetails>
+        ></AccordionDetails>
       </Accordion>
     </Box>
   );
 };
 
-{
-  /* <div className={classes.fromto} style={{ width: '75%' }}>
+/* <div className={classes.fromto} style={{ width: '75%' }}>
   <input
     className={classes.form_input}
     placeholder="Від"
@@ -404,4 +206,3 @@ export const Search = ({ setAdvList }) => {
     }}
   />
 </div> */
-}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Layout, Drawer } from 'components';
+import { Layout, Drawer, CarList } from 'components';
 import {
   CarBuying,
   AboutUs,
@@ -36,12 +36,20 @@ const Main = ({ advertisementList, makes }) => {
           draggable
           pauseOnHover
         />
-        <CarBuying isOpen={isOpen} setIsOpen={setIsOpen} />
+        <CarBuying />
         <AboutUs />
         <Conditions />
         <BuyingInfo />
         <WhyWe />
-        <PurchasedCars advertisementList={advertisementList} />
+        <CarList
+          filteredAdvList={[
+            advertisementList[0],
+            advertisementList[1],
+            advertisementList[2],
+          ]}
+          title={true}
+        />
+        {/* <PurchasedCars advertisementList={advertisementList} /> */}
         {/* <CheckPrice makes={makes} /> */}
         <Details />
         <CarForm makes={makes} />

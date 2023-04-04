@@ -2,30 +2,26 @@ import { useState } from 'react';
 
 import { getAllAdvertisements } from '@/data/firebase';
 
-import { Layout } from 'components';
-import { Search } from './components/Search';
+import { Layout, Drawer, CarList } from 'components';
 
-import { CarList } from './components/CarList';
+import { Search, Title, Details } from './components';
 
 function Cars({ advertisementList }) {
   const [advList, setAdvList] = useState(advertisementList);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Layout>
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            minHeight: '860px',
-            marginBottom: 45,
-            paddingBottom: 40,
-            backgroundColor: '#1E1E1E',
-          }}
-        >
-          <Search setAdvList={setAdvList} />
-          <CarList filteredAdvList={advList} />
-        </div>
+      <Drawer isOpen={isOpen} setIsOpen={setIsOpen} anchor="left" />
+      <Layout isOpen={isOpen} setIsOpen={setIsOpen} setLogo={true}>
+        <Title setAdvList={setAdvList} />
+        {/* <Search setAdvList={setAdvList} /> */}
+        <CarList
+          filteredAdvList={advList}
+          pagination={true}
+          mobileBackgroundColor={true}
+        />
+        <Details />
       </Layout>
     </>
   );

@@ -59,7 +59,7 @@
       &_link {
         display: flex;
         align-items: center;
-        width: 300px;
+        width: fit-content;
         margin: 10px 0px;
         font-family: 'Gilroy';
         font-style: normal;
@@ -73,6 +73,7 @@
         letter-spacing: 0.36px;
         color: #393e46;
         text-align: left;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
         span {
           margin-left: 8px;
