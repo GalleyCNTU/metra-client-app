@@ -1,13 +1,13 @@
 import { Layout } from 'components';
+import classes from './components/Advertisement/components/AdvertisementBox.module.scss';
+
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import classes from './components/Advertisement/components/AdvertisementBox.module.scss';
-
-export default function Custom404() {
+const Custom404 = () => {
   return (
     <Layout>
       <IconButton size="large" className={classes.btn_back} href={'/cars'}>
@@ -27,4 +27,6 @@ export default function Custom404() {
       </Box>
     </Layout>
   );
-}
+};
+
+export default Custom404;

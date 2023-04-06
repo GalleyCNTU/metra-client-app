@@ -1,24 +1,20 @@
 import { useState } from 'react';
 
-import { Layout, Drawer, CarList } from 'components';
+import { Layout, Drawer, CarList, Details } from 'components';
+import { getAdvertisementList } from 'data/Firebase';
+
 import {
   CarBuying,
   AboutUs,
   Conditions,
   BuyingInfo,
   WhyWe,
-  PurchasedCars,
-  CheckPrice,
-  Details,
-  CarForm,
 } from './components';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { getAllAdvertisements, getAllMakes } from '@/data/firebase';
-
-const Main = ({ advertisementList, makes }) => {
+const Main = ({ advertisementList }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -42,31 +38,23 @@ const Main = ({ advertisementList, makes }) => {
         <BuyingInfo />
         <WhyWe />
         <CarList
-          filteredAdvList={[
-            advertisementList[0],
-            advertisementList[1],
-            advertisementList[2],
-          ]}
+          advertisementList={advertisementList}
           title={true}
+          advsOnPage={3}
         />
-        {/* <PurchasedCars advertisementList={advertisementList} /> */}
-        {/* <CheckPrice makes={makes} /> */}
         <Details />
-        <CarForm makes={makes} />
       </div>
     </Layout>
   );
 };
 
-export default Main;
-
-export async function getStaticProps() {
-  const advertisementList = await getAllAdvertisements();
-  const makes = await getAllMakes();
+export const getStaticProps = async () => {
+  const advertisementList = await getAdvertisementList();
   return {
     props: {
       advertisementList,
-      makes,
     },
   };
-}
+};
+
+export default Main;

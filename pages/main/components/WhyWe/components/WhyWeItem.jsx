@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material';
 import classes from '../WhyWe.module.scss';
+import { Box, Typography } from '@mui/material';
 
 export const WhyWeItem = ({ title, subtitle }) => (
   <Box className={classes.why_we_item_block}>

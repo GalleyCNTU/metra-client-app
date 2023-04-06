@@ -1,17 +1,18 @@
-import Advertisement from './components/Advertisement/';
-import { getAdvertisement } from '@/data/firebase';
 import { useRouter } from 'next/router';
+
+import { Layout } from 'components';
+import { Advertisement } from './components';
+
 import { CircularProgress, Box } from '@mui/material';
 
-import { Layout } from '../../components';
-
 const Car = () => {
-  let router = useRouter();
-  let id = router.query['id'];
+  const router = useRouter();
+  const id = router.query['id'];
+
   return (
-    <Layout>
+    <Layout hideMediaQuery={true}>
       {id ? (
-        <Advertisement getAdvertisement={getAdvertisement} id={id} />
+        <Advertisement id={id} />
       ) : (
         <Box
           sx={{

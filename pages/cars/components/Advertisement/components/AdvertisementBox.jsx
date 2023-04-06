@@ -1,20 +1,21 @@
-import { Typography, Button, Box } from '@mui/material';
-
-import Slider from './SliderComponent';
-import MakeIcon from 'assets/MakeIcon.svg';
-import StatusIcon from 'assets/StatusIcon.svg';
-import EngineIcon from 'assets/EngineIcon.svg';
-import OdometerIcon from 'assets/OdometerIcon.svg';
-import FuelIcon from 'assets/FuelIcon.svg';
-import TransmissionIcon from 'assets/TransmissionIcon.svg';
-import DriveIcon from 'assets/DriveIcon.svg';
-
-import classes from './AdvertisementBox.module.scss';
-
-import { TELEGRAM_URL } from 'constants/contacts';
 import Image from 'next/image';
 
-const AdvertisementBox = ({
+import { TELEGRAM_URL } from 'continuities';
+
+import { Slider } from './SliderComponent';
+import classes from '../Advertisement.module.scss';
+
+// import MakeIcon from 'public/img/AdvertisementBox/MakeIcon.svg';
+import StatusIcon from 'public/img/AdvertisementBox/StatusIcon.svg';
+import EngineIcon from 'public/img/AdvertisementBox/EngineIcon.svg';
+import OdometerIcon from 'public/img/AdvertisementBox/OdometerIcon.svg';
+import FuelIcon from 'public/img/AdvertisementBox/FuelIcon.svg';
+import TransmissionIcon from 'public/img/AdvertisementBox/TransmissionIcon.svg';
+import DriveIcon from 'public/img/AdvertisementBox/DriveIcon.svg';
+
+import { Typography, Button, Box } from '@mui/material';
+
+export const AdvertisementBox = ({
   images,
   make,
   model,
@@ -41,94 +42,78 @@ const AdvertisementBox = ({
   ];
   return (
     <>
-      <Box
-        sx={{
-          width: '100%',
-        }}
-      >
-        <Box
-          mb={3}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Slider items={images} make={make} model={model} />
+      <Box className={classes.advertisement}>
+        <Box className={classes.advertisement_container}>
+          <Slider
+            items={images}
+            make={make}
+            model={model}
+            hideMediaQuery={false}
+          />
         </Box>
-        <Box
-          mb={3}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
+
+        <Box className={classes.characteristics_container}>
           <Box className={classes.characteristics_block}>
-            <Box className={classes.characteristics_head}>
+            <Box className={classes.characteristics_title}>
               <Typography
-                className={classes.characteristics_head_make}
+                className={classes.characteristics_title_make}
                 variant="h3"
               >{`${make} ${model}`}</Typography>
               <Typography
-                className={classes.characteristics_head_price}
+                className={classes.characteristics_title_price}
                 variant="h3"
               >{`${price}`}</Typography>
             </Box>
-            <Box className={classes.characteristics}>
+
+            <Box className={classes.characteristics_container}>
               <Box className={classes.characteristics_column}>
                 {descr.map(({ text, img }, index) => (
-                  <Box
-                    key={index}
-                    sx={{}}
-                    className={classes.characteristics_column_box}
-                  >
+                  <Box key={index} className={classes.characteristics_box}>
                     <Image src={img} alt={make} />
-                    <Typography className={classes.characteristics_font}>
+                    <Typography className={classes.characteristics_info}>
                       {text}
                     </Typography>
                   </Box>
                 ))}
               </Box>
             </Box>
-
-            {description ? (
-              <Box mx={3} className={classes.characteristics_column}>
-                <Typography
-                  className={classes.characteristics_font}
-                >{`Опис: ${description}`}</Typography>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Button
-                    href={TELEGRAM_URL}
-                    className={classes.btn_characteristics}
-                  >
-                    Детальніше
-                  </Button>
-                </Box>
-              </Box>
-            ) : (
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
+          </Box>
+        </Box>
+        <Box className={classes.characteristics_description_container}>
+          {description ? (
+            <Box className={classes.characteristics_description_block}>
+              <Typography
+                className={classes.characteristics_description_title}
+                variant="h3"
               >
+                {'Опис:'}
+              </Typography>
+              <Typography className={classes.characteristics_description_info}>
+                {description}
+              </Typography>
+              <Box className={classes.btn_characteristics_box}>
                 <Button
                   onClick={openLinkHandler}
-                  className={classes.btn_characteristics}
+                  className={classes.btn_characteristics_contact}
                 >
                   Детальніше
                 </Button>
               </Box>
-            )}
-          </Box>
+            </Box>
+          ) : (
+            <Box className={classes.characteristics_description_block}>
+              <Box className={classes.btn_characteristics_box}>
+                <Button
+                  onClick={openLinkHandler}
+                  className={classes.btn_characteristics_contact}
+                >
+                  Детальніше
+                </Button>
+              </Box>
+            </Box>
+          )}
         </Box>
       </Box>
     </>
   );
 };
-
-export default AdvertisementBox;

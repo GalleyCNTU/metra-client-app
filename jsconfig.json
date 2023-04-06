@@ -17,8 +17,8 @@
       "@/assets/*": [
         "assets/*"
       ],
-      "@/constants/*": [
-        "constants/*"
+      "@/continuities/*": [
+        "continuities/*"
       ]
     }
   }

@@ -1,29 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 
+import classes from '../Advertisement.module.scss';
+
 import useEmblaCarousel from 'embla-carousel-react';
-import LightGallery from 'lightgallery/react';
 
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import classes from './AdvertisementBox.module.scss';
-
-const SliderComponent = ({ items, model, make }) => {
+export const Slider = ({ items, model, make }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel({});
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     dragFree: true,
   });
-  const options = {
-    doubleClickZoom: false,
-    download: false,
-    actualSize: false,
-  };
+
   const onThumbClick = useCallback(
     (index) => {
       if (!emblaMainApi || !emblaThumbsApi) return;
@@ -52,22 +41,14 @@ const SliderComponent = ({ items, model, make }) => {
           <div className={classes.emblaContainer}>
             {[...items].map((item, index) => (
               <div className={classes.emblaSlide} key={index}>
-                <LightGallery
-                  speed={500}
-                  plugins={[lgThumbnail, lgZoom]}
-                  options={options}
-                >
-                  <a className="gallery-item" data-src={item.url} key={index}>
-                    <div className={classes.slider_img}>
-                      <Image
-                        src={item.url}
-                        alt={`${make} ${model}`}
-                        layout="fill"
-                        className={classes.slider_img_png}
-                      />
-                    </div>
-                  </a>
-                </LightGallery>
+                <div className={classes.slider_img}>
+                  <Image
+                    src={item.url}
+                    alt={`${make} ${model}`}
+                    layout="fill"
+                    className={classes.slider_img_png}
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -107,5 +88,3 @@ const SliderComponent = ({ items, model, make }) => {
     </section>
   );
 };
-
-export default SliderComponent;

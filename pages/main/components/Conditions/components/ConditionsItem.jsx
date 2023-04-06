@@ -1,11 +1,11 @@
 import Image from 'next/image';
 
+import classes from '../Conditions.module.scss';
+
 import { Box } from '@mui/material';
 import { Typography } from '@mui/material';
 
-import classes from '../Conditions.module.scss';
-
-export const ConditionsItem = ({ img, title, subtitle, index, icon }) =>{
+export const ConditionsItem = ({ img, title, subtitle, index, icon }) => {
   return (
     <div className={classes.container}>
       {index % 2 !== 0 ? (
@@ -53,4 +53,4 @@ export const ConditionsItem = ({ img, title, subtitle, index, icon }) =>{
       )}
     </div>
   );
-} 
+};

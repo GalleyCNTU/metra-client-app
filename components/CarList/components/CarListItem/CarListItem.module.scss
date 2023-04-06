@@ -1,4 +1,4 @@
-@import "styles/variables.module.scss";
+@import 'styles/variables.module.scss';
 
 .purchased_car {
   width: 400px;
@@ -10,6 +10,7 @@
   background: $colorMainWhite;
   box-shadow: $boxShadow;
   border-radius: 10px;
+  cursor: pointer;
 
   &_odometer {
     width: 100%;
@@ -81,7 +82,6 @@
 
   &_price {
     text-align: center;
-    
 
     &_usd {
       font-family: $fontFamily;

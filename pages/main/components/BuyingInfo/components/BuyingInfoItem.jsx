@@ -1,5 +1,6 @@
-import { Typography } from '@mui/material';
 import classes from '../BuyingInfo.module.scss';
+
+import { Typography } from '@mui/material';
 
 export const BuyingInfoItem = ({ width, height, path, subtitle, title }) => (
   <div className={classes.buying_info_column}>

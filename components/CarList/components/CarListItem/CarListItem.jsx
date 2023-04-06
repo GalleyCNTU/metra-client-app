@@ -1,8 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
+
 import classes from './CarListItem.module.scss';
+
 import { Button } from '@mui/material';
 
-const CarListItem = ({
+export const CarListItem = ({
   purchasedCarTitle,
   transmission,
   // engine,
@@ -11,37 +14,38 @@ const CarListItem = ({
   purchasedCarPrice,
   images,
   odometer,
+  id,
 }) => {
   return (
-    <div className={classes.purchased_car} id={classes.purchased}>
-      <div className={classes.purchased_car_background_img}>
-        <Image
-          style={{ borderRadius: '10px' }}
-          src={images[0].url}
-          alt={images[0].id}
-          width={328}
-          height={236}
-        />
-      </div>
+    <Link href={`/cars/${id}`}>
+      <div className={classes.purchased_car} id={classes.purchased}>
+        <div className={classes.purchased_car_background_img}>
+          <Image
+            style={{ borderRadius: '10px' }}
+            src={images[0].url}
+            alt={images[0].id}
+            width={328}
+            height={236}
+          />
+        </div>
 
-      <div className={classes.purchased_car_title}>
-        <span>{purchasedCarTitle}</span>
-      </div>
-      <div className={classes.purchased_car_info}>
-        <span>Паливо: {fuel}</span>
-        <span>Коробка: {transmission}</span>
-        <span>Пробіг: {odometer}</span>
-      </div>
+        <div className={classes.purchased_car_title}>
+          <span>{purchasedCarTitle}</span>
+        </div>
+        <div className={classes.purchased_car_info}>
+          <span>Паливо: {fuel}</span>
+          <span>Коробка: {transmission}</span>
+          <span>Пробіг: {odometer}</span>
+        </div>
 
-      <div className={classes.purchased_car_price}>
-        <span className={classes.purchased_car_price_uah}>
-          {purchasedCarPrice}
-        </span>
-      </div>
+        <div className={classes.purchased_car_price}>
+          <span className={classes.purchased_car_price_uah}>
+            {purchasedCarPrice}
+          </span>
+        </div>
 
-      <Button className={classes.purchased_car_button}>Детальніше</Button>
-    </div>
+        <Button className={classes.purchased_car_button}>Детальніше</Button>
+      </div>
+    </Link>
   );
 };
-
-export default CarListItem;
