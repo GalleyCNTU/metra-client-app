@@ -14,9 +14,9 @@ import { getYearList, formatForSelect } from 'utils';
 import { Box, Button, Typography } from '@mui/material';
 
 export const CarForm = ({ makes, hideMediaQuery }) => {
-  const [brand, setBrand] = useState();
-  const [modelList, setModelList] = useState();
-  const [makeList, setMakeList] = useState();
+  const [brand, setBrand] = useState(null);
+  const [modelList, setModelList] = useState([]);
+  const [makeList, setMakeList] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
@@ -28,7 +28,7 @@ export const CarForm = ({ makes, hideMediaQuery }) => {
   useEffect(() => sendUserInfo(), [userInfo]);
 
   useEffect(() => {
-    if (makes) setMakeList(Object.keys(makes).reverse());
+    if (makes) setMakeList(formatForSelect(Object.keys(makes)));
   }, []);
 
   useEffect(() => {
@@ -133,6 +133,7 @@ export const CarForm = ({ makes, hideMediaQuery }) => {
 
   return (
     <div
+      id="car_form"
       className={
         hideMediaQuery
           ? `${classes.car_form} ${classes.car_form_media}`

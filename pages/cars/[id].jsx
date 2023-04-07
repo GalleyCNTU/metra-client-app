@@ -4,13 +4,14 @@ import { Layout } from 'components';
 import { Advertisement } from './components';
 
 import { CircularProgress, Box } from '@mui/material';
+import { getMakesObj } from '@/data/Firebase';
 
-const Car = () => {
+const Car = ({ makes }) => {
   const router = useRouter();
   const id = router.query['id'];
 
   return (
-    <Layout hideMediaQuery={true}>
+    <Layout hideMediaQuery={true} makes={makes}>
       {id ? (
         <Advertisement id={id} />
       ) : (
@@ -28,5 +29,14 @@ const Car = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps() {
+  const makes = await getMakesObj();
+  return {
+    props: {
+      makes,
+    },
+  };
+}
 
 export default Car;

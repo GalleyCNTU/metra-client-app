@@ -67,10 +67,9 @@ export const SearchForm = ({ setAdvList }) => {
   }, [selectedMake]);
 
   useEffect(() => {
-    const findAdvertisements = async () => {
+    const findAdvertisements = async () =>
       setAdvList(await getAdvertisementList(filters));
-      window.location.href = '#purchased_cars';
-    };
+
     findAdvertisements();
   }, [filters]);
 
@@ -107,6 +106,8 @@ export const SearchForm = ({ setAdvList }) => {
       { value: selectedModel?.value, attribute: 'model' },
       { value: selectedTransmition?.value, attribute: 'transmission' },
     ]);
+
+    window.location.href = '#purchased_cars';
   };
 
   return (

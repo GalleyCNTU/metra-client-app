@@ -65,6 +65,7 @@ export const CarList = ({
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value - 1);
+
     window.location.href = '#purchased_cars';
   };
 

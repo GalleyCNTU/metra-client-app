@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { getAdvertisementList } from 'data/Firebase';
-import { Layout, CarList, Drawer, Details } from 'components';
+import { getAdvertisementList, getMakesObj } from 'data/Firebase';
+import { Layout, CarList, Drawer } from 'components';
 
-import { Search } from './components';
+import { Search, Details } from './components';
 
-const Cars = ({ advertisementList }) => {
+const Cars = ({ advertisementList, makes }) => {
   const [advList, setAdvList] = useState(advertisementList);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,6 +17,7 @@ const Cars = ({ advertisementList }) => {
         setIsOpen={setIsOpen}
         setLogo={true}
         hideMediaQuery={true}
+        makes={makes}
       >
         <Search setAdvList={setAdvList} />
         <CarList
@@ -30,11 +31,14 @@ const Cars = ({ advertisementList }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const advertisementList = await getAdvertisementList();
+  const makes = await getMakesObj();
+
   return {
     props: {
       advertisementList,
+      makes,
     },
   };
 }

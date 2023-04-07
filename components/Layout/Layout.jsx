@@ -7,7 +7,7 @@ export const Layout = ({
   setIsOpen,
   setLogo,
   hideMediaQuery = false,
-  makes,
+  makes = null,
 }) => {
   return (
     <>

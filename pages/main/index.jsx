@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Layout, Drawer, CarList, Details } from 'components';
-import { getAdvertisementList } from 'data/Firebase';
+import { Layout, Drawer, CarList } from 'components';
+import { getAdvertisementList, getMakesObj } from 'data/Firebase';
 
 import {
   CarBuying,
@@ -9,16 +9,17 @@ import {
   Conditions,
   BuyingInfo,
   WhyWe,
+  Details,
 } from './components';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Main = ({ advertisementList }) => {
+const Main = ({ advertisementList, makes }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Layout isOpen={isOpen} setIsOpen={setIsOpen}>
+    <Layout isOpen={isOpen} setIsOpen={setIsOpen} makes={makes}>
       <div>
         <Drawer isOpen={isOpen} setIsOpen={setIsOpen} anchor="left" />
         <ToastContainer
@@ -48,11 +49,14 @@ const Main = ({ advertisementList }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const advertisementList = await getAdvertisementList();
+  const makes = await getMakesObj();
+
   return {
     props: {
       advertisementList,
+      makes,
     },
   };
 };

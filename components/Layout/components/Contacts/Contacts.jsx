@@ -23,7 +23,7 @@ export const Contacts = ({ hideMediaQuery }) => (
         </div>
         <Box className={classes.map_upArrow_box}>
           <div className={classes.map_upArrow}>
-            <Link href="#header">
+            <Link href="#header" scroll={false}>
               <Image className={classes.map_upArrow_img} src={upArrow} alt="" />
             </Link>
           </div>

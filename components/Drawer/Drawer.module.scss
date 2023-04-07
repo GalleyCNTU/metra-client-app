@@ -5,10 +5,9 @@
   border-radius: 10px;
   overflow-x: hidden;
 
-   /* width */
-   &::-webkit-scrollbar {
+  /* width */
+  &::-webkit-scrollbar {
     width: 8px;
-
   }
 
   /* Track */
@@ -61,11 +60,10 @@
         align-items: center;
         width: fit-content;
         margin: 10px 0px;
+        padding: 0;
         font-family: 'Gilroy';
         font-style: normal;
         font-weight: 800;
-        font-size: 18px;
-        line-height: 22px;
         cursor: pointer;
         text-decoration: none;
         font-size: 20px;

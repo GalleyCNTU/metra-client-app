@@ -177,7 +177,7 @@
 .slider {
   &_img {
     width: 100%;
-    height: auto;
+    height: 1100px;
 
     &_png {
       border-radius: 10px;
@@ -568,8 +568,8 @@
         font-family: $fontFamilyBold;
         font-weight: 800;
         color: $colorMainBlueBlack;
-        margin: 20px 0 10px 0;
-        font-size: 22px;
+        margin: 30px 0 10px 0;
+        font-size: 26px;
       }
       &_block {
         background: $colorMainWhite;
@@ -679,8 +679,7 @@
   .slider {
     &_img {
       width: 100%;
-      height: auto;
-      object-fit: scale-down;
+      height: 80vw;
       &_png {
         border-radius: 0;
       }
