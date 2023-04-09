@@ -2,7 +2,9 @@ import Image from 'next/image';
 
 import { TELEGRAM_URL } from 'continuities';
 
-import { Slider } from './SliderComponent';
+// import { Slider } from './SliderComponent';
+import { AsNavFor } from './SlickSlider';
+
 import classes from '../Advertisement.module.scss';
 
 // import MakeIcon from 'public/img/AdvertisementBox/MakeIcon.svg';
@@ -44,12 +46,12 @@ export const AdvertisementBox = ({
     <>
       <Box className={classes.advertisement}>
         <Box className={classes.advertisement_container}>
-          <Slider
+          <AsNavFor items={images} make={make} model={model} />
+          {/* <Slider
             items={images}
             make={make}
             model={model}
-            hideMediaQuery={false}
-          />
+          /> */}
         </Box>
 
         <Box className={classes.characteristics_container}>
