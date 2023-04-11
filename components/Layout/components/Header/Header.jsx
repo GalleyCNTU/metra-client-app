@@ -11,11 +11,15 @@ import headerLogo from 'public/img/headerLogo.svg';
 
 import { PHONE_NUMBER_MAIN, PHONE_NUMBER_SECONDARY } from 'continuities';
 
-export const Header = ({ isOpen, setIsOpen, setLogo = false }) => {
+export const Header = ({ isOpen, setIsOpen, setLogo = false, advMenu }) => {
   return (
     <header className={classes.header} id="header">
       <div
-        className={classes.header_mobileMenu_button}
+        className={
+          advMenu
+            ? (`${classes.header_mobileMenu_button} ${classes.header_advMenu_button}`)
+            : classes.header_mobileMenu_button
+        }
         onClick={() => setIsOpen(!isOpen)}
       >
         {/* <Image

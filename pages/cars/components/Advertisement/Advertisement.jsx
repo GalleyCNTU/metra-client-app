@@ -33,8 +33,10 @@ export const Advertisement = ({ id }) => {
       <Box className={classes.btn_box}>
         <Link href={`/cars`}>
           <IconButton size="large" className={classes.btn_back}>
-            <Image src={BackIcon} alt="back-icon" />
-            {adv && `${adv.make} ${adv.model}`}
+            <Box className={classes.btn_back_img}>
+              <Image src={BackIcon} alt="back-icon" layout="fill" />
+            </Box>
+            <Box className={classes.btn_back_info}>{adv && `${adv.make} ${adv.model}`}</Box>
           </IconButton>
         </Link>
       </Box>

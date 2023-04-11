@@ -1,0 +1,267 @@
+@import 'styles/variables.module.scss';
+
+.slick {
+  &_dots {
+    display: none;
+  }
+  &_carousel {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  &_body {
+    width: 100%;
+  }
+  &_box {
+    padding: 10px;
+    width: 93.6%;
+    cursor: pointer;
+    margin: auto;
+    background: $colorMainBlueBlack;
+    box-shadow: $boxShadow;
+    border-radius: 10px;
+  }
+  &_nav {
+    width: 96%;
+    --thumbs-slide-spacing: 1.8rem;
+    margin-top: var(--thumbs-slide-spacing);
+  }
+}
+
+.item {
+  &_slick {
+    &_img {
+      width: 100%;
+      height: 665px;
+      position: relative;
+      &_png {
+        border-radius: 10px;
+        filter: drop-shadow($boxShadow);
+        object-fit: cover;
+        object-position: 100% 70%;
+      }
+    }
+  }
+  &_slick_nav {
+    &_img {
+      width: 100%;
+      height: 358px;
+      position: relative;
+      &_png {
+        border-radius: 10px;
+        filter: drop-shadow($boxShadow);
+      }
+    }
+    &_wrap {
+      cursor: pointer;
+      padding: 0 15px;
+    }
+    &_body {
+      padding: 10px;
+      background: $colorMainBlueBlack;
+      border-radius: 10px;
+    }
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  &_box {
+    width: 55%;
+    margin: 15px 15px 15px 15px;
+  }
+  &_img {
+    width: 100%;
+    height: 35vw;
+    position: relative;
+    border: 1px solid #999;
+    &_png {
+      object-fit: fill;
+    }
+  }
+}
+
+@media (max-width: 1800px) {
+  .item {
+    &_slick {
+      &_img {
+        height: 37.109375vw;
+      }
+    }
+    &_slick_nav {
+      &_img {
+        height: 20vw;
+      }
+    }
+  }
+  .popup {
+    &_box {
+      width: 60%;
+    }
+    &_img {
+      height: 40vw;
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .popup {
+    &_box {
+      width: 70%;
+    }
+    &_img {
+      height: 45vw;
+    }
+  }
+}
+
+@media (max-width: 1450px) {
+  .popup {
+    &_box {
+      width: 70%;
+    }
+    &_img {
+      height: 50vw;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .item {
+    &_slick_nav {
+      &_wrap {
+        padding: 0 10px;
+      }
+    }
+  }
+  .slick {
+    &_body {
+      margin: 0 10px;
+    }
+    &_nav {
+      --thumbs-slide-spacing: 1.3rem;
+    }
+  }
+  .popup {
+    &_box {
+      width: 80%;
+      margin: 15px 15px 15px 15px;
+    }
+    &_img {
+      height: 60vw;
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  .slick_dots li {
+    position: relative;
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin: 0 5px;
+    padding: 0;
+    border: 2.5px solid $colorMainBlueBlack;
+    cursor: pointer;
+    border-radius: 100%;
+  }
+
+  .slick_dots :global(li.slick-active) {
+    position: relative;
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+    border: 2.5px solid $colorMainOrange;
+    border-radius: 100%;
+  }
+
+  .slick_dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    color: transparent;
+    background: transparent;
+  }
+
+  .popup {
+    background-color: rgba(0, 0, 0, 0.9);
+    &_box {
+      width: 85%;
+      margin: 0;
+    }
+    &_img {
+      height: 70vw;
+    }
+  }
+
+  .slick {
+    &_dots {
+      position: absolute;
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: center;
+      bottom: 25px;
+    }
+    &_carousel {
+      width: 100%;
+      position: relative;
+    }
+    &_body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    &_box {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    &_nav {
+      display: none;
+      --thumbs-slide-spacing: 0;
+    }
+  }
+
+  .item {
+    &_slick {
+      &_img {
+        width: 100%;
+        height: 80vw;
+        position: relative;
+        &_png {
+          border-radius: 0;
+          object-fit: fill;
+          object-position: none;
+        }
+      }
+    }
+  }
+}
