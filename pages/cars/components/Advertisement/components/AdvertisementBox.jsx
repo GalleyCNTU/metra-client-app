@@ -2,9 +2,7 @@ import Image from 'next/image';
 
 import { TELEGRAM_URL } from 'continuities';
 
-// import { Slider } from './SliderComponent';
-import { AsNavFor } from './SlickSlider';
-
+import { SliderComponent } from './SliderComponent';
 import classes from '../Advertisement.module.scss';
 
 // import MakeIcon from 'public/img/AdvertisementBox/MakeIcon.svg';
@@ -16,6 +14,7 @@ import TransmissionIcon from 'public/img/AdvertisementBox/TransmissionIcon.svg';
 import DriveIcon from 'public/img/AdvertisementBox/DriveIcon.svg';
 
 import { Typography, Button, Box } from '@mui/material';
+import { useState } from 'react';
 
 export const AdvertisementBox = ({
   images,
@@ -30,10 +29,10 @@ export const AdvertisementBox = ({
   transmission,
   status,
 }) => {
+  const [popupIsActive, setPopupIsActive] = useState(false);
   const openLinkHandler = () => {
     window.open(TELEGRAM_URL, '_blank');
   };
-
   const descr = [
     { text: `Коробка: ${transmission}`, img: TransmissionIcon },
     { text: `Пробіг: ${odometer} тис.`, img: OdometerIcon },
@@ -46,12 +45,7 @@ export const AdvertisementBox = ({
     <>
       <Box className={classes.advertisement}>
         <Box className={classes.advertisement_container}>
-          <AsNavFor items={images} make={make} model={model} />
-          {/* <Slider
-            items={images}
-            make={make}
-            model={model}
-          /> */}
+          <SliderComponent items={images} make={make} model={model} />
         </Box>
 
         <Box className={classes.characteristics_container}>

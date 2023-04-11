@@ -8,14 +8,13 @@
   align-content: center;
   flex-direction: column;
   padding: 0px;
-
   &_container {
     margin-bottom: 3rem;
     display: flex;
     justify-content: center;
     padding: 0px;
+    width: 100%;
   }
-
   &_body {
     background: url('../../../../public/img/conditionsBackground.png') no-repeat
       center;
@@ -28,7 +27,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   &_color {
     color: $colorMainOrange;
   }
@@ -39,25 +37,21 @@
     display: flex;
     justify-content: center;
   }
-
   &_title {
     font-weight: 800;
     color: $colorMainWhite;
     margin: 10px 0;
-
     &_make {
       font-size: 40px;
       font-family: $fontFamilyBold;
       font-weight: 800;
     }
-
     &_price {
       font-size: 30px;
       font-family: $fontFamilyBold;
       font-weight: 800;
     }
   }
-
   &_description {
     &_title {
       font-family: $fontFamilyBold;
@@ -66,17 +60,15 @@
       margin: 10px 0;
       font-size: 30px;
     }
-
     &_block {
       background: $colorMainBlueBlack;
       box-shadow: $boxShadow;
       border-radius: 0 0 10px 10px;
       padding: 0 50px 50px 50px;
-      width: 90%;
+      width: 94%;
       margin-top: -2px;
       margin-bottom: 3rem;
     }
-
     &_info {
       font-family: $fontFamilyBold;
       font-weight: 800;
@@ -84,21 +76,18 @@
       font-size: 18px;
       word-break: break-all;
     }
-
     &_container {
       display: flex;
       justify-content: center;
     }
   }
-
   &_block {
     background: $colorMainBlueBlack;
     box-shadow: $boxShadow;
     border-radius: 10px 10px 0 0;
     padding: 50px 50px 0 50px;
-    width: 90%;
+    width: 94%;
   }
-
   &_info {
     font-family: $fontFamily;
     font-weight: 800;
@@ -107,14 +96,12 @@
     word-break: break-all;
     margin-left: 5px;
   }
-
   &_column {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
     width: 100%;
   }
-
   &_box {
     display: flex;
     align-items: center;
@@ -129,21 +116,9 @@
     justify-content: space-between;
     align-items: center;
   }
-
-  &_drawer {
-    width: 50px;
-    height: 50px;
-    background-color: blue;
-    z-index: 99999;
-
-    &_img {
-      width: 50px;
-      height: 50px;
-    }
-  }
-
   &_back {
-    width: 100%;
+    width: 90%;
+    padding-left: 40px;
     cursor: pointer;
     font-family: $fontFamily;
     font-size: 70px;
@@ -156,21 +131,27 @@
     align-content: center;
     justify-content: flex-start;
     border-radius: 0%;
+    &_img {
+      display: flex;
+      align-content: center;
+      margin-right: 60px;
+      position: relative;
+      height: 83.33333587646484px;
+      width: 83.33333587646484px;
+    }
   }
-
   &_characteristics {
     &_box {
       display: flex;
       justify-content: center;
     }
-
     &_contact {
       margin: 80px 0 20px 0;
       width: 230px;
       background-color: $colorMainOrange;
       cursor: pointer;
       height: 40px;
-      font-family: $fontFamily;
+      font-family: 'Gilroy';
       font-weight: 800;
       color: $colorMainWhite;
       font-size: 18px;
@@ -178,7 +159,6 @@
       align-items: center;
       align-content: center;
       justify-content: center;
-
       &:hover {
         background-color: $colorMainOrange;
         color: $colorMainWhite;
@@ -191,35 +171,7 @@
   display: flex;
   justify-content: center;
   padding: 0;
-  width: 80%;
-}
-
-.slider {
   width: 100%;
-
-  &_img {
-    // width: 100%;
-    height: 500px;
-    border-radius: 10px;
-    filter: drop-shadow($boxShadow);
-
-    &_nav {
-      height: 300px;
-      filter: drop-shadow($boxShadow);
-    }
-  }
-}
-
-@media (max-width: 1800px) {
-  .slider {
-    &_img {
-      height: 47vw;
-
-      &_nav {
-        height: 16vw;
-      }
-    }
-  }
 }
 
 @media (max-width: 1150px) {
@@ -230,15 +182,24 @@
   }
 
   .characteristics {
+    &_description {
+      &_title {
+        font-size: 24px;
+      }
+      &_block {
+        padding: 0 30px 30px 30px;
+      }
+    }
+    &_block {
+      padding: 30px 30px 0 30px;
+    }
     &_container {
       margin-bottom: 0;
     }
-
     &_title {
       &_make {
         font-size: 30px;
       }
-
       &_price {
         font-size: 24px;
       }
@@ -250,13 +211,16 @@
     background-position: center;
     background-size: cover;
   }
-
-  .slider {
-    &_img {
-      &_nav {
-        width: 10px;
-        height: 10px;
-        opacity: 0;
+  .btn {
+    &_back {
+      font-size: 50px;
+      &_img {
+        display: flex;
+        align-content: center;
+        margin-right: 30px;
+        position: relative;
+        height: 60px;
+        width: 60px;
       }
     }
   }
@@ -267,7 +231,6 @@
     &_container {
       margin-bottom: 0;
     }
-
     &_body {
       position: relative;
       width: 100%;
@@ -292,34 +255,35 @@
 
     &_description {
       &_title {
+        color: $colorMainBlueBlack;
         margin: 30px 0 10px 0;
         font-size: 26px;
       }
-
       &_block {
+        background: $colorMainWhite;
         box-shadow: none;
         padding: 0 20px 20px 20px;
         width: 100%;
+        margin-top: 0;
+        margin-bottom: 3rem;
       }
-
       &_info {
-        // font-family: $fontFamilyBold;
         font-weight: 500;
         color: $colorMainBlueBlack;
-
         font-family: $fontFamily;
         font-size: 20px;
         line-height: 28px;
         letter-spacing: 0px;
+        word-break: break-all;
       }
     }
 
     &_block {
       box-shadow: none;
-      border-radius: 10px;
+      border-radius: 0;
       padding: 20px;
       width: 100%;
-      margin-top: -10px;
+      margin-top: -5px;
     }
 
     &_box {
@@ -329,44 +293,39 @@
 
   .btn {
     &_back {
-      top: 10px;
-      left: 3%;
+      width: 75%;
+      top: 42px;
+      left: 7%;
       position: absolute;
-      z-index: 999;
-      width: 90%;
-      font-size: 28px;
-      line-height: 28px;
+      z-index: 9;
+      font-size: 24px;
+      line-height: 24px;
       font-weight: 800;
+      padding: 0;
       color: $colorMainWhite;
+      &_info {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+      }
+      &_img {
+        display: flex;
+        margin-right: 10px;
+        position: relative;
+        height: 40px;
+        width: 40px;
+      }
     }
-
     &_characteristics {
       &_contact {
         border-radius: 0%;
-        margin: 80px 0 0 0;
+        margin: 60px 0 0 0;
         width: 300px;
       }
     }
   }
-
   .container {
     width: 100%;
     background: none;
-  }
-
-  .slider {
-    &_img {
-      height: 80vw;
-
-      &_png {
-        border-radius: 0;
-      }
-
-      &_nav {
-        width: 10px;
-        height: 10px;
-        opacity: 0;
-      }
-    }
   }
 }

@@ -8,10 +8,11 @@ export const Layout = ({
   setLogo,
   hideMediaQuery = false,
   makes = null,
+  advMenu = false,
 }) => {
   return (
     <>
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} setLogo={setLogo} />
+      <Header isOpen={isOpen} setIsOpen={setIsOpen} setLogo={setLogo} advMenu={advMenu}/>
       <main>{children}</main>
       <CarForm makes={makes} hideMediaQuery={hideMediaQuery} />
       <Contacts hideMediaQuery={hideMediaQuery} />
