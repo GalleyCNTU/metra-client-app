@@ -12,7 +12,12 @@ export const Layout = ({
 }) => {
   return (
     <>
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} setLogo={setLogo} advMenu={advMenu}/>
+      <Header
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        setLogo={setLogo}
+        advMenu={advMenu}
+      />
       <main>{children}</main>
       <CarForm makes={makes} hideMediaQuery={hideMediaQuery} />
       <Contacts hideMediaQuery={hideMediaQuery} />

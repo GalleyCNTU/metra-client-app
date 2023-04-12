@@ -49,7 +49,6 @@ export const SliderComponent = ({ items, model, make }) => {
     ref: slider1Ref,
     asNavFor: nav2,
     infinite: false,
-    arrows: false,
     dots: true,
     arrows: mediaWidthWindow ? false : true,
     nextArrow: <SampleNextArrow />,
@@ -122,9 +121,9 @@ export const SliderComponent = ({ items, model, make }) => {
       <div className={classes.slick_nav}>
         <Slider {...navSettings}>
           {[...items].map((item, index) => (
-            <div className={classes.item_slick_nav_wrap}>
+            <div key={index} className={classes.item_slick_nav_wrap}>
               <div className={classes.item_slick_nav_body}>
-                <div className={classes.item_slick_nav_img} key={index}>
+                <div className={classes.item_slick_nav_img}>
                   <Image
                     src={item.url}
                     alt={`${make} ${model}`}

@@ -1,16 +1,17 @@
 import { useState } from 'react';
 
-import { Layout, Drawer, CarList } from 'components';
-import { getAdvertisementList, getMakesObj } from 'data/Firebase';
-
 import {
+  Layout,
+  Drawer,
+  CarList,
   CarBuying,
   AboutUs,
   Conditions,
   BuyingInfo,
   WhyWe,
-  Details,
-} from './components';
+  MainDetails as Details,
+} from 'components';
+import { getAdvertisementList, getMakesObj } from 'data/Firebase';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

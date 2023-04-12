@@ -1,4 +1,4 @@
-@import "styles/variables.module.scss";
+@import 'styles/variables.module.scss';
 
 .adjoiningBlock {
   width: 100%;
@@ -127,7 +127,6 @@
     &_title {
       display: block;
       margin-bottom: 30px;
-      
 
       &_yellow {
         font-family: $fontFamily;

@@ -1,11 +1,19 @@
 import { useState } from 'react';
 
-import { getAdvertisementList, getMakesObj } from 'data/Firebase';
-import { Layout, CarList, Drawer } from 'components';
+import {
+  getAdvNameObj,
+  getAdvertisementList,
+  getMakesObj,
+} from 'data/Firebase';
+import {
+  Layout,
+  CarList,
+  Drawer,
+  Search,
+  CarsDetails as Details,
+} from 'components';
 
-import { Search, Details } from './components';
-
-const Cars = ({ advertisementList, makes }) => {
+const Cars = ({ advertisementList, makes, avalaibleMakes }) => {
   const [advList, setAdvList] = useState(advertisementList);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,7 +27,11 @@ const Cars = ({ advertisementList, makes }) => {
         hideMediaQuery={true}
         makes={makes}
       >
-        <Search setAdvList={setAdvList} />
+        <Search
+          setAdvList={setAdvList}
+          avalaibleMakes={avalaibleMakes}
+          advList={advertisementList}
+        />
         <CarList
           advertisementList={advList}
           pagination={true}
@@ -34,11 +46,13 @@ const Cars = ({ advertisementList, makes }) => {
 export async function getServerSideProps() {
   const advertisementList = await getAdvertisementList();
   const makes = await getMakesObj();
+  const avalaibleMakes = await getAdvNameObj(advertisementList);
 
   return {
     props: {
       advertisementList,
       makes,
+      avalaibleMakes,
     },
   };
 }

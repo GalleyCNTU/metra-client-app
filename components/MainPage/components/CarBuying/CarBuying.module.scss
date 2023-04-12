@@ -1,4 +1,4 @@
-@import "styles/variables.module.scss";
+@import 'styles/variables.module.scss';
 
 .mobileMenu_button {
   display: none;
@@ -84,7 +84,7 @@
     align-items: center;
     padding-right: 10px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    
+
     img {
       cursor: pointer;
     }

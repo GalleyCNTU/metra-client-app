@@ -17,7 +17,7 @@ export const Header = ({ isOpen, setIsOpen, setLogo = false, advMenu }) => {
       <div
         className={
           advMenu
-            ? (`${classes.header_mobileMenu_button} ${classes.header_advMenu_button}`)
+            ? `${classes.header_mobileMenu_button} ${classes.header_advMenu_button}`
             : classes.header_mobileMenu_button
         }
         onClick={() => setIsOpen(!isOpen)}
