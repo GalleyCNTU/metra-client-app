@@ -14,7 +14,6 @@ import TransmissionIcon from 'public/img/AdvertisementBox/TransmissionIcon.svg';
 import DriveIcon from 'public/img/AdvertisementBox/DriveIcon.svg';
 
 import { Typography, Button, Box } from '@mui/material';
-import { useState } from 'react';
 
 export const AdvertisementBox = ({
   images,
@@ -29,7 +28,6 @@ export const AdvertisementBox = ({
   transmission,
   status,
 }) => {
-  const [popupIsActive, setPopupIsActive] = useState(false);
   const openLinkHandler = () => {
     window.open(TELEGRAM_URL, '_blank');
   };

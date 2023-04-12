@@ -1,29 +1,42 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { Layout, Drawer } from 'components';
-import { Advertisement } from './components';
+import { Layout, Advertisement, Drawer } from 'components';
 
 import { CircularProgress, Box } from '@mui/material';
-import { getMakesObj } from '@/data/Firebase';
-import { useState } from 'react';
+import { getMakesObj } from 'data/Firebase';
 
 const Car = ({ makes }) => {
-  const router = useRouter();
-  const id = router.query['id'];
   const [isOpen, setIsOpen] = useState(false);
+  const [adv, setAdv] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const id = router.query['id'];
+
+    const requestOptions = {
+      method: 'POST',
+      body: JSON.stringify(id),
+    };
+    fetch('/api/firebase/getAdvertisement', requestOptions)
+      .then((res) => res.json())
+      .then(({ adv }) => {
+        if (adv) setAdv(adv);
+        else router.push(`/cars/404`);
+      });
+  }, []);
+
   return (
     <>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen} anchor="left" />
       <Layout
-        advMenu={true}
-        hideMediaQuery={true}
-        makes={makes}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        setLogo={true}
+        hideMediaQuery={true}
+        makes={makes}
       >
-        {id ? (
-          <Advertisement id={id} />
+        {adv ? (
+          <Advertisement adv={adv} />
         ) : (
           <Box
             sx={{

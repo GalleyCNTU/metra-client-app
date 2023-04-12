@@ -1,5 +1,4 @@
 import { Layout } from 'components';
-import classes from './components/Advertisement/components/AdvertisementBox.module.scss';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -10,7 +9,25 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const Custom404 = () => {
   return (
     <Layout>
-      <IconButton size="large" className={classes.btn_back} href={'/cars'}>
+      <IconButton
+        size="large"
+        style={{
+          width: '100%',
+          cursor: 'pointer',
+          fontFamily: 'Bold',
+          fontSize: '70px',
+          lineHeight: '116px',
+          fontWeight: 900,
+          color: '#393e46',
+          textShadow: ' 0.375rem 0.375rem 0.625rem rgba(0, 0, 0, 0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          alignContent: 'center',
+          justifyContent: 'flex-start',
+          borderRadius: '0%',
+        }}
+        href={'/cars'}
+      >
         <ArrowBackIcon fontSize="large" />
         Назад
       </IconButton>
