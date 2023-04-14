@@ -34,6 +34,7 @@ const Car = ({ makes }) => {
         setIsOpen={setIsOpen}
         hideMediaQuery={true}
         makes={makes}
+        advMenu={true}
       >
         {adv ? (
           <Advertisement adv={adv} />

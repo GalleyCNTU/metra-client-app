@@ -121,7 +121,7 @@ export const SliderComponent = ({ items, model, make }) => {
       <div className={classes.slick_nav}>
         <Slider {...navSettings}>
           {[...items].map((item, index) => (
-            <div key={index} className={classes.item_slick_nav_wrap}>
+            <div className={classes.item_slick_nav_wrap} key={index}>
               <div className={classes.item_slick_nav_body}>
                 <div className={classes.item_slick_nav_img}>
                   <Image

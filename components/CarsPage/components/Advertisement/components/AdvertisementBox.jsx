@@ -13,8 +13,6 @@ import FuelIcon from 'public/img/AdvertisementBox/FuelIcon.svg';
 import TransmissionIcon from 'public/img/AdvertisementBox/TransmissionIcon.svg';
 import DriveIcon from 'public/img/AdvertisementBox/DriveIcon.svg';
 
-import { Typography, Button, Box } from '@mui/material';
-
 export const AdvertisementBox = ({
   images,
   make,
@@ -41,73 +39,73 @@ export const AdvertisementBox = ({
   ];
   return (
     <>
-      <Box className={classes.advertisement}>
-        <Box className={classes.advertisement_container}>
+      <div className={classes.advertisement}>
+        <div className={classes.advertisement_container}>
           <SliderComponent items={images} make={make} model={model} />
-        </Box>
+        </div>
 
-        <Box className={classes.characteristics_container}>
-          <Box className={classes.characteristics_block}>
-            <Box className={classes.characteristics_title}>
-              <Typography
+        <div className={classes.characteristics_container}>
+          <div className={classes.characteristics_block}>
+            <div className={classes.characteristics_title}>
+              <span
                 className={classes.characteristics_title_make}
                 variant="h3"
-              >{`${make} ${model}`}</Typography>
-              <Typography
+              >{`${make} ${model}`}</span>
+              <span
                 className={classes.characteristics_title_price}
                 variant="h3"
-              >{`${price}`}</Typography>
-            </Box>
+              >{`${price}`}</span>
+            </div>
 
-            <Box className={classes.characteristics_container}>
-              <Box className={classes.characteristics_column}>
+            <div className={classes.characteristics_container}>
+              <div className={classes.characteristics_column}>
                 {descr.map(({ text, img }, index) => (
-                  <Box key={index} className={classes.characteristics_box}>
+                  <div key={index} className={classes.characteristics_box}>
                     <Image src={img} alt={make} />
-                    <Typography className={classes.characteristics_info}>
-                      {text}
-                    </Typography>
-                  </Box>
+                    <span className={classes.characteristics_info}>{text}</span>
+                  </div>
                 ))}
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-        <Box className={classes.characteristics_description_container}>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={classes.characteristics_description_container}>
           {description ? (
-            <Box className={classes.characteristics_description_block}>
-              <Typography
-                className={classes.characteristics_description_title}
-                variant="h3"
-              >
-                {'Опис:'}
-              </Typography>
-              <Typography className={classes.characteristics_description_info}>
-                {description}
-              </Typography>
-              <Box className={classes.btn_characteristics_box}>
-                <Button
+            <div className={classes.characteristics_description_box}>
+              <div className={classes.characteristics_description_block}>
+                <span
+                  className={classes.characteristics_description_title}
+                  variant="h3"
+                >
+                  {'Опис'}
+                </span>
+                <span className={classes.characteristics_description_info}>
+                  {description}
+                </span>
+              </div>
+              <div className={classes.btn_characteristics_box}>
+                <button
                   onClick={openLinkHandler}
                   className={classes.btn_characteristics_contact}
                 >
                   Детальніше
-                </Button>
-              </Box>
-            </Box>
+                </button>
+              </div>
+            </div>
           ) : (
-            <Box className={classes.characteristics_description_block}>
-              <Box className={classes.btn_characteristics_box}>
-                <Button
+            <div className={classes.characteristics_description_box}>
+              <div className={classes.btn_characteristics_box}>
+                <button
                   onClick={openLinkHandler}
                   className={classes.btn_characteristics_contact}
                 >
                   Детальніше
-                </Button>
-              </Box>
-            </Box>
+                </button>
+              </div>
+            </div>
           )}
-        </Box>
-      </Box>
+        </div>
+      </div>
     </>
   );
 };
