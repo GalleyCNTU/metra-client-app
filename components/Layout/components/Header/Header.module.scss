@@ -88,5 +88,44 @@
       background-size: 100%;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
+    &_advMenu_button {
+      width: 39px;
+      height: 29px;
+      display: flex;
+      position: absolute;
+      top: 55%;
+      right: 3vw;
+      z-index: 99;
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  .header {
+    z-index: 9;
+    // &_mobileMenu_button {
+    //   width: 39px;
+    //   height: 29px;
+    //   display: flex;
+    //   position: absolute;
+    //   top: 4vh;
+    //   right: 2vw;
+    //   z-index: 99;
+    //   cursor: pointer;
+    //   background: url('../../../../public/img/blackDrawerMenu.svg') no-repeat;
+    //   background-size: 100%;
+    //   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    // }
+    &_advMenu_button {
+      background: url('../../../../public/img/whiteDrawerMenu.svg') no-repeat;
+      display: flex;
+      position: absolute;
+      background-size: contain;
+      top: 51px;
+      right: 3vw;
+      width: 30px;
+      height: 21px;
+      z-index: 999;
+    }
   }
 }

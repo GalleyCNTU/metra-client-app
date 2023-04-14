@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { get, getDatabase, ref } from 'firebase/database';
+import { get, getDatabase, ref, onValue } from 'firebase/database';
 
 import { objToList as advToList, isValidAdv } from 'utils';
 
@@ -34,8 +34,7 @@ init();
 const getData = async (ref) => {
   try {
     const snapshot = await get(ref);
-    if (snapshot.exists()) return await snapshot.val();
-    else return null;
+    return snapshot.val();
   } catch (error) {
     console.log(error.message);
     return null;
@@ -50,23 +49,27 @@ export const getAdvertisementList = async (filters = null) => {
   const data = await getData(ref(db, '/advertisements'));
   if (filters)
     return advToList(data)?.filter((adv) => isValidAdv(adv, filters));
-  else return advToList(data);
+  return advToList(data);
 };
 
 export const getAdvertisement = async (id) => {
-  return await getData(ref(db, `/advertisements/${id}`));
+  return getData(ref(db, `/advertisements/${id}`));
 };
 
 export const getAdvNameObj = async () => {
-  const data = await getData(ref(db, '/advertisements'));
-  const advList = advToList(data);
-  const nameList = {};
+  const advList = await getAdvertisementList();
+  if (!advList) return {};
+  const makes = {};
 
-  advList.forEach((adv) =>
-    nameList[adv.make]
-      ? nameList[adv.make].add(adv.model)
-      : (nameList[adv.make] = new Set([adv.model]))
-  );
+  advList.forEach((adv) => {
+    makes[adv.make]
+      ? makes[adv.make].push(adv.model)
+      : (makes[adv.make] = [adv.model]);
+  });
 
-  return nameList;
+  Object.keys(makes).forEach((make) => {
+    // eslint-disable-next-line no-undef
+    makes[make] = Array.from(new Set(makes[make]));
+  });
+  return makes;
 };

@@ -8,13 +8,13 @@ import { Box, Typography } from '@mui/material';
 import telegramIcon from 'public/img/telegramIcon.svg';
 import instagramIcon from 'public/img/instagramIcon.svg';
 import viberIcon from 'public/img/viberIcon.svg';
-import whatsappIcon from 'public/img/whatsappIcon.svg';
+import faceboockIcon from 'public/img/faceboockIcon.svg';
 
 import {
   PHONE_NUMBER_MAIN,
   PHONE_NUMBER_SECONDARY,
   INSTAGRAM_URL,
-  WHATSAPP_URL,
+  FACEBOOK_URL,
   VIBER_URL,
   TELEGRAM_URL,
 } from 'continuities';
@@ -70,10 +70,10 @@ export const Footer = () => (
                   alt=""
                 />
               </Link>
-              <Link href={WHATSAPP_URL}>
+              <Link href={FACEBOOK_URL}>
                 <Image
                   className={classes.item_messenger}
-                  src={whatsappIcon}
+                  src={faceboockIcon}
                   alt=""
                 />
               </Link>

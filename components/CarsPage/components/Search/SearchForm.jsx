@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
 
-import { getAdvNameObj, getAdvertisementList } from 'data/Firebase';
 import { getYearList, getPriceList, formatForSelect, setLimits } from 'utils';
 
 import classes from './Search.module.scss';
@@ -17,14 +16,14 @@ const colorStyles = {
 export const SearchForm = ({ setAdvList }) => {
   const [filters, setFilters] = useState(null);
 
-  const [nameList, setNameList] = useState([]);
-
   const [yearList, setYearList] = useState([]);
   const [priceList, setPriceList] = useState([]);
 
-  const [fuelList, setFuelList] = useState([]);
+  const [nameList, setNameList] = useState([]);
   const [makeList, setMakeList] = useState([]);
   const [modelList, setModelList] = useState([]);
+
+  const [fuelList, setFuelList] = useState([]);
   const [transmissionList, setTransmissionList] = useState([]);
 
   const [selectedYearTo, setSelectedYearTo] = useState(null);
@@ -39,18 +38,17 @@ export const SearchForm = ({ setAdvList }) => {
   const [selectedTransmition, setSelectedTransmition] = useState(null);
 
   useEffect(() => {
-    const setNames = async () => {
-      const names = await getAdvNameObj();
-      setNameList(names);
-      setMakeList(formatForSelect(Object.keys(names), 'Марка'));
-    };
-    setNames();
-
+    fetch('/api/firebase/getAvailableMakes')
+      .then((res) => res.json())
+      .then(({ names }) => {
+        if (names) {
+          setNameList(names);
+          setMakeList(formatForSelect(Object.keys(names), 'Марка'));
+        }
+      });
     setYearList(getYearList(1960));
     setPriceList(getPriceList(3 * 10 ** 4));
-
     setFuelList(formatForSelect(['Бензин', 'Дизель', 'Газ'], 'Тип палива'));
-
     setTransmissionList(
       formatForSelect(
         ['Механіка 6 ст.', 'Механіка 5 ст.', 'Автомат', 'Робот', 'Варіатор'],
@@ -67,11 +65,18 @@ export const SearchForm = ({ setAdvList }) => {
   }, [selectedMake]);
 
   useEffect(() => {
-    const findAdvertisements = async () =>
-      setAdvList(await getAdvertisementList(filters));
-
-    findAdvertisements();
-  }, [filters]);
+    if (filters) {
+      const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(filters),
+      };
+      fetch('/api/firebase/getAdvertisementList', requestOptions)
+        .then((res) => res.json())
+        .then(({ advList }) => {
+          setAdvList(advList);
+        });
+    }
+  }, [filters, setAdvList]);
 
   const resetHandler = () => {
     setSelectedYearFrom(null);
