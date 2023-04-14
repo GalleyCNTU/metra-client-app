@@ -14,8 +14,11 @@ export const StyledPagination = styled(Pagination)(() => ({
   },
   '& .MuiPaginationItem-root': {
     color: 'white',
-    border: `2px solid #ff8a00`,
-    borderRadius: 4,
+    border: `1px solid #ff8a00`,
+    borderRadius: 0,
+    fontSize: 18,
+    lineHeight: 1,
+    letterSpacing: 0.38,
     '&.Mui-selected': {
       backgroundColor: '#ff8a00',
       color: '#fff',
@@ -30,6 +33,16 @@ export const StyledPagination = styled(Pagination)(() => ({
   '@media screen and (max-width: 1150px)': {
     '& .MuiPaginationItem-root': {
       color: '#393E46',
+      '&.Mui-selected': {
+        backgroundColor: '#ff8a00',
+        color: '#fff',
+        border: `1px solid #ff8a00`,
+      },
+      '&:hover': {
+        backgroundColor: '#ff8a00',
+        color: '#fff',
+        border: `1px solid #ff8a00`,
+      },
     },
   },
 }));

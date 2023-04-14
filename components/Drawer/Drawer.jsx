@@ -25,25 +25,25 @@ export const Drawer = ({ anchor, isOpen, setIsOpen }) => (
     }}
   >
     <div className={classes.drawer_body}>
-      <IconButton
+      <div
         className={classes.drawer_body_close}
         onClick={() => setIsOpen(!isOpen)}
       >
         <Image src={drawerCloseButton} alt="drawer close button" />
-      </IconButton>
+      </div>
       <div className={classes.drawer_body_logo}>
         <Image src={drawerBodyLogo} alt="drawer body logo" />
       </div>
       <div className={classes.drawer_body_nav}>
         {PAGES.map((page, index) => (
           <Link href={page.link} scroll={false} key={index}>
-            <IconButton
+            <div
               onClick={() => setIsOpen(!isOpen)}
               className={classes.drawer_body_nav_link}
             >
               <Image src={page.icon} alt="page icon" />
               <span>{page.title}</span>
-            </IconButton>
+            </div>
           </Link>
         ))}
       </div>

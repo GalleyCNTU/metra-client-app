@@ -19,7 +19,7 @@
       font-style: normal;
       font-weight: 800;
       font-size: 72px;
-      line-height: 41px;
+      line-height: 65px;
       text-align: center;
       color: $colorMainWhite;
     }
@@ -27,17 +27,13 @@
 
   &_bottom {
     margin-bottom: 60px;
+    padding-left: 8.165%;
 
     &_list {
-      height: 85%;
-      width: 1262px;
       display: flex;
-      justify-content: flex-start;
       flex-wrap: wrap;
-      column-gap: 30px;
-      row-gap: 50px;
-      margin: auto;
-
+      column-gap: 8.165%;
+      row-gap: 80px;
       transition: opacity 0.3s ease-in-out;
     }
   }
@@ -50,25 +46,24 @@
   text-align: center;
 }
 
-@media (max-width: 1290px) {
+@media (max-width: 1285px) {
   .purchased_cars {
     &_bottom {
-      margin-bottom: 60px;
+      padding-left: 11.965%;
 
       &_list {
-        width: 730px;
+        column-gap: 11.965%;
       }
     }
   }
 }
 
+
 @media (max-width: 1150px) {
-  .notFound {
-    color: $colorMainBlack;
-  }
   .purchased_cars {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    &_top_disabled {
+    padding: 21px 0 30px 0;
+
+    &_top {
       display: none;
     }
 
@@ -80,26 +75,28 @@
       background-color: $colorMainBlueBlack;
     }
 
-    &_top_title {
-      font-size: 37px;
-      line-height: 35px;
-    }
-
     &_bottom {
-      &_white {
-        background-color: white;
-      }
+      padding-left: 11.965%;
+
       &_list {
-        margin: auto;
-        width: 730px;
-        padding: 0;
-        justify-content: flex-start;
-        column-gap: 30px;
-        row-gap: 50px;
+        column-gap: 11.965%;
       }
     }
   }
 }
+
+@media (max-width: 1035px) {
+  .purchased_cars {
+    &_bottom {
+      padding-left: 0;
+
+      &_list {
+        justify-content: center;
+      }
+    }
+  }
+}
+
 
 @media (max-width: 729px) {
   .purchased_cars {
@@ -108,22 +105,19 @@
       line-height: 35px;
     }
 
+    &_top {
+      &_title {
+        font-size: 30px;
+        line-height: 41px;
+      }
+    }
+
     &_bottom {
+      padding-left: 0;
       &_list {
-        width: 100%;
-        padding: 0;
+        column-gap: 0;
         justify-content: center;
-        column-gap: 30px;
-        row-gap: 50px;
       }
     }
   }
-}
-
-.item {
-  width: 100%;
-  display: 'flex';
-  flex-direction: 'column';
-  justify-content: 'space-between';
-  align-items: 'center';
 }
