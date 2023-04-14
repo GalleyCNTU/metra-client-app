@@ -24,8 +24,9 @@ export const CarListItem = ({
             style={{ borderRadius: '10px' }}
             src={images[0].url}
             alt={images[0].id}
-            width={328}
-            height={236}
+            layout='fill'
+            objectFit='cover'
+            objectPosition={"50% 100%"}
           />
         </div>
 
@@ -35,7 +36,7 @@ export const CarListItem = ({
         <div className={classes.purchased_car_info}>
           <span>Паливо: {fuel}</span>
           <span>Коробка: {transmission}</span>
-          <span>Пробіг: {odometer}</span>
+          <span>Пробіг: {odometer} км.</span>
         </div>
 
         <div className={classes.purchased_car_price}>

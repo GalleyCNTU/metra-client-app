@@ -1,6 +1,6 @@
 .drawer {
   margin: 30px 0 0 30px;
-  height: 65%;
+  height: 58%;
   max-height: 500px;
   border-radius: 10px;
   overflow-x: hidden;
@@ -72,6 +72,16 @@
         color: #393e46;
         text-align: left;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        &:hover {
+          border-radius: 0;
+          background-color: white;
+        }
+
+        &:active {
+          border-radius: 0;
+          background-color: white;
+        }
 
         span {
           margin-left: 8px;

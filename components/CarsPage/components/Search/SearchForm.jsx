@@ -332,7 +332,7 @@ export const SearchForm = ({ setAdvList }) => {
           className={classes.form_under_section_button}
           onClick={resetHandler}
         >
-          Очистити фільтр
+          Очистити
         </button>
         <button
           className={classes.form_under_section_button}

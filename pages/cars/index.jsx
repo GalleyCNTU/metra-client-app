@@ -1,9 +1,7 @@
 import { useState } from 'react';
 
 import { getAdvertisementList, getMakesObj } from 'data/Firebase';
-import { Layout, CarList, Drawer } from 'components';
-
-import { Search, Details } from './components';
+import { Layout, CarList, Drawer, Search, Details } from 'components';
 
 const Cars = ({ advertisementList, makes }) => {
   const [advList, setAdvList] = useState(advertisementList);
