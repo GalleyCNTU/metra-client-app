@@ -58,13 +58,18 @@
   }
 }
 
-
 @media (max-width: 1150px) {
   .purchased_cars {
     padding: 21px 0 30px 0;
 
     &_top {
-      display: none;
+      &_title {
+        margin: 25px 0 0 0;
+      }
+
+      &_disabled {
+        display: none;
+      }
     }
 
     &_white {
@@ -97,18 +102,14 @@
   }
 }
 
-
 @media (max-width: 729px) {
   .purchased_cars {
-    &_top_title {
-      font-size: 37px;
-      line-height: 35px;
-    }
-
     &_top {
+      margin-bottom: 55px;
+
       &_title {
-        font-size: 30px;
-        line-height: 41px;
+        font-size: 37px;
+        line-height: 35px;
       }
     }
 

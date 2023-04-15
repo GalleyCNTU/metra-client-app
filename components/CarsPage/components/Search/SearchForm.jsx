@@ -10,6 +10,7 @@ const colorStyles = {
     ...styles,
     backgroundColor: 'white',
     height: 50,
+    
   }),
 };
 
@@ -125,7 +126,7 @@ export const SearchForm = ({ setAdvList }) => {
           styles={{ ...colorStyles }}
           theme={(theme) => ({
             ...theme,
-            borderRadius: 10,
+            borderRadius: 10,     
           })}
           components={{
             DropdownIndicator: () => null,
@@ -148,7 +149,7 @@ export const SearchForm = ({ setAdvList }) => {
           styles={{ ...colorStyles }}
           theme={(theme) => ({
             ...theme,
-            borderRadius: 10,
+            borderRadius: 10,          
           })}
           components={{
             DropdownIndicator: () => null,

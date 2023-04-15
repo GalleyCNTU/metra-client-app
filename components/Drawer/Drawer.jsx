@@ -11,7 +11,7 @@ import drawerCloseButton from 'public/img/drawerClose.svg';
 
 // Drawer lib
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { IconButton } from '@mui/material';
+
 
 export const Drawer = ({ anchor, isOpen, setIsOpen }) => (
   <SwipeableDrawer
