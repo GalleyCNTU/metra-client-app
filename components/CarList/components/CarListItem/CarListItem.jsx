@@ -45,7 +45,7 @@ export const CarListItem = ({
           </span>
         </div>
 
-        <Button className={classes.purchased_car_button}>Детальніше</Button>
+        <button className={classes.purchased_car_button}>Детальніше</button>
       </div>
     </Link>
   );

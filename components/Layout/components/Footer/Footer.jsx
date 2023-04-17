@@ -22,9 +22,7 @@ export const Footer = () => (
     <div className={classes.footer_body}>
       <div className={classes.footer_container} id="contacts_footer">
         <div className={classes.footer_contacts}>
-          <span className={classes.footer_contacts_title}>
-            Контакти
-          </span>
+          <span className={classes.footer_contacts_title}>Контакти</span>
           <div className={classes.footer_contacts_box}>
             <span
               className={`${classes.item_contact} ${classes.item_contact_title}`}
@@ -32,14 +30,10 @@ export const Footer = () => (
               Телефон:
             </span>
             <Link href={`tel:${PHONE_NUMBER_MAIN}`}>
-              <span className={classes.item_contact}>
-                +380 063 124 4667
-              </span>
+              <span className={classes.item_contact}>+380 063 124 4667</span>
             </Link>
             <Link href={`tel:${PHONE_NUMBER_SECONDARY}`}>
-              <span className={classes.item_contact}>
-                +380 068 098 0002
-              </span>
+              <span className={classes.item_contact}>+380 068 098 0002</span>
             </Link>
           </div>
           <div className={classes.footer_messengers}>
@@ -88,7 +82,7 @@ export const Footer = () => (
         </div>
       </div>
       <span className={classes.footer_security}>
-        © Всі права захищені
+        Сайт створений Pixelcats © 2023. Усі права захищені.
       </span>
     </div>
   </footer>

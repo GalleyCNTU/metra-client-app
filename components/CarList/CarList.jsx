@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 
 import { CarListItem } from './components/CarListItem';
 import classes from './CarList.module.scss';
@@ -148,15 +149,29 @@ export const CarList = ({
         </div>
       </div>
       {advertisements?.length !== 0 && pagination && (
-        <StyledPagination
-          count={pageCount}
-          page={currentPage + 1}
-          onChange={handlePageChange}
-          variant="outlined"
-          shape="rounded"
-          showFirstButton
-          showLastButton
-          className="customPagination"
+        // <StyledPagination
+        //   count={pageCount}
+        //   page={currentPage + 1}
+        //   onChange={handlePageChange}
+        //   variant="outlined"
+        //   shape="rounded"
+        //   showFirstButton
+        //   showLastButton
+        //   className="customPagination"
+        // />
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={(e, page) => handlePageChange(page)}
+          pageRangeDisplayed={advsOnPage}
+          pageCount={pageCount}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+          className="pagination"
+          pageClassName="pagination_page"
+          activeClassName="pagination_active"
+          previousClassName="pagination_previous"
+          nextClassName="pagination_next"
         />
       )}
     </div>

@@ -94,11 +94,13 @@
     text-align: center;
     color: $colorMainWhite;
     cursor: pointer;
-    transition: 0.2s all;
     margin: 0 auto;
-    &:hover {
-      background: $colorMainOrange;
-    }
+    transition: 0.3s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
   }
 }
 

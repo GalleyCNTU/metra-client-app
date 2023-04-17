@@ -24,8 +24,10 @@
     line-height: 34px;
     letter-spacing: 0.36px;
     cursor: pointer;
+    transition: 0.3s;
+
     &:hover {
-      background: $colorMainOrange;
+      background-color: #ffa032;
     }
   }
 

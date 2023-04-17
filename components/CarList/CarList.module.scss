@@ -6,6 +6,16 @@
   padding: 60px 0 30px 0;
   background-color: $colorMainBlueBlack;
 
+  &_pagintion {
+    display: flex;
+    justify-content: center;
+
+    &_page {
+      width: 3px;
+      color: yellow;
+    }
+  }
+
   &_top {
     height: 15%;
     width: 100%;

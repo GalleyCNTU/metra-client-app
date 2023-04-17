@@ -36,7 +36,7 @@
     justify-content: space-between;
     max-width: 1550px;
   }
-  &_contacts {
+  &_contacts {  
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -46,7 +46,7 @@
       font-size: 5.375rem;
       line-height: 116px;
       color: $colorMainWhite;
-      font-weight: 700;
+      font-weight: 700; 
     }
 
     &_box {
@@ -64,7 +64,6 @@
       line-height: 28px;
       letter-spacing: 0.35px;
       color: $colorMainWhite;
-      cursor: pointer;
       font-weight: 600;
     }
 
@@ -96,6 +95,8 @@
     margin: 0.5rem 0;
     cursor: pointer;
     font-weight: 600;
+    width: max-content;
+
     &_title {
       font-weight: 600;
       cursor: text;

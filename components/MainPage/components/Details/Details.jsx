@@ -4,12 +4,10 @@ import Link from 'next/link';
 import classes from './Details.module.scss';
 import arrow from 'public/img/detailsArrow.svg';
 
-import { Button } from '@mui/material';
-
 export const Details = () => (
   <div className={classes.details}>
     <Link href={'/cars'}>
-      <Button className={classes.details_button}>Детальніше</Button>
+      <button className={classes.details_button}>Детальніше</button>
     </Link>
     <Link href="#header" scroll={false}>
       <div className={classes.details_arrow}>
