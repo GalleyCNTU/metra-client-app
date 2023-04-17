@@ -5,7 +5,10 @@ import classes from './CarList.module.scss';
 
 //mui
 import styled from '@emotion/styled';
-import { CircularProgress, Pagination } from '@mui/material';
+import { Pagination } from '@mui/material';
+
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export const StyledPagination = styled(Pagination)(() => ({
   '& .MuiPagination-ul': {
@@ -106,16 +109,26 @@ export const CarList = ({
         <div className={classes.purchased_cars_bottom_list}>
           {!advertisements ? (
             <div
-              style={{
-                width: '100%',
-                height: '10vh',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <CircularProgress sx={{ color: '#ff8a00' }} />
+            style={{
+              width: '100%',
+              height: 300,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ width: 70, height: 70 }}>
+              <CircularProgressbar
+                strokeWidth={8}
+                value={90}
+                styles={buildStyles({
+                  textColor: '#393e46',
+                  pathColor: '#ff8a00',
+                  trailColor: '#393e46',
+                })}
+              />
             </div>
+          </div>
           ) : (
             (!advertisements.length && (
               <div

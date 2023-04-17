@@ -82,7 +82,7 @@
   justify-content: center;
   opacity: 1;
   &_box {
-    width: 55%;
+    width: 50%;
     margin: 15px 15px 15px 15px;
   }
   &_img {
@@ -105,16 +105,16 @@
     }
     &_slick_nav {
       &_img {
-        height: 16.5vw;
+        height: 21vw;
       }
     }
   }
   .popup {
     &_box {
-      width: 60%;
+      width: 55%;
     }
     &_img {
-      height: 35vw;
+      height: 40vw;
     }
   }
 }
@@ -122,10 +122,10 @@
 @media (max-width: 1600px) {
   .popup {
     &_box {
-      width: 70%;
+      width: 60%;
     }
     &_img {
-      height: 40vw;
+      height: 45vw;
     }
   }
 }
@@ -136,7 +136,7 @@
       width: 70%;
     }
     &_img {
-      height: 40vw;
+      height: 50vw;
     }
   }
 }
@@ -159,7 +159,7 @@
   }
   .popup {
     &_box {
-      width: 80%;
+      width: 70%;
       margin: 15px 15px 15px 15px;
     }
     &_img {

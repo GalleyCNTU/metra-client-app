@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 
 import { Layout, Advertisement, Drawer } from 'components';
 
-import { CircularProgress } from '@mui/material';
-import { getMakesObj } from 'data/Firebase';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-import classes from "pages/404/404.module.scss"
+import { getMakesObj } from 'data/Firebase';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,15 +55,26 @@ const Car = ({ makes }) => {
         {adv ? (
           <Advertisement adv={adv} />
         ) : (
-          <div className={classes.notFound}
-            sx={{
+          <div
+            style={{
+              width: '100%',
+              height: 300,
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              height: '400px',
             }}
           >
-            <CircularProgress sx={{ color: '#ff8a00' }} />
+            <div style={{ width: 70, height: 70 }}>
+              <CircularProgressbar
+                strokeWidth={8}
+                value={90}
+                styles={buildStyles({
+                  textColor: '#393e46',
+                  pathColor: '#ff8a00',
+                  trailColor: '#393e46',
+                })}
+              />
+            </div>
           </div>
         )}
       </Layout>
