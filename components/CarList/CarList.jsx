@@ -4,13 +4,17 @@ import ReactPaginate from 'react-paginate';
 import { CarListItem } from './components/CarListItem';
 import classes from './CarList.module.scss';
 
-//mui
-import CircularProgress from '@mui/material/CircularProgress';
+import Image from 'next/image';
+import { CircularProgress } from '@mui/material';
+
+import lessThan from "public/img/lessThan.svg";
+import moreThan from "public/img/moreThan.svg";
+
 
 export const CarList = ({
   advertisementList,
   mobileBackgroundColor,
-  advsOnPage = 8,
+  advsOnPage = 9,
   pagination = false,
   title = false,
 }) => {
@@ -61,7 +65,7 @@ export const CarList = ({
           Останні викуплені автомобілі
         </span>
       </div>
-      <div className={classes.purchased_cars_bottom} id="purchased_cars">
+      <div className={advertisements?.length ? classes.purchased_cars_bottom : ''} id="purchased_cars">
         <div className={classes.purchased_cars_bottom_list}>
           {!advertisements ? (
             <div
@@ -80,8 +84,11 @@ export const CarList = ({
               <div
                 style={{
                   width: '100%',
+                  height: '100%',
                   display: 'flex',
                   justifyContent: 'center',
+                  alignItems: 'center',
+                  height: '20vh',
                 }}
               >
                 <span className={classes.notFound}>Об&#39;яв не знайдено</span>
@@ -109,17 +116,22 @@ export const CarList = ({
       {advertisements?.length !== 0 && pagination && (
         <ReactPaginate
           breakLabel="..."
-          nextLabel=">"
+          nextLabel={<Image src={moreThan} />}
           onPageChange={({ selected }) => handlePageChange(selected)}
           pageRangeDisplayed={advsOnPage}
           pageCount={pageCount}
-          previousLabel="<"
+          previousLabel={<Image src={lessThan} />}
           renderOnZeroPageCount={null}
           className="pagination"
+          containerClassName={'pagination_container'}
           pageClassName="pagination_page"
           activeClassName="pagination_active"
-          previousClassName="pagination_previous"
-          nextClassName="pagination_next"
+          previousClassName="item pagination_previous"
+          nextClassName="item pagination_next"
+          pageLabelBuilder={(page) => (
+            <div className="pagination_page_link">{page}</div>
+          )}
+          disabledClassName="pagination_disabled"
         />
       )}
     </div>
