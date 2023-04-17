@@ -7,7 +7,7 @@ import classes from './CarList.module.scss';
 import styled from '@emotion/styled';
 import { Pagination } from '@mui/material';
 
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 export const StyledPagination = styled(Pagination)(() => ({

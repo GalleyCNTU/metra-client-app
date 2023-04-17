@@ -19,7 +19,7 @@ const colorStyles = {
     height: 50,
     borderRadius: 10,
   }),
-  option: (provided) => ({
+  option: () => ({
     // ...provided,
     cursor: 'pointer',
     borderRadius: 10,

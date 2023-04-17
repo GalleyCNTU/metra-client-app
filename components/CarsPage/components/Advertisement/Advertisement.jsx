@@ -6,7 +6,7 @@ import classes from './Advertisement.module.scss';
 
 import BackIcon from 'public/img/AdvertisementBox/BackIcon.svg';
 
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 export const Advertisement = ({ adv }) => (

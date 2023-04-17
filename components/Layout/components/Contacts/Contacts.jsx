@@ -6,14 +6,6 @@ import classes from './Contacts.module.scss';
 import upArrow from 'public/img/upArrow.svg';
 
 export const Contacts = ({ hideMediaQuery }) => {
-  const LinkComponent = React.forwardRef(({ onClick, href }, ref) => {
-    return (
-      <a href={href} onClick={onClick} ref={ref}>
-        <Image className={classes.map_upArrow_img} src={upArrow} alt="" />
-      </a>
-    );
-  });
-
   return (
     <div
       className={

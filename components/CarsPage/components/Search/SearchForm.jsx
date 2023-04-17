@@ -6,7 +6,7 @@ import { getYearList, getPriceList, formatForSelect, setLimits } from 'utils';
 import classes from './Search.module.scss';
 
 const colorStyles = {
-  option: (provided) => ({
+  option: () => ({
     // ...provided,
     cursor:"pointer",
     borderRadius: 10,
