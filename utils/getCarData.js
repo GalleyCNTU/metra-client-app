@@ -19,10 +19,10 @@ export const getYearList = (year, label = null) => {
   return formatForSelect(years, label);
 };
 
-export const getPriceList = (maxPrice) => {
+export const getPriceList = (maxPrice, label = null) => {
   const price = [];
-  for (let i = 0; i <= +maxPrice; i += 500) {
+  for (let i = 1000; i <= +maxPrice; i += 1000) {
     price.push(i.toString());
   }
-  return formatForSelect(price, 'Ціна');
+  return formatForSelect(price, label);
 };

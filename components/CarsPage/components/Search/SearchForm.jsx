@@ -8,7 +8,7 @@ import classes from './Search.module.scss';
 const colorStyles = {
   option: (provided) => ({
     // ...provided,
-    cursor:"pointer",
+    cursor: 'pointer',
     borderRadius: 10,
     padding: 15,
     color: '#9FA19F',
@@ -33,15 +33,9 @@ const colorStyles = {
 export const SearchForm = ({ setAdvList }) => {
   const [filters, setFilters] = useState(null);
 
-  const [yearList, setYearList] = useState([]);
-  const [priceList, setPriceList] = useState([]);
-
   const [nameList, setNameList] = useState([]);
   const [makeList, setMakeList] = useState([]);
   const [modelList, setModelList] = useState([]);
-
-  const [fuelList, setFuelList] = useState([]);
-  const [transmissionList, setTransmissionList] = useState([]);
 
   const [selectedYearTo, setSelectedYearTo] = useState(null);
   const [selectedYearFrom, setSelectedYearFrom] = useState(null);
@@ -63,15 +57,6 @@ export const SearchForm = ({ setAdvList }) => {
           setMakeList(formatForSelect(Object.keys(names), 'Марка'));
         }
       });
-    setYearList(getYearList(1960, 'Рік'));
-    setPriceList(getPriceList(3 * 10 ** 4));
-    setFuelList(formatForSelect(['Бензин', 'Дизель', 'Газ'], 'Тип палива'));
-    setTransmissionList(
-      formatForSelect(
-        ['Механіка 6 ст.', 'Механіка 5 ст.', 'Автомат', 'Робот', 'Варіатор'],
-        'Коробка передач'
-      )
-    );
   }, []);
 
   useEffect(() => {
@@ -195,7 +180,7 @@ export const SearchForm = ({ setAdvList }) => {
             IndicatorSeparator: () => null,
           }}
           value={selectedFuel}
-          options={fuelList}
+          options={formatForSelect(['Бензин', 'Дизель', 'Газ'], 'Тип палива')}
           onChange={(e) => {
             if (e?.value) setSelectedFuel({ value: e.value, label: e.label });
             else setSelectedFuel(null);
@@ -218,7 +203,16 @@ export const SearchForm = ({ setAdvList }) => {
             IndicatorSeparator: () => null,
           }}
           value={selectedTransmition}
-          options={transmissionList}
+          options={formatForSelect(
+            [
+              'Механіка 6 ст.',
+              'Механіка 5 ст.',
+              'Автомат',
+              'Робот',
+              'Варіатор',
+            ],
+            'Коробка передач'
+          )}
           onChange={(e) => {
             if (e?.value)
               setSelectedTransmition({
@@ -247,7 +241,7 @@ export const SearchForm = ({ setAdvList }) => {
               IndicatorSeparator: () => null,
             }}
             value={selectedYearFrom}
-            options={yearList}
+            options={getYearList(1960, 'Від')}
             onChange={(e) => {
               if (e) {
                 setLimits(
@@ -275,7 +269,7 @@ export const SearchForm = ({ setAdvList }) => {
               IndicatorSeparator: () => null,
             }}
             value={selectedYearTo}
-            options={yearList}
+            options={getYearList(1960, 'До')}
             onChange={(e) => {
               if (e) {
                 setLimits(
@@ -306,7 +300,7 @@ export const SearchForm = ({ setAdvList }) => {
               IndicatorSeparator: () => null,
             }}
             value={selectedPriceFrom}
-            options={priceList}
+            options={getPriceList(3 * 10 ** 4, 'Від')}
             onChange={(e) => {
               if (e) {
                 setLimits(
@@ -334,7 +328,7 @@ export const SearchForm = ({ setAdvList }) => {
               IndicatorSeparator: () => null,
             }}
             value={selectedPriceTo}
-            options={priceList}
+            options={getPriceList(3 * 10 ** 4, 'До')}
             onChange={(e) => {
               if (e) {
                 setLimits(

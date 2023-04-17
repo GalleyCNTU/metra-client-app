@@ -5,48 +5,7 @@ import { CarListItem } from './components/CarListItem';
 import classes from './CarList.module.scss';
 
 //mui
-import styled from '@emotion/styled';
-import { CircularProgress, Pagination } from '@mui/material';
-
-export const StyledPagination = styled(Pagination)(() => ({
-  '& .MuiPagination-ul': {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  '& .MuiPaginationItem-root': {
-    color: 'white',
-    border: `1px solid #ff8a00`,
-    borderRadius: 0,
-    fontSize: 18,
-    lineHeight: 1,
-    letterSpacing: 0.38,
-    '&.Mui-selected': {
-      backgroundColor: '#ff8a00',
-      color: '#fff',
-      border: `1px solid #ff8a00`,
-    },
-    '&:hover': {
-      backgroundColor: '#ff8a00',
-      color: '#fff',
-      border: `1px solid #ff8a00`,
-    },
-  },
-  '@media screen and (max-width: 1150px)': {
-    '& .MuiPaginationItem-root': {
-      color: '#393E46',
-      '&.Mui-selected': {
-        backgroundColor: '#ff8a00',
-        color: '#fff',
-        border: `1px solid #ff8a00`,
-      },
-      '&:hover': {
-        backgroundColor: '#ff8a00',
-        color: '#fff',
-        border: `1px solid #ff8a00`,
-      },
-    },
-  },
-}));
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const CarList = ({
   advertisementList,
@@ -77,9 +36,8 @@ export const CarList = ({
     } else if (advertisementList === null) setAdvertisements(null);
   };
 
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value - 1);
-
+  const handlePageChange = (value) => {
+    setCurrentPage(value);
     window.location.href = '#purchased_cars';
   };
 
@@ -149,20 +107,10 @@ export const CarList = ({
         </div>
       </div>
       {advertisements?.length !== 0 && pagination && (
-        // <StyledPagination
-        //   count={pageCount}
-        //   page={currentPage + 1}
-        //   onChange={handlePageChange}
-        //   variant="outlined"
-        //   shape="rounded"
-        //   showFirstButton
-        //   showLastButton
-        //   className="customPagination"
-        // />
         <ReactPaginate
           breakLabel="..."
           nextLabel=">"
-          onPageChange={(e, page) => handlePageChange(page)}
+          onPageChange={({ selected }) => handlePageChange(selected)}
           pageRangeDisplayed={advsOnPage}
           pageCount={pageCount}
           previousLabel="<"
