@@ -27,7 +27,6 @@ const colorStyles = {
     ...styles,
     backgroundColor: 'white',
     height: 50,
-    
   }),
 };
 
@@ -143,7 +142,7 @@ export const SearchForm = ({ setAdvList }) => {
           styles={{ ...colorStyles }}
           theme={(theme) => ({
             ...theme,
-            borderRadius: 10,     
+            borderRadius: 10,
           })}
           components={{
             DropdownIndicator: () => null,
@@ -166,7 +165,7 @@ export const SearchForm = ({ setAdvList }) => {
           styles={{ ...colorStyles }}
           theme={(theme) => ({
             ...theme,
-            borderRadius: 10,          
+            borderRadius: 10,
           })}
           components={{
             DropdownIndicator: () => null,
@@ -350,13 +349,18 @@ export const SearchForm = ({ setAdvList }) => {
         </div>
       </div>
       <div className={classes.form_under_section}>
-        <div className={classes.empty}></div>
-        <button
+        {/* <button
           className={classes.form_under_section_button}
           onClick={resetHandler}
         >
           Очистити
-        </button>
+        </button> */}
+        <span
+          className={classes.form_under_section_reset}
+          onClick={resetHandler}
+        >
+          Очистити фільтр
+        </span>
         <button
           className={classes.form_under_section_button}
           onClick={searchHandler}
