@@ -25,9 +25,10 @@
       font-family: $fontFamilyBold;
       font-size: 4.5rem;
       font-style: normal;
-      font-weight: 800;
+      font-weight: 700;
       line-height: 100px;
       color: $colorMainOrange;
+      word-spacing: 0.15em;
     }
   }
 }
@@ -57,7 +58,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6rem 1rem;
+    padding: 6rem 1.5rem;
     width: 37%;
     position: relative;
     background: $colorMainBlueBlack;
@@ -101,7 +102,8 @@
       color: $colorMainWhite;
     }
     &_subtitle {
-      font-family: $fontFamilyBold;
+      font-family: $fontFamily;
+      font-weight: 500;
       font-size: 24px;
       line-height: 34px;
       text-align: center;
@@ -131,6 +133,7 @@
         color: $colorMainOrange;
         line-height: 4rem;
         letter-spacing: 0.36000001430511475px;
+        word-spacing: 0;
       }
     }
   }
@@ -161,7 +164,7 @@
       justify-content: center;
       align-items: center;
       padding: 4rem 0.8rem;
-      max-width: 350px;
+      max-width: 500px;
       width: 90%;
       position: relative;
       background: $colorMainBlueBlack;
@@ -196,19 +199,17 @@
       gap: 1rem;
       &_title {
         font-family: $fontFamilyBold;
-        font-size: 2rem;
+        font-size: 28px;
         line-height: 2rem;
         text-align: center;
         font-weight: 700;
         color: $colorMainWhite;
       }
       &_subtitle {
-        font-family: $fontFamilyBold;
-        font-size: 24px;
+        font-size: 22px;
         line-height: 34px;
         text-align: center;
         letter-spacing: 0.364px;
-        color: $colorMainWhite;
       }
     }
   }

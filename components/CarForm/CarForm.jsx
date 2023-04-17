@@ -11,9 +11,34 @@ import classes from './CarForm.module.scss';
 
 // Utils
 import { getYearList, formatForSelect } from 'utils';
-import { Box, Button, Typography } from '@mui/material';
 
-export const CarForm = ({ makes, hideMediaQuery }) => {
+const colorStyles = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: 'white',
+    height: 50,
+    borderRadius: 10,
+  }),
+  option: (provided) => ({
+    // ...provided,
+    cursor: 'pointer',
+    borderRadius: 10,
+    padding: 15,
+    color: '#999999',
+    textAlign: 'start',
+    fontWeight: 500,
+  }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 999,
+  }),
+  menuList: (provided) => ({
+    ...provided,
+    padding: 0,
+  }),
+};
+
+export const CarForm = ({ makes, hideMediaQuery, setForm }) => {
   const [brand, setBrand] = useState(null);
   const [modelList, setModelList] = useState([]);
   const [makeList, setMakeList] = useState([]);
@@ -22,6 +47,8 @@ export const CarForm = ({ makes, hideMediaQuery }) => {
   const [selectedYear, setSelectedYear] = useState('');
   const [formSwitcher, setFormSwitcher] = useState(0);
   const [userInfo, setUserInfo] = useState({});
+  const [userName, setUserName] = useState('');
+  const [userTelephone, setUserTelephone] = useState('');
 
   const selectRef = useRef();
 
@@ -67,6 +94,16 @@ export const CarForm = ({ makes, hideMediaQuery }) => {
     } else setFormSwitcher(1);
   };
 
+  const showUserInfo = () => {
+    if (!userName) {
+      notify("Введіть своє ім'я");
+    } else if (!userTelephone) {
+      notify('Введіть свій номер телефону');
+    } else if (userTelephone.length > 13) {
+      notify('Не вірний формат телефону');
+    } else sellCar();
+  };
+
   const sendUserInfo = () => {
     if (brand && selectedBrand && selectedModel && selectedYear) {
       const requestOptions = {
@@ -86,10 +123,12 @@ export const CarForm = ({ makes, hideMediaQuery }) => {
     setSelectedModel('');
     setSelectedYear('');
     setFormSwitcher(0);
+    setUserName('');
+    setUserTelephone('');
     setUserInfo({});
   };
 
-  const sellCar = ({ userName, userTelephone }) => {
+  const sellCar = () => {
     setUserInfo({
       userName: userName,
       userTelephone: userTelephone,
@@ -101,28 +140,6 @@ export const CarForm = ({ makes, hideMediaQuery }) => {
     setFormSwitcher(2);
   };
 
-  const colorStyles = {
-    control: (styles) => ({
-      ...styles,
-      backgroundColor: 'white',
-      height: 50,
-      borderRadius: 10,
-    }),
-    option: (provided) => ({
-      ...provided,
-      borderRadius: 10,
-      padding: 15,
-    }),
-    menu: (provided) => ({
-      ...provided,
-      zIndex: 9999,
-    }),
-    menuList: (provided) => ({
-      ...provided,
-      padding: 0,
-    }),
-  };
-
   const clearValue = () => {
     if (selectRef.current) {
       selectRef.current.clearValue();
@@ -132,168 +149,159 @@ export const CarForm = ({ makes, hideMediaQuery }) => {
   };
 
   return (
-    <div
-      id="car_form"
-      className={
-        hideMediaQuery
-          ? `${classes.car_form} ${classes.car_form_media}`
-          : classes.car_form
-      }
-    >
-      {formSwitcher === 0 && (
-        <Box className={classes.car_form_body}>
-          <Typography className={classes.car_form_title}>
-            Онлайн розрахунок попередньої вартості авто
-          </Typography>
-          <Box className={classes.car_form_action}>
-            <Select
-              placeholder={
-                <div className={classes.car_form_placeholder}>Марка авто</div>
-              }
-              className={classes.car_form_action_select}
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: 10,
-              })}
-              styles={colorStyles}
-              options={makeList}
-              onFocus={clearValue}
-              onChange={(e) => {
-                setBrand(e.label);
-                setSelectedBrand(e.label);
-              }}
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null,
-              }}
-            />
-
-            <Select
-              ref={selectRef}
-              placeholder={
-                <div className={classes.car_form_placeholder}>Модель авто</div>
-              }
-              className={classes.car_form_action_select}
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: 10,
-              })}
-              styles={colorStyles}
-              options={modelList}
-              onChange={(e) => {
-                if (e) setSelectedModel(e.label);
-              }}
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null,
-              }}
-            />
-
-            <Select
-              placeholder={
-                <div className={classes.car_form_placeholder}>
-                  Модельний рік
-                </div>
-              }
-              isSearchable={false}
-              theme={(theme) => ({
-                ...theme,
-                borderRadius: 10,
-              })}
-              styles={colorStyles}
-              className={classes.car_form_action_select}
-              options={carYears}
-              onChange={(e) => {
-                setSelectedYear(e.label);
-              }}
-              components={{
-                DropdownIndicator: () => null,
-                IndicatorSeparator: () => null,
-              }}
-            />
-            <Button
-              className={classes.car_form_action_button}
-              onClick={showCarPrice}
-            >
-              РОЗРАХУВАТИ
-            </Button>
-          </Box>
-        </Box>
-      )}
-      {formSwitcher === 1 && (
-        <Box className={classes.car_form_body}>
-          <Typography className={classes.car_form_title}>
-            Онлайн розрахунок попередньої вартості авто
-          </Typography>
-          <form
-            className={classes.car_form_action}
-            onSubmit={handleSubmit(sellCar)}
-          >
-            <div className={classes.car_form_send}>
-              <input
-                {...register('userName', {
-                  required: "Введіть своє ім'я",
-                })}
-                className={classes.car_form_send_input}
-                placeholder="Ім'я"
-                style={{ backgroundColor: errors.userName && '#ffc38c' }}
-                type="text"
-              />
-              <input
-                {...register('userTelephone', {
-                  required: 'Введіть свій номер телефону',
-                  maxLength: {
-                    value: 13,
-                    message: 'Не вірний формат телефону',
-                  },
-                })}
-                onKeyPress={(event) => {
-                  if (!/[0-9+]/.test(event.key)) {
-                    event.preventDefault();
+    <>
+      {!setForm && (
+        <div
+          id="car_form"
+          className={
+            hideMediaQuery
+              ? `${classes.car_form} ${classes.car_form_media}`
+              : classes.car_form
+          }
+        >
+          {formSwitcher === 0 && (
+            <div className={classes.car_form_body}>
+              <span className={classes.car_form_title}>
+                Онлайн розрахунок попередньої вартості авто
+              </span>
+              <div className={classes.car_form_action}>
+                <Select
+                  placeholder={
+                    <div className={classes.car_form_placeholder}>
+                      Марка авто
+                    </div>
                   }
-                }}
-                className={classes.car_form_send_input}
-                placeholder="Номер телефону"
-                style={{ backgroundColor: errors.userTelephone && '#ffc38c' }}
-                type="text"
-              />
-            </div>
-            {(errors.userName && (
-              <p className={classes.car_form_errors}>
-                {errors.userName.message}
-              </p>
-            )) ||
-              (errors.userTelephone && (
-                <p className={classes.car_form_errors}>
-                  {errors.userTelephone.message}
-                </p>
-              ))}
+                  className={classes.car_form_action_select}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 10,
+                  })}
+                  styles={colorStyles}
+                  options={makeList}
+                  onFocus={clearValue}
+                  onChange={(e) => {
+                    setBrand(e.label);
+                    setSelectedBrand(e.label);
+                  }}
+                  components={{
+                    DropdownIndicator: () => null,
+                    IndicatorSeparator: () => null,
+                  }}
+                />
 
-            <Button className={classes.car_form_send_button} type="submit">
-              ПРОДАТИ АВТО
-            </Button>
-          </form>
-        </Box>
+                <Select
+                  ref={selectRef}
+                  placeholder={
+                    <div className={classes.car_form_placeholder}>
+                      Модель авто
+                    </div>
+                  }
+                  className={classes.car_form_action_select}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 10,
+                  })}
+                  styles={colorStyles}
+                  options={modelList}
+                  onChange={(e) => {
+                    if (e) setSelectedModel(e.label);
+                  }}
+                  components={{
+                    DropdownIndicator: () => null,
+                    IndicatorSeparator: () => null,
+                  }}
+                />
+
+                <Select
+                  placeholder={
+                    <div className={classes.car_form_placeholder}>
+                      Модельний рік
+                    </div>
+                  }
+                  isSearchable={false}
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 10,
+                  })}
+                  styles={colorStyles}
+                  className={classes.car_form_action_select}
+                  options={carYears}
+                  onChange={(e) => {
+                    setSelectedYear(e.label);
+                  }}
+                  components={{
+                    DropdownIndicator: () => null,
+                    IndicatorSeparator: () => null,
+                  }}
+                />
+                <button
+                  className={classes.car_form_action_button}
+                  onClick={showCarPrice}
+                >
+                  Розрахувати
+                </button>
+              </div>
+            </div>
+          )}
+          {formSwitcher === 1 && (
+            <div className={classes.car_form_body}>
+              <span className={classes.car_form_title}>
+                Онлайн розрахунок попередньої вартості авто
+              </span>
+              <div className={classes.car_form_action}>
+                <div className={classes.car_form_send}>
+                  <input
+                    className={classes.car_form_send_input}
+                    placeholder="Ім'я"
+                    type="text"
+                    onChange={(e) => {
+                      setUserName(e.target.value);
+                    }}
+                  />
+                  <input
+                    onKeyPress={(event) => {
+                      if (!/[0-9+]/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                    className={classes.car_form_send_input}
+                    placeholder="Номер телефону"
+                    type="text"
+                    onChange={(e) => {
+                      setUserTelephone(e.target.value);
+                    }}
+                  />
+                </div>
+                <button
+                  className={classes.car_form_send_button}
+                  onClick={showUserInfo}
+                >
+                  Продати авто
+                </button>
+              </div>
+            </div>
+          )}
+          {formSwitcher === 2 && (
+            <div className={classes.car_form_body}>
+              <div
+                className={`${classes.car_form_action} ${classes.car_form_modal}`}
+              >
+                <span className={classes.car_form_end_title}>
+                  Ваша заявка прийнята до розгляду, після її опрацювання наші
+                  фахівці зв&#39;яжуться з вами. Як правило, це відбувається
+                  дуже швидко
+                </span>
+                <button
+                  className={classes.car_form_action_button}
+                  onClick={() => resetInfo()}
+                >
+                  Добре
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       )}
-      {formSwitcher === 2 && (
-        <Box className={classes.car_form_body}>
-          <div
-            className={`${classes.car_form_action} ${classes.car_form_modal}`}
-          >
-            <Typography className={classes.car_form_title}>
-              Ваша заявка прийнята до розгляду, після її опрацювання наші
-              фахівці зв&#39;яжуться з вами. Як правило, це відбувається дуже
-              швидко
-            </Typography>
-            <Button
-              className={classes.car_form_action_button}
-              onClick={() => resetInfo()}
-            >
-              ДОБРЕ
-            </Button>
-          </div>
-        </Box>
-      )}
-    </div>
+    </>
   );
 };

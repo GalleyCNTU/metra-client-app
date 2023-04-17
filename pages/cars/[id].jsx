@@ -3,8 +3,13 @@ import { useRouter } from 'next/router';
 
 import { Layout, Advertisement, Drawer } from 'components';
 
-import { CircularProgress, Box } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { getMakesObj } from 'data/Firebase';
+
+import classes from "pages/404/404.module.scss"
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Car = ({ makes }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,10 +41,21 @@ const Car = ({ makes }) => {
         makes={makes}
         advMenu={true}
       >
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         {adv ? (
           <Advertisement adv={adv} />
         ) : (
-          <Box
+          <div className={classes.notFound}
             sx={{
               display: 'flex',
               justifyContent: 'center',
@@ -48,7 +64,7 @@ const Car = ({ makes }) => {
             }}
           >
             <CircularProgress sx={{ color: '#ff8a00' }} />
-          </Box>
+          </div>
         )}
       </Layout>
     </>

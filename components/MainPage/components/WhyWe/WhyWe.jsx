@@ -3,14 +3,12 @@ import { whyWeItems as items } from 'continuities';
 import { WhyWeItem } from './components/WhyWeItem';
 import classes from './WhyWe.module.scss';
 
-import { Typography } from '@mui/material';
-
 export const WhyWe = () => (
   <div className={classes.why_we}>
     <div className={classes.why_we_header}>
-      <Typography className={classes.why_we_title}>
+      <span className={classes.why_we_title}>
         ЧОМУ МИ ВАРТІ ВАШОЇ УВАГИ?
-      </Typography>
+      </span>
     </div>
     <div className={classes.container}>
       <div className={classes.why_we_row}>

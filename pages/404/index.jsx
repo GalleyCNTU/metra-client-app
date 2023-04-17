@@ -1,22 +1,26 @@
-import { Layout } from 'components';
+import { Layout, Drawer } from 'components';
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import classes from './404.module.scss';
+import { useState } from 'react';
 
 const Custom404 = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Layout>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '300px',
-        }}
+    <>
+      <Drawer isOpen={isOpen} setIsOpen={setIsOpen} anchor="left" />
+      <Layout
+        hideMediaQuery={true}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        setForm={true}
       >
-        <Typography variant="h3">Page not found</Typography>
-      </Box>
-    </Layout>
+        <div className={classes.notFound}>
+          <p className={classes.notFound_title} variant="h3">
+            Сторінку не знайдено
+          </p>
+        </div>
+      </Layout>
+    </>
   );
 };
 

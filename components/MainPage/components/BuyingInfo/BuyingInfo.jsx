@@ -3,14 +3,12 @@ import { buyingInfoItems as items } from 'continuities';
 import { BuyingInfoItem } from './components';
 import classes from './BuyingInfo.module.scss';
 
-import { Typography } from '@mui/material';
-
 export const BuyingInfo = () => (
   <div className={classes.buying_info}>
     <div className={classes.buying_info_header}>
-      <Typography className={classes.buying_info_title}>
+      <span className={classes.buying_info_title}>
         ЯК ВІДБУВАЄТЬСЯ ВИКУП АВТО?
-      </Typography>
+      </span>
     </div>
     <div className={classes.container}>
       <div className={classes.buying_info_row}>

@@ -1,12 +1,14 @@
+@import 'styles/variables.module.scss';
+
 .black_background {
-  background-color: black;
+  background-color: $colorMainBlack;
 }
 
 .car_form {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #393e46;
+  background-color: $colorMainBlueBlack;
   padding: 2rem 4rem;
 
   &_body {
@@ -14,7 +16,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    max-width: 1550px;
+    max-width: 1540px;
     width: 100%;
   }
 
@@ -26,19 +28,22 @@
     &_button {
       width: 24%;
       height: 3.125rem;
-      font-family: 'Gilroy';
+      font-family: $fontFamily;
       font-style: normal;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 1.125rem;
       line-height: 1.33;
       text-align: center;
-      background: #ff8a00;
+      background: $colorMainOrange;
       cursor: pointer;
-      color: white;
-      box-shadow: 0.375rem 0.375rem 0.625rem rgba(0, 0, 0, 0.1);
-      border-radius: 0.625rem;
+      color: $colorMainWhite;
+      box-shadow: $boxShadow;
+      border-radius: $borderRadiusBtn;
+      letter-spacing: 0.774px;
+      word-spacing: 0.2em;
+      transition: 0.3s;
       &:hover {
-        background: #ff8a00;
+        opacity: 0.8;
       }
     }
 
@@ -47,8 +52,8 @@
       height: 3.125rem;
       text-align: center;
       font-weight: 800;
-      color: #1e1e1e;
-      font-family: 'Gilroy';
+      color: $colorMainBlueBlack;
+      font-family: $fontFamily;
       font-style: normal;
       font-size: 1.125rem;
       line-height: 1.33;
@@ -60,18 +65,18 @@
 
   &_placeholder {
     text-align: center;
-    font-family: 'Gilroy';
+    font-family: $fontFamily;
     font-style: normal;
     font-weight: 300;
     font-size: 1.125rem;
     line-height: 1.33;
-    color: #999999;
+    color: $colorPlaceholder;
   }
 
   &_errors {
     margin: 0 0 1.25rem 0;
-    color: rgb(255, 187, 0);
-    font-family: 'Gilroy';
+    color: $colorWarn;
+    font-family: $fontFamily;
     font-size: 0.9375rem;
   }
 
@@ -86,19 +91,20 @@
     &_button {
       width: 30%;
       height: 3.125rem;
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-style: normal;
       font-weight: 800;
       font-size: 1.125rem;
       line-height: 1.33;
       text-align: center;
-      background: #ff8a00;
+      background: $colorMainOrange;
       cursor: pointer;
-      color: white;
-      box-shadow: 0.375rem 0.375rem 0.625rem rgba(0, 0, 0, 0.1);
+      color: $colorMainWhite;
+      box-shadow: $boxShadow;
       border-radius: 0.625rem;
+      transition: 0.3s;
       &:hover {
-        background: #ff8a00;
+        opacity: 0.8;
       }
     }
     &_input {
@@ -107,34 +113,49 @@
       border: 0;
       font-style: normal;
       font-weight: 800;
-      font-family: 'Gilroy';
+      font-family: $fontFamily;
       transition: 0.3s all;
       font-size: 18px;
-      color: #1e1e1e;
-      text-align: center;
+      color: $colorMainBlack;
+      text-align: start;
       border-radius: 10px;
       margin-right: 1.1rem;
+      padding: 0 15px;
       &::placeholder {
         text-align: center;
-        font-family: 'Gilroy';
+        font-family: $fontFamily;
         font-style: normal;
         font-weight: 300;
         font-size: 18px;
       }
       &:focus {
-        outline: 2px solid #2684ff;
+        outline: 2px solid $colorFocus;
       }
       &:active {
-        outline: 2px solid #2684ff;
+        outline: 2px solid $colorFocus;
       }
     }
   }
-
+  &_end {
+    &_title {
+      width: 500px;
+      color: $colorMainWhite;
+      font-weight: 800;
+      font-family: $fontFamilyBold;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 25px;
+      text-align: center;
+      margin-bottom: 1.8131rem;
+      letter-spacing: 0.774px;
+      // word-spacing: 0.2em;
+    }
+  }
   &_title {
     width: 338px;
-    color: #ffffff;
+    color: $colorMainWhite;
     font-weight: 800;
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: $fontFamilyBold;
     font-style: normal;
     font-size: 18px;
     line-height: 20px;
@@ -156,7 +177,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: #393e46;
+    background-color: $colorMainBlueBlack;
     padding: 2rem;
 
     &_media {
@@ -182,19 +203,19 @@
       &_button {
         width: 16.5rem;
         height: 50px;
-        font-family: 'Gilroy-Bold', sans-serif;
+        font-family: $fontFamilyBold;
         font-style: normal;
         font-weight: 800;
         font-size: 18px;
         line-height: 12px;
         text-align: center;
-        background: #ff8a00;
+        background: $colorMainOrange;
         cursor: pointer;
         color: white;
-        box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: $boxShadow;
         border-radius: 10px;
         &:hover {
-          background: #ff8a00;
+          background: $colorMainOrange;
         }
       }
 
@@ -203,8 +224,8 @@
         height: 50px;
         text-align: center;
         font-weight: 800;
-        color: #1e1e1e;
-        font-family: 'Gilroy';
+        color: $colorMainBlack;
+        font-family: $fontFamily;
         font-style: normal;
         font-size: 18px;
         line-height: 20.75px;
@@ -216,18 +237,18 @@
     }
     &_placeholder {
       text-align: center;
-      font-family: 'Gilroy';
+      font-family: $fontFamily;
       font-style: normal;
       font-weight: 300;
       font-size: 18px;
       line-height: 20.75px;
-      color: #999999;
+      color: $colorPlaceholder;
     }
 
     &_errors {
       margin: 0 0 20px 0;
-      color: rgb(255, 187, 0);
-      font-family: 'Gilroy';
+      color: $colorWarn;
+      font-family: $fontFamily;
       font-size: 15px;
     }
 
@@ -253,14 +274,31 @@
       }
     }
 
+    &_end {
+      &_title {
+        max-width: 350px;
+        width: 90%;
+        font-size: 22px;
+        line-height: 34px;
+        text-align: center;
+        letter-spacing: 0.36px;
+        font-family: $fontFamilyBold;
+        font-weight: 500;
+        color: $colorMainWhite;
+        margin: 2.5rem 0 6.125rem;
+      }
+    }
+
     &_title {
-      max-width: 350px;
+      max-width: 220px;
       width: 90%;
-      font-size: 24px;
+      font-size: 22px;
       line-height: 34px;
       text-align: center;
       letter-spacing: 0.36px;
-      color: #ffffff;
+      font-family: $fontFamilyBold;
+      font-weight: 500;
+      color: $colorMainWhite;
       margin-bottom: 2rem;
     }
   }
