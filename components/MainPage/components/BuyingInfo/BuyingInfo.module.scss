@@ -33,6 +33,7 @@
     text-align: center;
     letter-spacing: 0.374px;
     color: $colorMainWhite;
+    word-spacing: 0.15em;
   }
 
   &_numbers {
@@ -71,22 +72,27 @@
     white-space: pre-line;
     font-family: $fontFamilyBold;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 500;
     font-size: 1.5rem;
     line-height: 30px;
     text-align: center;
     color: $colorMainWhite;
+    align-items:center;
+    display: flex;
   }
 
   &_subtitle {
     white-space: pre-line;
-    font-family: $fontFamilyBold;
+    font-family: $fontFamily;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 1.125rem;
     line-height: 20px;
     text-align: center;
     color: $colorMainWhite;
+    align-items:center;
+    display: flex;
+    word-spacing: 0.09em;
   }
 }
 
@@ -164,7 +170,7 @@
       font-style: normal;
       font-weight: 300;
       font-size: 1.125rem;
-      line-height: 20px;
+      line-height: 25px;
       text-align: center;
       color: $colorMainWhite;
     }

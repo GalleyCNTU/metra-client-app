@@ -29,11 +29,12 @@
   &_title {
     font-family: $fontFamilyBold;
     font-size: 3.25rem;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 41px;
     text-align: center;
     letter-spacing: 0.374px;
     color: $colorMainBlueBlack;
+    word-spacing: 0.15em;
   }
 
   &_row {
@@ -72,24 +73,36 @@
     &_title {
       font-family: $fontFamilyBold;
       font-size: 5.375rem;
-      line-height: 116px;
       text-align: center;
       color: $colorMainOrange;
       font-weight: 700;
+      line-height: 116px;
+      letter-spacing: 0.974px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &_subtitle {
       font-family: $fontFamilyBold;
       font-size: 1.75rem;
       line-height: 34px;
-
       text-align: center;
       letter-spacing: 0.36px;
-      font-weight: 500;
+      font-weight: 700;
       color: $colorMainWhite;
     }
     &_plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: $colorMainWhite;
+      font-size: 90px;
+      line-height: 0;
+      font-family: $fontFamilyBold;
+      text-align: start;
+      letter-spacing: 0.36px;
+      font-weight: 700;
     }
   }
 }
@@ -114,7 +127,7 @@
 
     &_title {
       font-family: $fontFamilyBold;
-      font-size: 1.875rem;
+      font-size: 34px;
       font-weight: 700;
       line-height: 41px;
       text-align: center;
@@ -136,10 +149,9 @@
         flex-direction: column;
         align-items: center;
         background: $colorMainBlueBlack;
-        width: 16.5rem;
+        width: 14.5rem;
         gap: 1rem;
-        padding: 0 1.25rem;
-        padding-bottom: 1.5rem;
+        padding: 1.5rem 1.5rem;
         height: 13.5rem;
         margin: 1.5rem;
         box-shadow: $boxShadow;
@@ -160,8 +172,8 @@
       }
       &_title {
         font-family: $fontFamilyBold;
-        font-size: 3rem;
-        line-height: 116px;
+        font-size: 50px;
+        line-height: 86px;
         text-align: center;
         color: $colorMainOrange;
         font-weight: 700;
@@ -171,11 +183,11 @@
         font-family: $fontFamilyBold;
         font-size: 1.375rem;
         line-height: 34px;
-
         text-align: center;
         letter-spacing: 0.36px;
-        font-weight: 500;
+        font-weight: 700;
         color: $colorMainWhite;
+        letter-spacing: 0.974px;
       }
       &_plus {
         color: $colorMainWhite;

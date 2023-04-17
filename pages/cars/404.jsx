@@ -1,48 +1,27 @@
-import { Layout } from 'components';
+import { Layout, Drawer } from 'components';
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import classes from 'pages/404/404.module.scss';
 
 const Custom404 = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Layout>
-      <IconButton
-        size="large"
-        style={{
-          width: '100%',
-          cursor: 'pointer',
-          fontFamily: 'Bold',
-          fontSize: '70px',
-          lineHeight: '116px',
-          fontWeight: 900,
-          color: '#393e46',
-          textShadow: ' 0.375rem 0.375rem 0.625rem rgba(0, 0, 0, 0.1)',
-          display: 'flex',
-          alignItems: 'center',
-          alignContent: 'center',
-          justifyContent: 'flex-start',
-          borderRadius: '0%',
-        }}
-        href={'/cars'}
+    <>
+      <Drawer isOpen={isOpen} setIsOpen={setIsOpen} anchor="left" />
+      <Layout
+        hideMediaQuery={true}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        setForm={true}
       >
-        <ArrowBackIcon fontSize="large" />
-        Назад
-      </IconButton>
-      <Box
-        mb={5}
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '250px',
-        }}
-      >
-        <Typography variant="h3">Об&#39;яву не знайдено</Typography>
-      </Box>
-    </Layout>
+        <div className={classes.notFound}>
+          <span className={classes.notFound_title} variant="h3">
+            Об&#39;яву не знайдено
+          </span>
+        </div>
+      </Layout>
+    </>
   );
 };
 

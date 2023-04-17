@@ -10,13 +10,13 @@ export const objToList = (data) => {
   } else return null;
 };
 
-export const getYearList = (year) => {
+export const getYearList = (year, label = null) => {
   const currentYear = new Date().getFullYear();
   const years = [];
   for (let i = currentYear; i >= +year; i--) {
     years.push(i.toString());
   }
-  return formatForSelect(years, 'Рік');
+  return formatForSelect(years, label);
 };
 
 export const getPriceList = (maxPrice) => {

@@ -1,7 +1,5 @@
 import classes from '../BuyingInfo.module.scss';
 
-import { Typography } from '@mui/material';
-
 export const BuyingInfoItem = ({ width, height, path, subtitle, title }) => (
   <div className={classes.buying_info_column}>
     <div className={classes.item_buying_info_number}>
@@ -16,14 +14,14 @@ export const BuyingInfoItem = ({ width, height, path, subtitle, title }) => (
       </svg>
     </div>
     <div className={classes.item_buying_info_header}>
-      <Typography className={classes.item_buying_info_title}>
+      <span className={classes.item_buying_info_title}>
         {title}
-      </Typography>
+      </span>
     </div>
     <div className={classes.item_buying_info_description}>
-      <Typography className={classes.item_buying_info_subtitle}>
+      <span className={classes.item_buying_info_subtitle}>
         {subtitle}
-      </Typography>
+      </span>
     </div>
   </div>
 );

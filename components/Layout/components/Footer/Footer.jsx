@@ -3,12 +3,10 @@ import Link from 'next/link';
 
 import classes from './Footer.module.scss';
 
-import { Box, Typography } from '@mui/material';
-
 import telegramIcon from 'public/img/telegramIcon.svg';
 import instagramIcon from 'public/img/instagramIcon.svg';
 import viberIcon from 'public/img/viberIcon.svg';
-import faceboockIcon from 'public/img/faceboockIcon.svg';
+import facebookIcon from 'public/img/facebookIcon.svg';
 
 import {
   PHONE_NUMBER_MAIN,
@@ -22,33 +20,33 @@ import {
 export const Footer = () => (
   <footer className={classes.footer}>
     <div className={classes.footer_body}>
-      <Box className={classes.footer_container} id="contacts_footer">
-        <Box className={classes.footer_contacts}>
-          <Typography className={classes.footer_contacts_title}>
+      <div className={classes.footer_container} id="contacts_footer">
+        <div className={classes.footer_contacts}>
+          <span className={classes.footer_contacts_title}>
             Контакти
-          </Typography>
-          <Box className={classes.footer_contacts_box}>
-            <Typography
+          </span>
+          <div className={classes.footer_contacts_box}>
+            <span
               className={`${classes.item_contact} ${classes.item_contact_title}`}
             >
               Телефон:
-            </Typography>
+            </span>
             <Link href={`tel:${PHONE_NUMBER_MAIN}`}>
-              <Typography className={classes.item_contact}>
+              <span className={classes.item_contact}>
                 +380 063 124 4667
-              </Typography>
+              </span>
             </Link>
             <Link href={`tel:${PHONE_NUMBER_SECONDARY}`}>
-              <Typography className={classes.item_contact}>
+              <span className={classes.item_contact}>
                 +380 068 098 0002
-              </Typography>
+              </span>
             </Link>
-          </Box>
-          <Box className={classes.footer_messengers}>
-            <Typography className={classes.footer_messengers_title}>
-              Ми в соціальних мережах:
-            </Typography>
-            <Box className={classes.footer_messengers_box}>
+          </div>
+          <div className={classes.footer_messengers}>
+            <span className={classes.footer_messengers_title}>
+              Ми в соціальних мережах
+            </span>
+            <div className={classes.footer_messengers_box}>
               <Link href={INSTAGRAM_URL}>
                 <Image
                   className={classes.item_messenger}
@@ -73,25 +71,25 @@ export const Footer = () => (
               <Link href={FACEBOOK_URL}>
                 <Image
                   className={classes.item_messenger}
-                  src={faceboockIcon}
+                  src={facebookIcon}
                   alt=""
                 />
               </Link>
-            </Box>
-          </Box>
-        </Box>
+            </div>
+          </div>
+        </div>
 
-        <Box className={classes.footer_map}>
-          <Box className={classes.footer_map_box}>
-            <Box className={classes.item_map_first}></Box>
-            <Box className={classes.item_map_second}></Box>
-            <Box className={classes.item_map_main}></Box>
-          </Box>
-        </Box>
-      </Box>
-      <Typography className={classes.footer_security}>
+        <div className={classes.footer_map}>
+          <div className={classes.footer_map_box}>
+            <div className={classes.item_map_first}></div>
+            <div className={classes.item_map_second}></div>
+            <div className={classes.item_map_main}></div>
+          </div>
+        </div>
+      </div>
+      <span className={classes.footer_security}>
         © Всі права захищені
-      </Typography>
+      </span>
     </div>
   </footer>
 );

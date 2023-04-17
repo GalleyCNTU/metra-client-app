@@ -1,20 +1,19 @@
 import classes from '../WhyWe.module.scss';
-import { Box, Typography } from '@mui/material';
 
 export const WhyWeItem = ({ title, subtitle }) => (
-  <Box className={classes.why_we_item_block}>
-    <Box className={classes.why_we_item_info}>
-      <Box className={classes.why_we_item_header}>
-        <Typography className={classes.why_we_item_title}>{title}</Typography>
-        <Typography
+  <div className={classes.why_we_item_block}>
+    <div className={classes.why_we_item_info}>
+      <div className={classes.why_we_item_header}>
+        <span className={classes.why_we_item_title}>{title}</span>
+        <span
           className={`${classes.why_we_item_title} ${classes.why_we_item_plus}`}
         >
           +
-        </Typography>
-      </Box>
-      <Typography className={classes.why_we_item_subtitle}>
+        </span>
+      </div>
+      <span className={classes.why_we_item_subtitle}>
         {subtitle}
-      </Typography>
-    </Box>
-  </Box>
+      </span>
+    </div>
+  </div>
 );

@@ -1,7 +1,9 @@
+@import 'styles/variables.module.scss';
+
 %map {
   width: 25.623rem;
   height: 19rem;
-  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: $boxShadow;
   border-radius: 10px;
   position: absolute;
 }
@@ -9,14 +11,14 @@
 .footer {
   &_security {
     position: absolute;
-    font-family: Gilroy;
+    font-family: $fontFamily;
     font-size: 1.1rem;
-    line-height: 116px;
-    color: #fbfbfd;
-    top: 26.5rem;
+    color: $colorMainWhite;
+    bottom: 3rem;
   }
 
   &_body {
+    margin-top: -5px;
     width: 100%;
     background: url('../../../../public/img/footerBackground.png') no-repeat;
     background-size: cover;
@@ -40,30 +42,34 @@
     flex-direction: column;
 
     &_title {
-      font-family: 'Gilroy-Bold', sans-serif;
+      font-family: $fontFamilyBold;
       font-size: 5.375rem;
       line-height: 116px;
-      color: #fbfbfd;
+      color: $colorMainWhite;
       font-weight: 700;
     }
 
     &_box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       margin: 1rem 0;
     }
   }
 
   &_messengers {
     &_title {
-      font-family: 'Gilroy-Bold', sans-serif;
       font-size: 1.375rem;
+      font-family: $fontFamilyBold;
       line-height: 28px;
       letter-spacing: 0.35px;
-      color: #fbfbfd;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
+      color: $colorMainWhite;
+      cursor: pointer;
+      font-weight: 600;
     }
 
     &_box {
+      margin: 1rem 0;
       display: flex;
       justify-content: space-between;
       width: 60%;
@@ -82,15 +88,16 @@
 
 .item {
   &_contact {
-    font-family: 'Gilroy-Bold', sans-serif;
-    font-size: 1.25rem;
+    font-family: $fontFamilyBold;
+    font-size: 22px;
     line-height: 28px;
     letter-spacing: 0.35px;
-    color: #fbfbfd;
-    margin: 0.7rem 0;
+    color: $colorMainWhite;
+    margin: 0.5rem 0;
     cursor: pointer;
+    font-weight: 600;
     &_title {
-      font-weight: 800;
+      font-weight: 600;
       cursor: text;
     }
   }
@@ -111,7 +118,7 @@
       @extend %map;
       right: 2rem;
       top: 2rem;
-      background: #ff8a00;
+      background: $colorMainOrange;
       z-index: 20;
     }
     &_main {
@@ -138,7 +145,7 @@
 
     &_body {
       width: 100%;
-      background: #393e46;
+      background: $colorMainBlueBlack;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -157,15 +164,16 @@
       align-items: center;
 
       &_title {
-        font-family: 'Gilroy-Bold', sans-serif;
+        font-family: $fontFamilyBold;
         font-size: 57px;
         line-height: 116px;
         text-align: center;
-        color: #fbfbfd;
+        color: $colorMainWhite;
       }
 
       &_box {
         margin: 0;
+        margin-bottom: 30px;
       }
     }
 
@@ -176,13 +184,8 @@
       align-items: center;
       &_title {
         text-align: center;
-        font-family: 'Gilroy-Bold', sans-serif;
         font-size: 22px;
-        line-height: 28px;
-        letter-spacing: 0.35px;
-        color: #fbfbfd;
-        font-weight: 800;
-        margin: 0.7rem 0;
+        font-weight: 700;
       }
 
       &_box {
@@ -206,16 +209,16 @@
   .item {
     &_contact {
       text-align: center;
-      font-family: 'Gilroy-Bold', sans-serif;
-      font-size: 1.25rem;
+      font-family: $fontFamilyBold;
+      font-size: 22px;
       line-height: 28px;
       letter-spacing: 0.35px;
-      color: #fbfbfd;
+      color: $colorMainWhite;
       margin: 0.7rem 0;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 700;
       &_title {
-        font-weight: 800;
+        font-weight: 700;
       }
     }
   }

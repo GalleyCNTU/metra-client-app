@@ -4,10 +4,9 @@ import Link from 'next/link';
 import classes from './Contacts.module.scss';
 import upArrow from 'public/img/upArrow.svg';
 
+//uncomment if you need to use google maps
 // import { Map } from './GoogleLocation';
 // import { location } from 'continuities';
-
-import { Box, Typography } from '@mui/material';
 
 export const Contacts = ({ hideMediaQuery }) => (
   <div
@@ -16,19 +15,19 @@ export const Contacts = ({ hideMediaQuery }) => (
     }
   >
     <div id="contacts" className={classes.map_body}>
-      <Box className={classes.map_box}>
-        <Typography className={classes.map_title}>Ми на карті</Typography>
+      <div className={classes.map_box}>
+        <span className={classes.map_title}>Ми на карті</span>
         <div className={classes.map_bottom}>
           {/* <Map location={location} zoomLevel={15} /> */}
         </div>
-        <Box className={classes.map_upArrow_box}>
+        <div className={classes.map_upArrow_box}>
           <div className={classes.map_upArrow}>
             <Link href="#header" scroll={false}>
               <Image className={classes.map_upArrow_img} src={upArrow} alt="" />
             </Link>
           </div>
-        </Box>
-      </Box>
+        </div>
+      </div>
     </div>
   </div>
 );

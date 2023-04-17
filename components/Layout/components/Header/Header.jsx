@@ -6,7 +6,6 @@ import Link from 'next/link';
 import classes from './Header.module.scss';
 
 // Images
-// import drawerMenu from 'public/img/whiteDrawerMenu.svg';
 import headerLogo from 'public/img/headerLogo.svg';
 
 import { PHONE_NUMBER_MAIN, PHONE_NUMBER_SECONDARY } from 'continuities';
@@ -21,15 +20,7 @@ export const Header = ({ isOpen, setIsOpen, setLogo = false, advMenu }) => {
             : classes.header_mobileMenu_button
         }
         onClick={() => setIsOpen(!isOpen)}
-      >
-        {/* <Image
-          src={drawerMenu}
-          onClick={() => setIsOpen(!isOpen)}
-          alt="menuButton"
-          width="39px"
-          height="29px"
-        /> */}
-      </div>
+      ></div>
       {setLogo && (
         <div className={classes.header_logo}>
           <Image

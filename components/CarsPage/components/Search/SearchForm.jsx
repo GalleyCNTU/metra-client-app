@@ -6,6 +6,23 @@ import { getYearList, getPriceList, formatForSelect, setLimits } from 'utils';
 import classes from './Search.module.scss';
 
 const colorStyles = {
+  option: (provided) => ({
+    // ...provided,
+    cursor:"pointer",
+    borderRadius: 10,
+    padding: 15,
+    color: '#9FA19F',
+    textAlign: 'start',
+    fontWeight: 700,
+  }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 999,
+  }),
+  menuList: (provided) => ({
+    ...provided,
+    padding: 0,
+  }),
   control: (styles) => ({
     ...styles,
     backgroundColor: 'white',
@@ -47,7 +64,7 @@ export const SearchForm = ({ setAdvList }) => {
           setMakeList(formatForSelect(Object.keys(names), 'Марка'));
         }
       });
-    setYearList(getYearList(1960));
+    setYearList(getYearList(1960, 'Рік'));
     setPriceList(getPriceList(3 * 10 ** 4));
     setFuelList(formatForSelect(['Бензин', 'Дизель', 'Газ'], 'Тип палива'));
     setTransmissionList(

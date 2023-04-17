@@ -9,6 +9,7 @@ export const Layout = ({
   hideMediaQuery = false,
   makes = null,
   advMenu = false,
+  setForm = false,
 }) => {
   return (
     <>
@@ -19,7 +20,7 @@ export const Layout = ({
         advMenu={advMenu}
       />
       <main>{children}</main>
-      <CarForm makes={makes} hideMediaQuery={hideMediaQuery} />
+      <CarForm makes={makes} hideMediaQuery={hideMediaQuery} setForm={setForm}/>
       <Contacts hideMediaQuery={hideMediaQuery} />
       <Footer />
     </>
