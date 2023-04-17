@@ -1,39 +1,59 @@
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(57, 62, 70, 0.5);
+}
+
 .drawer {
-  margin: 30px 0 0 30px;
-  height: 58%;
-  max-height: 500px;
-  border-radius: 10px;
-  overflow-x: hidden;
-
-  /* width */
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-    margin: 10px 0;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: #c5c5c5;
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:active {
-    background: #a5a5a5;
+  &.open {
+    &_body {
+      opacity: 1; /* показываем */
+    }
   }
 
   &_body {
+    margin: 30px 0 0 30px;
+    height: min-content;
+    max-height: 500px;
+    border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: visible;
     width: 400px;
     background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 40px 10px 40px 40px;
+    padding: 60px 60px 60px 60px;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 99999;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #c5c5c5;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:active {
+      background: #a5a5a5;
+    }
 
     &_close {
       display: none;
@@ -44,8 +64,7 @@
     &_logo {
       width: 199px;
       height: 60px;
-      margin-top: 10px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     &_nav {
@@ -92,15 +111,18 @@
 }
 
 @media (max-width: 900px) {
-  .drawer {
-    margin: 0;
-    height: 100vh;
-    border-radius: 0px;
-    max-height: none;
+  .bg {
+    background-color: transparent;
+  }
 
+  .drawer {
     &_body {
       width: 100vw;
       padding: 35px 12px 40px 40px;
+      margin: 0;
+      height: 100vh;
+      border-radius: 0px;
+      max-height: none;
 
       &_close {
         display: flex;
