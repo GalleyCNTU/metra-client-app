@@ -41,7 +41,7 @@ export const CarListItem = ({
 
         <div className={classes.purchased_car_price}>
           <span className={classes.purchased_car_price_uah}>
-            {purchasedCarPrice}
+            {`${purchasedCarPrice}$ / ${purchasedCarPrice * 38}₴`}
           </span>
         </div>
 

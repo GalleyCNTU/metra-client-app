@@ -1,12 +1,12 @@
 export const isValidAdv = (adv, filters) => {
   return filters.every((filter) => {
     let current = adv[filter.attribute];
-    if (filter.attribute === 'price') {
-      // const start = current.indexOf('₴') + 1;
-      const start = current.indexOf('$') + 1;
-      const end = current.indexOf('/');
-      current = current.slice(start, end).replace(/\s+/g, '');
-    }
+    // if (filter.attribute === 'price') {
+    //   // const start = current.indexOf('₴') + 1;
+    //   const start = current.indexOf('$') + 1;
+    //   const end = current.indexOf('/');
+    //   current = current.slice(start, end).replace(/\s+/g, '');
+    // }
     const to = filter.to ? +current <= +filter.to : true;
     const from = filter.from ? +current >= +filter.from : true;
 

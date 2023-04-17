@@ -242,6 +242,7 @@ export const SearchForm = ({ setAdvList }) => {
             }}
             value={selectedYearFrom}
             options={getYearList(1960, 'Від')}
+            isSearchable={false}
             onChange={(e) => {
               if (e) {
                 setLimits(
@@ -270,6 +271,7 @@ export const SearchForm = ({ setAdvList }) => {
             }}
             value={selectedYearTo}
             options={getYearList(1960, 'До')}
+            isSearchable={false}
             onChange={(e) => {
               if (e) {
                 setLimits(
@@ -295,6 +297,7 @@ export const SearchForm = ({ setAdvList }) => {
               ...theme,
               borderRadius: 10,
             })}
+            isSearchable={false}
             components={{
               DropdownIndicator: () => null,
               IndicatorSeparator: () => null,
@@ -323,6 +326,7 @@ export const SearchForm = ({ setAdvList }) => {
               ...theme,
               borderRadius: 10,
             })}
+            isSearchable={false}
             components={{
               DropdownIndicator: () => null,
               IndicatorSeparator: () => null,
