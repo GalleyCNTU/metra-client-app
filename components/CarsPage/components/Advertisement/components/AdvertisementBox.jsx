@@ -24,7 +24,7 @@ export const AdvertisementBox = ({
   engine,
   price,
   transmission,
-  status,
+  isActive,
 }) => {
   const openLinkHandler = () => {
     window.open(TELEGRAM_URL, '_blank');
@@ -35,7 +35,7 @@ export const AdvertisementBox = ({
     { text: `Привід: ${drive}`, img: DriveIcon },
     { text: `Тип палива: ${fuel}`, img: FuelIcon },
     { text: `Об'єм двигуна: ${engine} л.`, img: EngineIcon },
-    { text: `Статус: ${status}`, img: StatusIcon },
+    { text: `Статус: ${isActive ? "В наявності" : "Продано" }`, img: StatusIcon },
   ];
   return (
     <>
