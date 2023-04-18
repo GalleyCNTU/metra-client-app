@@ -39,6 +39,7 @@ export const Advertisement = ({ adv }) => (
           model={adv.model}
           make={adv.make}
           year={adv.year}
+          isActive={adv.isActive}
         />
       ) : (
         <div
