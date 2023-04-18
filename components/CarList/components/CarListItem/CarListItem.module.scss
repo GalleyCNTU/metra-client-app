@@ -11,6 +11,7 @@
   box-shadow: $boxShadow;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
 
   &_odometer {
     width: 100%;
@@ -29,6 +30,20 @@
     }
   }
 
+  &_sold {
+    color: #fbfbfd;
+    font-size: 30px;
+    line-height: 41px;
+    letter-spacing: 0.374px;
+    font-weight: 800;
+    z-index: 999;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
+  }
+
   &_background_img {
     width: auto;
     height: 216px;
@@ -38,6 +53,11 @@
     // filter: drop-shadow($boxShadow);
     margin-bottom: 5px;
     position: relative;
+    z-index: 0;
+  }
+
+  &_blur {
+    filter: blur(3px);
   }
 
   &_title {
@@ -96,6 +116,10 @@
     cursor: pointer;
     margin: 0 auto;
     transition: 0.3s;
+
+    &_disabled {
+      background-color: rgb(153, 152, 161);
+    }
 
     &:hover {
       opacity: 0.8;

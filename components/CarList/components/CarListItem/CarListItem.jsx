@@ -13,21 +13,28 @@ export const CarListItem = ({
   images,
   odometer,
   id,
+  isActive,
 }) => {
   return (
     <Link href={`/cars/${id}`}>
-      <div className={classes.purchased_car} id={classes.purchased}>
-        <div className={classes.purchased_car_background_img}>
+      <div className={classes.purchased_car} id={classes.purchased} style={isActive ? null : {pointerEvents: "none"}}>
+        <div
+          className={`${classes.purchased_car_background_img} ${
+            !isActive && classes.purchased_car_blur
+          }`}
+        >
           <Image
             style={{ borderRadius: '10px' }}
             src={images[0].url}
             alt={images[0].id}
             layout="fill"
             objectFit="cover"
-            objectPosition={'50% 100%'}
+            objectPosition={'50% 50%'}
           />
         </div>
-
+        {!isActive && (
+          <span className={classes.purchased_car_sold}>Продано</span>
+        )}
         <div className={classes.purchased_car_title}>
           <span>{purchasedCarTitle}</span>
         </div>
@@ -43,7 +50,13 @@ export const CarListItem = ({
           </span>
         </div>
 
-        <button className={classes.purchased_car_button}>Детальніше</button>
+        <button
+          className={`${classes.purchased_car_button} ${
+            !isActive && classes.purchased_car_button_disabled
+          }`}
+        >
+          Детальніше
+        </button>
       </div>
     </Link>
   );

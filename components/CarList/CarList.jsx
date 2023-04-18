@@ -117,6 +117,7 @@ export const CarList = ({
                   engine={item.engine}
                   odometer={item.odometer}
                   purchasedCarPrice={item.price}
+                  isActive={item.isActive}
                   key={i}
                   id={item.id}
                 />
