@@ -6,7 +6,7 @@ import { getYearList, getPriceList, formatForSelect, setLimits } from 'utils';
 import classes from './Search.module.scss';
 
 const colorStyles = {
-  option: (provided) => ({
+  option: () => ({
     // ...provided,
     cursor: 'pointer',
     borderRadius: 10,
@@ -162,6 +162,7 @@ export const SearchForm = ({ setAdvList }) => {
             if (e?.value) setSelectedModel({ value: e.value, label: e.label });
             else setSelectedModel(null);
           }}
+          isDisabled={!selectedMake}
         />
       </div>
 

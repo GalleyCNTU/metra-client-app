@@ -11,9 +11,7 @@ export const WhyWeItem = ({ title, subtitle }) => (
           +
         </span>
       </div>
-      <span className={classes.why_we_item_subtitle}>
-        {subtitle}
-      </span>
+      <span className={classes.why_we_item_subtitle}>{subtitle}</span>
     </div>
   </div>
 );

@@ -20,7 +20,11 @@ export const Layout = ({
         advMenu={advMenu}
       />
       <main>{children}</main>
-      <CarForm makes={makes} hideMediaQuery={hideMediaQuery} setForm={setForm}/>
+      <CarForm
+        makes={makes}
+        hideMediaQuery={hideMediaQuery}
+        setForm={setForm}
+      />
       <Contacts hideMediaQuery={hideMediaQuery} />
       <Footer />
     </>

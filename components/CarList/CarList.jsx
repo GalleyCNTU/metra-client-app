@@ -1,15 +1,15 @@
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import { CarListItem } from './components/CarListItem';
 import classes from './CarList.module.scss';
 
-import Image from 'next/image';
-import { CircularProgress } from '@mui/material';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-import lessThan from "public/img/lessThan.svg";
-import moreThan from "public/img/moreThan.svg";
-
+import lessThan from 'public/img/lessThan.svg';
+import moreThan from 'public/img/moreThan.svg';
 
 export const CarList = ({
   advertisementList,
@@ -65,26 +65,38 @@ export const CarList = ({
           Останні викуплені автомобілі
         </span>
       </div>
-      <div className={advertisements?.length ? classes.purchased_cars_bottom : ''} id="purchased_cars">
+      <div
+        className={advertisements?.length ? classes.purchased_cars_bottom : ''}
+        id="purchased_cars"
+      >
         <div className={classes.purchased_cars_bottom_list}>
           {!advertisements ? (
             <div
               style={{
                 width: '100%',
-                height: '10vh',
+                height: 300,
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
             >
-              <CircularProgress sx={{ color: '#ff8a00' }} />
+              <div style={{ width: 70, height: 70 }}>
+                <CircularProgressbar
+                  strokeWidth={8}
+                  value={90}
+                  styles={buildStyles({
+                    textColor: '#393e46',
+                    pathColor: '#ff8a00',
+                    trailColor: '#393e46',
+                  })}
+                />
+              </div>
             </div>
           ) : (
             (!advertisements.length && (
               <div
                 style={{
                   width: '100%',
-                  height: '100%',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -116,11 +128,11 @@ export const CarList = ({
       {advertisements?.length !== 0 && pagination && (
         <ReactPaginate
           breakLabel="..."
-          nextLabel={<Image src={moreThan} />}
+          nextLabel={<Image src={moreThan} alt="next" />}
           onPageChange={({ selected }) => handlePageChange(selected)}
           pageRangeDisplayed={advsOnPage}
           pageCount={pageCount}
-          previousLabel={<Image src={lessThan} />}
+          previousLabel={<Image src={lessThan} alt="previous" />}
           renderOnZeroPageCount={null}
           className="pagination"
           containerClassName={'pagination_container'}

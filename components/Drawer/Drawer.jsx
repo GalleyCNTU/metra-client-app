@@ -32,7 +32,10 @@ export const Drawer = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      <div className={classes.bg} style={{display: `${isOpen ? "block" : "none"}`}}></div>
+      <div
+        className={classes.bg}
+        style={{ display: `${isOpen ? 'block' : 'none'}` }}
+      ></div>
       <div
         className={classes.drawer_body}
         style={

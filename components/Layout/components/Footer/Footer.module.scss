@@ -36,7 +36,7 @@
     justify-content: space-between;
     max-width: 1550px;
   }
-  &_contacts {  
+  &_contacts {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -46,7 +46,7 @@
       font-size: 5.375rem;
       line-height: 116px;
       color: $colorMainWhite;
-      font-weight: 700; 
+      font-weight: 700;
     }
 
     &_box {

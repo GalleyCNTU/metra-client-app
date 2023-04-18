@@ -14,14 +14,10 @@ export const BuyingInfoItem = ({ width, height, path, subtitle, title }) => (
       </svg>
     </div>
     <div className={classes.item_buying_info_header}>
-      <span className={classes.item_buying_info_title}>
-        {title}
-      </span>
+      <span className={classes.item_buying_info_title}>{title}</span>
     </div>
     <div className={classes.item_buying_info_description}>
-      <span className={classes.item_buying_info_subtitle}>
-        {subtitle}
-      </span>
+      <span className={classes.item_buying_info_subtitle}>{subtitle}</span>
     </div>
   </div>
 );

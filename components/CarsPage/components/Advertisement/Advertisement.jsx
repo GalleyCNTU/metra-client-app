@@ -6,7 +6,8 @@ import classes from './Advertisement.module.scss';
 
 import BackIcon from 'public/img/AdvertisementBox/BackIcon.svg';
 
-import { CircularProgress } from '@mui/material';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export const Advertisement = ({ adv }) => (
   <div className={classes.advertisement_body}>
@@ -41,12 +42,25 @@ export const Advertisement = ({ adv }) => (
         />
       ) : (
         <div
-          className={classes.loader}
-          sx={{
-            height: '400px',
+          style={{
+            width: '100%',
+            height: 300,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <CircularProgress className={classes.loader_color} />
+          <div style={{ width: 70, height: 70 }}>
+            <CircularProgressbar
+              strokeWidth={8}
+              value={90}
+              styles={buildStyles({
+                textColor: '#393e46',
+                pathColor: '#ff8a00',
+                trailColor: '#393e46',
+              })}
+            />
+          </div>
         </div>
       )}
     </div>

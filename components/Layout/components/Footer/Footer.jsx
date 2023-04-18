@@ -42,32 +42,41 @@ export const Footer = () => (
             </span>
             <div className={classes.footer_messengers_box}>
               <Link href={INSTAGRAM_URL}>
-                <Image
-                  className={classes.item_messenger}
-                  src={instagramIcon}
-                  alt=""
-                />
+                <a>
+                  <Image
+                    className={classes.item_messenger}
+                    src={instagramIcon}
+                    alt=""
+                  />
+                </a>
               </Link>
+
               <Link href={TELEGRAM_URL}>
-                <Image
-                  className={classes.item_messenger}
-                  src={telegramIcon}
-                  alt=""
-                />
+                <a>
+                  <Image
+                    className={classes.item_messenger}
+                    src={telegramIcon}
+                    alt=""
+                  />
+                </a>
               </Link>
               <Link href={VIBER_URL}>
-                <Image
-                  className={classes.item_messenger}
-                  src={viberIcon}
-                  alt=""
-                />
+                <a>
+                  <Image
+                    className={classes.item_messenger}
+                    src={viberIcon}
+                    alt=""
+                  />
+                </a>
               </Link>
               <Link href={FACEBOOK_URL}>
-                <Image
-                  className={classes.item_messenger}
-                  src={facebookIcon}
-                  alt=""
-                />
+                <a>
+                  <Image
+                    className={classes.item_messenger}
+                    src={facebookIcon}
+                    alt=""
+                  />
+                </a>
               </Link>
             </div>
           </div>

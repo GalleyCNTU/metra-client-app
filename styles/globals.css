@@ -26,25 +26,22 @@
   background-color: transparent;
 }
 
-
-
 .pagination_page {
   margin: 0 3px;
   color: white;
   font-size: 18px;
   line-height: 25px;
-  font-family: "Gilroy";
+  font-family: 'Gilroy';
   width: 30px;
   height: 30px;
-  border: 2px solid #FF8A00;
+  border: 2px solid #ff8a00;
   text-align: center;
   transition: 0.3s all;
 }
 
 .pagination_page:hover {
-  background-color: #FF8A00;
+  background-color: #ff8a00;
 }
-
 
 .pagination_page_link {
   width: 100%;
@@ -55,13 +52,8 @@
 }
 
 .pagination_active {
-  background-color: #FF8A00;
+  background-color: #ff8a00;
 }
-
-.pagination_previous {
-
-}
-
 
 .item {
   display: flex;
@@ -72,31 +64,28 @@
   font-weight: 800;
   margin: 0 7px;
   color: white;
-  border: 2px solid #FF8A00;
+  border: 2px solid #ff8a00;
   text-align: center;
   padding-top: 3px;
   transition: 0.3s all;
 }
 
 .item:hover {
-  background-color: #FF8A00;
+  background-color: #ff8a00;
 }
 
 @media (max-width: 1150px) {
   .pagination_page {
     color: black;
- 
   }
   .pagination_previous a {
     filter: invert(100%);
   }
-  
+
   .pagination_next a {
     filter: invert(100%);
   }
 }
-
-
 
 html {
   line-height: 1.15; /* 1 */

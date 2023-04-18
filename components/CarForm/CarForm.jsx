@@ -19,7 +19,7 @@ const colorStyles = {
     height: 50,
     borderRadius: 10,
   }),
-  option: (provided) => ({
+  option: () => ({
     // ...provided,
     cursor: 'pointer',
     borderRadius: 10,
@@ -77,12 +77,7 @@ export const CarForm = ({ makes, hideMediaQuery, setForm }) => {
       theme: 'dark',
     });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({ mode: 'onSubmit' });
+  const { reset } = useForm({ mode: 'onSubmit' });
 
   const showCarPrice = () => {
     if (!selectedBrand) {
@@ -210,6 +205,7 @@ export const CarForm = ({ makes, hideMediaQuery, setForm }) => {
                     DropdownIndicator: () => null,
                     IndicatorSeparator: () => null,
                   }}
+                  isDisabled={!selectedBrand}
                 />
 
                 <Select

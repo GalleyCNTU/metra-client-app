@@ -6,9 +6,7 @@ import classes from './WhyWe.module.scss';
 export const WhyWe = () => (
   <div className={classes.why_we}>
     <div className={classes.why_we_header}>
-      <span className={classes.why_we_title}>
-        ЧОМУ МИ ВАРТІ ВАШОЇ УВАГИ?
-      </span>
+      <span className={classes.why_we_title}>ЧОМУ МИ ВАРТІ ВАШОЇ УВАГИ?</span>
     </div>
     <div className={classes.container}>
       <div className={classes.why_we_row}>

@@ -33,7 +33,7 @@
     width: auto;
     height: 216px;
     display: flex;
-    
+
     justify-content: center;
     align-items: center;
     filter: drop-shadow($boxShadow);
@@ -97,10 +97,9 @@
     margin: 0 auto;
     transition: 0.3s;
 
-      &:hover {
-        opacity: 0.8;
-      }
-
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -109,4 +108,3 @@
     width: 400px;
   }
 }
-

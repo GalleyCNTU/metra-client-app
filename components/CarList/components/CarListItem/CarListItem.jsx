@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 import classes from './CarListItem.module.scss';
 
-import { Button } from '@mui/material';
-
 export const CarListItem = ({
   purchasedCarTitle,
   transmission,
@@ -24,9 +22,9 @@ export const CarListItem = ({
             style={{ borderRadius: '10px' }}
             src={images[0].url}
             alt={images[0].id}
-            layout='fill'
-            objectFit='cover'
-            objectPosition={"50% 100%"}
+            layout="fill"
+            objectFit="cover"
+            objectPosition={'50% 100%'}
           />
         </div>
 

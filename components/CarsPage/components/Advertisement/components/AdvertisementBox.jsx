@@ -54,7 +54,7 @@ export const AdvertisementBox = ({
               <span
                 className={classes.characteristics_title_price}
                 variant="h3"
-              >{`${price}$ / ${price * 38}₴`}</span>
+              >{`${price}$ / ${price * 37}₴`}</span>
             </div>
 
             <div className={classes.characteristics_container}>

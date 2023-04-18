@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   getAdvNameObj,
   getAdvertisementList,
@@ -27,6 +30,17 @@ const Cars = ({ advertisementList, makes, avalaibleMakes }) => {
         hideMediaQuery={true}
         makes={makes}
       >
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Search
           setAdvList={setAdvList}
           avalaibleMakes={avalaibleMakes}

@@ -11,7 +11,7 @@ export const Search = ({ setAdvList, avalaibleMakes, advList }) => {
     <div className={classes.title}>
       <div className={classes.title_backArrow}>
         <Link href="/main">
-          <Image src={backArrow} width={83} height={83} />
+          <Image src={backArrow} width={83} height={83} alt="backArrow" />
         </Link>
       </div>
       <div className={classes.title_formBlock}>
