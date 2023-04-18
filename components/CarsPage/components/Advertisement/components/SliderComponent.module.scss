@@ -39,7 +39,7 @@
       position: relative;
       &_png {
         border-radius: 10px;
-        filter: drop-shadow($boxShadow);
+        // filter: drop-shadow($boxShadow);
         object-fit: contain;
         // object-position: 100% 70%;
         object-position: center;
@@ -53,7 +53,7 @@
       position: relative;
       &_png {
         border-radius: 10px;
-        filter: drop-shadow($boxShadow);
+        // filter: drop-shadow($boxShadow);
       }
     }
     &_wrap {

@@ -33,11 +33,11 @@
     width: auto;
     height: 216px;
     display: flex;
-
     justify-content: center;
     align-items: center;
-    filter: drop-shadow($boxShadow);
+    // filter: drop-shadow($boxShadow);
     margin-bottom: 5px;
+    position: relative;
   }
 
   &_title {
