@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { AdvertisementBox } from './components';
 import classes from './Advertisement.module.scss';
 
-import BackIcon from 'public/img/AdvertisementBox/BackIcon.svg';
+import BackIcon from 'public/img/advertisementBox/BackIcon.svg';
 
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';

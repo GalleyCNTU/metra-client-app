@@ -5,13 +5,13 @@ import { TELEGRAM_URL } from 'continuities';
 import { SliderComponent } from './SliderComponent';
 import classes from '../Advertisement.module.scss';
 
-// import MakeIcon from 'public/img/AdvertisementBox/MakeIcon.svg';
-import StatusIcon from 'public/img/AdvertisementBox/StatusIcon.svg';
-import EngineIcon from 'public/img/AdvertisementBox/EngineIcon.svg';
-import OdometerIcon from 'public/img/AdvertisementBox/OdometerIcon.svg';
-import FuelIcon from 'public/img/AdvertisementBox/FuelIcon.svg';
-import TransmissionIcon from 'public/img/AdvertisementBox/TransmissionIcon.svg';
-import DriveIcon from 'public/img/AdvertisementBox/DriveIcon.svg';
+// import MakeIcon from 'public/img/advertisementBox/MakeIcon.svg';
+import StatusIcon from 'public/img/advertisementBox/StatusIcon.svg';
+import EngineIcon from 'public/img/advertisementBox/EngineIcon.svg';
+import OdometerIcon from 'public/img/advertisementBox/OdometerIcon.svg';
+import FuelIcon from 'public/img/advertisementBox/FuelIcon.svg';
+import TransmissionIcon from 'public/img/advertisementBox/TransmissionIcon.svg';
+import DriveIcon from 'public/img/advertisementBox/DriveIcon.svg';
 
 export const AdvertisementBox = ({
   images,
