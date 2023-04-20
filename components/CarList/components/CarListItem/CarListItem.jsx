@@ -19,18 +19,18 @@ export const CarListItem = ({
     <Link href={`/cars/${id}`}>
       <div className={classes.purchased_car} id={classes.purchased} style={isActive ? null : {pointerEvents: "none"}}>
         <div
-          className={`${classes.purchased_car_background_img} ${
-            !isActive && classes.purchased_car_blur
-          }`}
+          className={classes.purchased_car_background_img}
+          style={{ position: 'relative', filter: !isActive ? 'grayscale(100%)' : null,   }}
         >
           <Image
-            style={{ borderRadius: '10px' }}
+            style={{ borderRadius: '10px', }}
             src={images[0].url}
             alt={images[0].id}
             layout="fill"
             objectFit="cover"
             objectPosition={'50% 50%'}
           />
+          {!isActive && <div style={{ position: 'absolute',  borderRadius: '10px', zIndex: 9999, width: '100%', height: '100%', left: 0, top: 0, background: 'rgba(108, 122, 137, .7)' }}></div>}
         </div>
         {!isActive && (
           <span className={classes.purchased_car_sold}>Продано</span>
@@ -46,7 +46,7 @@ export const CarListItem = ({
 
         <div className={classes.purchased_car_price}>
           <span className={classes.purchased_car_price_uah}>
-            {`${purchasedCarPrice}$ / ${purchasedCarPrice * 38}₴`}
+            {`${purchasedCarPrice} USD`}
           </span>
         </div>
 

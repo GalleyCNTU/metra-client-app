@@ -51,7 +51,7 @@ const Cars = ({ advertisementList, makes, avalaibleMakes }) => {
           pagination={true}
           mobileBackgroundColor={true}
         />
-        <Details isArrow={false} />
+        {/* <Details isArrow={false} /> */}
       </Layout>
     </>
   );

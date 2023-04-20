@@ -149,7 +149,7 @@
       text-align: center;
       margin-bottom: 1.8131rem;
       letter-spacing: 0.774px;
-      // word-spacing: 0.2em;
+      word-spacing: 0.2em;
     }
   }
   &_title {
@@ -158,10 +158,11 @@
     font-weight: 800;
     font-family: $fontFamilyBold;
     font-style: normal;
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 28px;
     text-align: center;
     margin-bottom: 4rem;
+    letter-spacing: 1.1px;
   }
 
   &_modal {

@@ -40,11 +40,11 @@ export const Drawer = ({ isOpen, setIsOpen }) => {
         className={classes.drawer_body}
         style={
           isOpen
-            ? { overflow: 'visible', opacity: 1, transition: '0.3s all' }
+            ? { overflow: 'visible', opacity: 1, transition: '.8s all' }
             : {
                 overflow: 'hidden',
                 opacity: 0,
-                transition: '0.3s all',
+                transition: '.5s all',
                 pointerEvents: 'none',
               }
         }

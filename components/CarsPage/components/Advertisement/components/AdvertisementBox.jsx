@@ -30,12 +30,12 @@ export const AdvertisementBox = ({
     window.open(TELEGRAM_URL, '_blank');
   };
   const descr = [
-    { text: `Коробка: ${transmission}`, img: TransmissionIcon },
-    { text: `Пробіг: ${odometer} тис.`, img: OdometerIcon },
-    { text: `Привід: ${drive}`, img: DriveIcon },
-    { text: `Тип палива: ${fuel}`, img: FuelIcon },
-    { text: `Об'єм двигуна: ${engine} л.`, img: EngineIcon },
-    { text: `Статус: ${isActive ? "В наявності" : "Продано" }`, img: StatusIcon },
+    { text: `Коробка:`, value: `${transmission}`, img: TransmissionIcon },
+    { text: `Пробіг:`, value: `${odometer} тис.`, img: OdometerIcon },
+    { text: `Привід:`, value: `${drive}`, img: DriveIcon },
+    { text: `Тип палива:`, value: `${fuel}`, img: FuelIcon },
+    { text: `Об'єм двигуна:`, value: `${engine} л.`, img: EngineIcon },
+    { text: `Статус:`, value: `${isActive ? "В наявності" : "Продано" }`, img: StatusIcon },
   ];
   return (
     <>
@@ -51,18 +51,23 @@ export const AdvertisementBox = ({
                 className={classes.characteristics_title_make}
                 variant="h3"
               >{`${make} ${model}`}</span>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
               <span
                 className={classes.characteristics_title_price}
                 variant="h3"
-              >{`${price}$ / ${price * 37}₴`}</span>
+              >{`${price} USD `}</span>
+              </div>
             </div>
 
             <div className={classes.characteristics_container}>
               <div className={classes.characteristics_column}>
-                {descr.map(({ text, img }, index) => (
+                {descr.map(({ text, img, value }, index) => (
                   <div key={index} className={classes.characteristics_box}>
-                    <Image src={img} alt={make} />
-                    <span className={classes.characteristics_info}>{text}</span>
+                    <Image src={img} alt={make} style={{ marginBottom: 2 }} />
+                   <div style={{ display: 'flex', alignItems: 'center' }}>
+                   <span className={classes.characteristics_info} style={{ marginRight: 5, color: 'rgba(255, 255, 255, .7)' }}>{text}</span>
+                   <span className={classes.characteristics_info} style={{ fontWeight: 500 }}>{value}</span>
+                   </div>
                   </div>
                 ))}
               </div>
@@ -88,7 +93,7 @@ export const AdvertisementBox = ({
                   onClick={openLinkHandler}
                   className={classes.btn_characteristics_contact}
                 >
-                  Детальніше
+                  Задати питання
                 </button>
               </div>
             </div>
@@ -99,7 +104,7 @@ export const AdvertisementBox = ({
                   onClick={openLinkHandler}
                   className={classes.btn_characteristics_contact}
                 >
-                  Детальніше
+                  Задати питання
                 </button>
               </div>
             </div>

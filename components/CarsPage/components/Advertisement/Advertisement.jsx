@@ -11,7 +11,7 @@ import 'react-circular-progressbar/dist/styles.css';
 
 export const Advertisement = ({ adv }) => (
   <div className={classes.advertisement_body}>
-    <div className={classes.btn_box}>
+    <div className={classes.btn_box} style={{ marginBottom: 5 }}>
       <Link href={`/cars`}>
         <button size="large" className={classes.btn_back}>
           <div className={classes.btn_back_img}>

@@ -13,7 +13,7 @@ const colorStyles = {
     padding: 15,
     color: '#9FA19F',
     textAlign: 'start',
-    fontWeight: 700,
+    // fontWeight: 700,
   }),
   menu: (provided) => ({
     ...provided,
