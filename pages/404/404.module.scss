@@ -1,0 +1,25 @@
+@import 'styles/variables.module.scss';
+
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  &_title {
+    font-family: $fontFamily;
+    font-size: 59px;
+  }
+}
+
+@media (max-width: 675px) {
+  .notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    &_title {
+      word-wrap: break-word;
+      font-size: 29px;
+    }
+  }
+}

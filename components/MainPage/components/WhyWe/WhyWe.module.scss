@@ -1,0 +1,197 @@
+@import 'styles/variables.module.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 1650px;
+  width: 100%;
+}
+
+.why_we {
+  width: 100%;
+  background: url('../../../../public/img/whyWeBackground.png') no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rem 2rem;
+
+  &_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 7rem;
+  }
+
+  &_title {
+    font-family: $fontFamilyBold;
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 41px;
+    text-align: center;
+    letter-spacing: 0.374px;
+    color: $colorMainBlueBlack;
+    word-spacing: 0.15em;
+  }
+
+  &_row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &_item {
+    &_block {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      background: $colorMainBlueBlack;
+      width: 25rem;
+      gap: 1rem;
+      padding: 1.25rem;
+      height: 18.75rem;
+      margin: 0 2rem;
+      box-shadow: $boxShadow;
+      border-radius: 20px;
+    }
+
+    &_info {
+      display: flex;
+      height: 10.813rem;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &_header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_title {
+      font-family: $fontFamilyBold;
+      font-size: 5.375rem;
+      text-align: center;
+      color: $colorMainOrange;
+      font-weight: 700;
+      line-height: 116px;
+      letter-spacing: 0.974px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_subtitle {
+      font-family: $fontFamilyBold;
+      font-size: 1.75rem;
+      line-height: 34px;
+      text-align: center;
+      letter-spacing: 0.36px;
+      font-weight: 700;
+      color: $colorMainWhite;
+    }
+    &_plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $colorMainWhite;
+      font-size: 90px;
+      line-height: 0;
+      font-family: $fontFamilyBold;
+      text-align: start;
+      letter-spacing: 0.36px;
+      font-weight: 700;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .why_we {
+    width: 100%;
+    background: $colorMainWhite;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 0 2rem;
+
+    &_header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      margin-bottom: 0;
+    }
+
+    &_title {
+      font-family: $fontFamilyBold;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 41px;
+      text-align: center;
+      letter-spacing: 0.374px;
+      color: $colorMainBlueBlack;
+    }
+
+    &_row {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    &_item {
+      &_block {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: $colorMainBlueBlack;
+        width: 14.5rem;
+        gap: 1rem;
+        padding: 1.5rem 1.5rem;
+        height: 13.5rem;
+        margin: 1.5rem;
+        box-shadow: $boxShadow;
+        border-radius: 20px;
+      }
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+      }
+
+      &_header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &_title {
+        font-family: $fontFamilyBold;
+        font-size: 50px;
+        line-height: 86px;
+        text-align: center;
+        color: $colorMainOrange;
+        font-weight: 700;
+      }
+
+      &_subtitle {
+        font-family: $fontFamilyBold;
+        font-size: 1.375rem;
+        line-height: 34px;
+        text-align: center;
+        letter-spacing: 0.36px;
+        font-weight: 700;
+        color: $colorMainWhite;
+        letter-spacing: 0.974px;
+      }
+      &_plus {
+        color: $colorMainWhite;
+      }
+    }
+  }
+}

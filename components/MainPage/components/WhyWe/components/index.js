@@ -1,0 +1,1 @@
+export { WhyWeItem } from './WhyWeItem';
